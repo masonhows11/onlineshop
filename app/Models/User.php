@@ -28,6 +28,7 @@ class User extends Authenticatable
         'national_code',
         'email',
         'mobile',
+        'password',
         'email_verified_at',
         'mobile_verified_at',
         'token',
