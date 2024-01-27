@@ -159,6 +159,8 @@ return [
         /*
          * Package Service Providers...
          */
+        Spatie\Permission\PermissionServiceProvider::class,
+        Nagy\LaravelRating\LaravelRatingServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -183,6 +185,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
+        "LaravelRating" => \Nagy\LaravelRating\LaravelRatingFacade::class,
     ])->toArray(),
 
 ];
