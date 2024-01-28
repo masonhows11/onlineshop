@@ -16,7 +16,7 @@ class AdminRoleAssignController extends Controller
         try {
             $user = Admin::findOrFail($request->user_id);
             $roles = Role::all();
-            return view('dash.assign_role.role_assign')
+            return view('admin_end.assign_role.role_assign')
                 ->with(['user' => $user, 'roles' => $roles]);
         } catch (\Exception $ex) {
             return view('errors_custom.model_not_found');

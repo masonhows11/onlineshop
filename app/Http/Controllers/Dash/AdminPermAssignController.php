@@ -16,7 +16,7 @@ class AdminPermAssignController extends Controller
         try {
             $user = Admin::findOrFail($request->user_id);
             $perms = Permission::all();
-            return view('dash.assign_perm.perm_assign')
+            return view('admin_end.assign_perm.perm_assign')
                 ->with(['user' => $user, 'perms' => $perms]);
         }catch (\Exception $ex){
             return view('errors_custom.model_not_found');
