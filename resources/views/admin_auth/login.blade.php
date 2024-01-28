@@ -1,4 +1,4 @@
-@extends('auth_admin.auth_master')
+@extends('admin_auth.auth_master')
 @section('auth_admin_title')
     {{ __('messages.admin_login') }}
 @endsection
@@ -7,7 +7,7 @@
 
         <div class="row d-flex justify-content-center">
             <div class="col-lg-8 col-md-10 my-2 alert-dive">
-                @include('auth_admin.alert')
+                @include('admin_auth.alert')
             </div>
         </div>
 

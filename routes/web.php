@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth_Admin\AdminLoginController;
+use App\Http\Controllers\Auth_Admin\AdminValidateController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -163,16 +165,16 @@ Route::get('/', [HomeController::class, 'home'])->name('home');
 //
 // });
 
-//Route::group(['prefix' => 'admin'], function () {
-//
-//    Route::get('/login', [AdminLoginController::class, 'loginForm'])->name('admin.login.form');
-//    Route::post('/login', [AdminLoginController::class, 'login'])->name('admin.login');
-//
-//    Route::get('/validate', [AdminValidateController::class, 'validateEmailForm'])->name('admin.validate.email.form');
-//    Route::post('/validate', [AdminValidateController::class, 'validateEmail'])->name('admin.validate.email');
-//
-//
-//});
+Route::group(['prefix' => 'admin'], function () {
+
+    Route::get('/login', [AdminLoginController::class, 'loginForm'])->name('admin.login.form');
+    Route::post('/login', [AdminLoginController::class, 'login'])->name('admin.login');
+
+    Route::get('/validate', [AdminValidateController::class, 'validateEmailForm'])->name('admin.validate.email.form');
+    Route::post('/validate', [AdminValidateController::class, 'validateEmail'])->name('admin.validate.email');
+
+
+});
 
 //Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin', 'role:admin|super_admin'])->group(function () {
 //
