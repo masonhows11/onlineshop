@@ -1,4 +1,4 @@
-@extends('auth_admin.auth_master')
+@extends('admin_auth.auth_master')
 @section('auth_admin_title')
     {{ __('messages.confirm_email') }}
 @endsection
@@ -7,7 +7,7 @@
 
         <div class="row d-flex justify-content-center">
             <div class="col-lg-8 col-md-10 my-2 alert-dive">
-                @include('auth_admin.alert')
+                @include('admin_auth.alert')
             </div>
         </div>
 
@@ -15,7 +15,7 @@
             <div class="d-flex flex-center flex-column flex-column-fluid p-10 pb-lg-20">
                 <h3 class="mb-12 admin-logo-login">
                     {{-- <img alt="Logo" src="#" class="h-40px"/>--}}
-                    {{ env('app_name') }}
+                    {{ __('messages.site_name') }}
                 </h3>
                 <div class="w-lg-600px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto admin-validate-form">
                     <form action="{{ route('admin.validate.email') }}" method="post" class="form w-100 mb-10"

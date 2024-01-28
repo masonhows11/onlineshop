@@ -2,8 +2,8 @@
 
 
 return [
-    'site_name' => 'خرید خوب',
-    'site_name_english' => 'goodshop.ir',
+    'site_name' => 'فروشگاه آنلاین',
+    'site_name_english' => 'shop.ir',
     'good_shopping_online_store' => 'فروشگاه اینترنتی خرید خوب',
     'home_page' => 'صفحه اصلی سایت',
     'admin_dashboard' => 'پنل مدیریت',

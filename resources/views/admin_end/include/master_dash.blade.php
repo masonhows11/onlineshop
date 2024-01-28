@@ -6,7 +6,7 @@
     <title>@yield('dash_page_title')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    @include('dash.include.header_styles')
+    @include('admin_end.include.header_styles')
     @stack('dash_custom_style')
 </head>
 <body id="kt_body"
@@ -14,12 +14,12 @@
       style="--kt-toolbar-height:55px;--kt-toolbar-height-tablet-and-mobile:55px">
 <div class="d-flex flex-column flex-root">
     <div class="page d-flex flex-row flex-column-fluid">
-        @include('dash.include.sidebar')
+        @include('admin_end.include.sidebar')
         <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
-            @include('dash.include.header')
+            @include('admin_end.include.header')
             <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-                @include('dash.include.breadcrumb')
-                @include('dash.include.header_toolbar')
+                @include('admin_end.include.breadcrumb')
+                @include('admin_end.include.header_toolbar')
                 <div class="post" id="kt_post">
                     <!--begin::main container------------------------------------------------------>
                 @yield('dash_main_content')
@@ -27,14 +27,14 @@
                 </div>
             </div>
             <!--begin::Footer------------------------------------------------------------------->
-        @include('dash.include.footer')
+        @include('admin_end.include.footer')
         <!--end::Footer---------------------------------------------------------------------------->
         </div>
     </div>
 </div>
-@include( 'dash.include.footer_scripts')
-@include( 'dash.include.alert.delete_confirm',['className'=> 'delete-item'])
-@include( 'dash.include.alert.alert_response')
+@include( 'admin_end.include.footer_scripts')
+@include( 'admin_end.include.alert.delete_confirm',['className'=> 'delete-item'])
+@include( 'admin_end.include.alert.alert_response')
 @stack('dash_custom_script')
 </body>
 </html>

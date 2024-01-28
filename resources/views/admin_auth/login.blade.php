@@ -14,7 +14,7 @@
         <div class="row">
             <div class="d-flex flex-center flex-column flex-column-fluid p-10 pb-lg-20">
                 {{-- <img alt="Logo" src="#" class="logo-login my-5"/>--}}
-                <h3 class="my-5 admin-logo-login">{{ env('app_name') }}</h3>
+                <h3 class="my-5 admin-logo-login">{{ __('messages.site_name') }}</h3>
                 <div class="w-lg-500px bg-white rounded shadow-sm p-10 p-lg-15 mx-auto admin-login-form">
 
                     <form action="{{ route('admin.login') }}" method="post" class="form w-100" novalidate="novalidate">

@@ -24,9 +24,9 @@
                     $model = \App\Models\Setting::first();
                 @endphp
                 @if( !empty($model->logo) )
-                <img alt="Logo" src=" {{ $model !== null ? asset('storage'.$model->logo) : asset('dash/images/no-image-icon-23494.png') }}" class="h-30px"/>
+                <img alt="Logo" src=" {{ $model !== null ? asset('storage'.$model->logo) : asset('admin_assets/images/no-image-icon-23494.png') }}" class="h-30px"/>
                 @else
-                    <img alt="Logo" src=" {{ asset('dash/images/no-image-icon-23494.png') }}" class="h-30px"/>
+                    <img alt="Logo" src=" {{ asset('admin_assets/images/no-image-icon-23494.png') }}" class="h-30px"/>
                 @endif
             </a>
         </div>
@@ -222,7 +222,7 @@
                         <div class="cursor-pointer symbol symbol-30px symbol-md-40px"
                              data-kt-menu-trigger="click" data-kt-menu-attach="parent"
                              data-kt-menu-placement="bottom-end" data-kt-menu-flip="bottom">
-                            <img src="{{ asset('dash/images/150-2.jpg') }}" alt="goodshop"/>
+                            <img src="{{ asset('admin_assets/images/150-2.jpg') }}" alt="goodshop"/>
                         </div>
                         <div
                             class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold py-4 fs-6 w-275px"
@@ -230,7 +230,7 @@
                             <div class="menu-item px-3">
                                 <div class="menu-content d-flex align-items-center px-3">
                                     <div class="symbol symbol-50px me-5">
-                                        <img alt="Logo" src="{{ asset('dash/images/150-2.jpg') }}"/>
+                                        <img alt="Logo" src="{{ asset('admin_assets/images/150-2.jpg') }}"/>
                                     </div>
                                     <div class="d-flex flex-column">
                                         <div
