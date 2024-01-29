@@ -54,7 +54,7 @@
                             <td>{{ $category->title_persian }}</td>
                             <td>{{ $category->parent_id ? $category->parent->title_persian : __('messages.main_category') }}</td>
                             <td>
-                                @if( $category->image_path && \Illuminate\Support\Facades\Storage::disk('public')->exists('storage/images/category/'.$product->thumbnail_image ))
+                                @if( $category->image_path && \Illuminate\Support\Facades\Storage::disk('public')->exists('images/category/'.$category->thumbnail_image ))
                                     <img src="{{ asset('storage/images/category/'.$category->image_path)  }}" width="100" height="100" alt="image_category">
                                 @else
                                     <img src="{{  asset('admin_assets/images/no-image-icon-23494.png')  }}" width="100" height="100" alt="image_category">

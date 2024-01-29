@@ -99,7 +99,7 @@
                                      alt="brand_photo"
                                      class="rounded border border-2 image-admin-preview">
                             @else
-                                <img src="{{ asset('dash/images/no-image-icon-23494.png') }}"
+                                <img src="{{ asset('admin_assets/images/no-image-icon-23494.png') }}"
                                      width="200" height="200"
                                      alt="logo_image_path"
                                      class="rounded border border-2 image-admin-preview">
