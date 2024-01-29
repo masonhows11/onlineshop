@@ -113,7 +113,7 @@ class CreateProductMeta extends Component
     public function render()
     {
         return view('livewire.admin.create-product.create-product-meta')
-            ->extends('dash.include.master_dash')
+            ->extends('admin_end.include.master_dash')
             ->section('dash_main_content')
             ->with(['product' => $this->product,
                     'metas' => ProductMeta::where('product_id', $this->product_id)->get()]);

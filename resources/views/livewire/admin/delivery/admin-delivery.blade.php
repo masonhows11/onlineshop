@@ -17,7 +17,7 @@
 
          <div class="row my-4 bg-white">
               <div class="col-lg-4 col-md-4 col my-2">
-                  <a href="{{ route('admin.delivery.create') }}" class="btn btn-sm btn-primary">{{ __('messages.new_delivery') }}</a>
+                  <a href="{{ route('admin.delivery.create') }}" class="btn  btn-primary">{{ __('messages.new_delivery') }}</a>
               </div>
           </div>
 

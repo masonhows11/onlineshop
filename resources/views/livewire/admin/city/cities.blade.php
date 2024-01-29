@@ -1,5 +1,4 @@
 <div>
-
     <div class="row  list-cities bg-white mb-4">
         <div class="my-5" style="height:320px">
             <table class="table table-striped">
@@ -30,11 +29,9 @@
             </table>
         </div>
     </div>
-
     <div class="row d-flex justify-content-center bg-white">
         <div class="col-lg-2 col-md-2 my-3 py-3">
             {{ $cities->links() }}
         </div>
     </div>
-
 </div>

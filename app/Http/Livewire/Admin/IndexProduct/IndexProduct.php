@@ -75,7 +75,7 @@ class IndexProduct extends Component
     public function render()
     {
         return view('livewire.admin.index-product.index-product')
-            ->extends('dash.include.master_dash')
+            ->extends('admin_end.include.master_dash')
             ->section('dash_main_content')
             ->with(['categories'=> DB::table('categories')->select('id','title_persian')->get(),
                 'products' => Product::search($this->search)

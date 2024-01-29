@@ -61,7 +61,7 @@
                                 <td>{{ $tag->title_english }}</td>
                                 <td>{{ $tag->slug }}</td>
                                 <td class="mb-3">
-                                    <a href="javascript:void(0)" wire:click.prevent="deleteConfirmation({{ $tag->id }})" class="btn btn-sm mb-3">
+                                    <a href="javascript:void(0)" wire:click.prevent="deleteConfirmation({{ $tag->id }})" class="btn  mb-3">
                                         <i class="fa fa-trash"></i>
                                     </a>
                                 </td>

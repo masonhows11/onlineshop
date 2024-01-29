@@ -45,39 +45,21 @@
                             <td>{{ number_format(floatval($order->order_final_amount)) }} تومان </td>
 
                             <td>{{ number_format(floatval($order->order_discount_amount)) }} تومان </td>
+
                             <td>{{ number_format(floatval($order->order_total_products_discount_amount)) }} نومان </td>
 
                             <td>{{ number_format(floatval($order->order_final_amount - $order->order_discount_amount)) }} تومان </td>
 
-                            {{--<td> @if ( $order->payment_status == 0) {{ __('messages.unpaid') }}
-                                @elseif( $order->payment_status == 1 ) {{ __('messages.paid') }}
-                                @elseif($order->payment_status == 2) {{ __('messages.pay_canceled') }}
-                                @elseif ( $order->payment_status == 3) {{ __('messages.pay_returned') }} @endif </td>--}}
                             <td>{{ $order->payment_status_value }}</td>
 
-                            {{--  <td> @if ( $order->payment_type == 0) {{ __('messages.online_pay') }}
-                                @elseif ( $order->payment_type == 1 ) {{ __('messages.offline_pay') }}
-                                @else {{ __('messages.payment_on_the_spot') }} @endif </td>--}}
                             <td>{{ $order->payment_type_value }}</td>
 
                             <td>{{ $order->payment->paymentable->gateway ?? '-' }}</td>
 
-                            {{--<td> @if ( $order->delivery_status == 0) {{ __('messages.order_not_sent') }}
-                                @elseif( $order->delivery_status == 1 ) {{ __('messages.order_sending') }}
-                                @elseif( $order->delivery_status == 2) {{ __('messages.order_sent') }}
-                                @elseif( $order->delivery_status == 3) {{ __('messages.order_delivered') }} @endif </td>--}}
                             <td>{{ $order->delivery_status_value }}</td>
 
                             <td>{{ $order->delivery->title }}</td>
 
-
-                            {{--<td> @if ( $order->order_status == 0)  {{ __('messages.order_not_checked') }}
-                                @elseif( $order->order_status == 1 ) {{ __('messages.order_wait_for_confirmed') }}
-                                @elseif( $order->order_status == 2 ) {{ __('messages.order_not_confirmed') }}
-                                @elseif( $order->order_status == 3 ) {{ __('messages.order_confirmed') }}
-                                @elseif( $order->order_status == 4 ) {{ __('messages.order_canceled') }}
-                                @elseif( $order->order_status == 5 ) {{ __('messages.order_returned') }}
-                                @endif</td>--}}
                             <td>{{ $order->order_status_value }}</td>
 
                             <td class="">

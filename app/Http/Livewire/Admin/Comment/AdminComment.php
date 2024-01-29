@@ -82,7 +82,7 @@ class AdminComment extends Component
     public function render()
     {
         return view('livewire.admin.comment.admin-comment')
-            ->extends('dash.include.master_dash')
+            ->extends('admin_end.include.master_dash')
             ->section('dash_main_content')
             ->with(['product' => $this->product,
                 'comments' => Comment::where('product_id', $this->product_id)->paginate(8)]);

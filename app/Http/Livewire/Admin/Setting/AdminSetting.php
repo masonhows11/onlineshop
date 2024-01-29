@@ -31,7 +31,7 @@ class AdminSetting extends Component
     public function render()
     {
         return view('livewire.admin.setting.admin-setting')
-            ->extends('dash.include.master_dash')
+            ->extends('admin_end.include.master_dash')
             ->section('dash_main_content')
             ->with([ 'settings' => Setting::paginate(10)]);
     }

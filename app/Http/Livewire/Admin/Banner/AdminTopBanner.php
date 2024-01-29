@@ -61,7 +61,7 @@ class AdminTopBanner extends Component
     public function render()
     {
         return view('livewire.admin.banner.admin-top-banner')
-            ->extends('dash.include.master_dash')
+            ->extends('admin_end.include.master_dash')
             ->section('dash_main_content')
             ->with(['banners' => TopBanner::paginate(10)]);
     }
