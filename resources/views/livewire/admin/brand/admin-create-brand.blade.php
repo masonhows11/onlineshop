@@ -10,7 +10,6 @@
 
         <div class="row  py-2 bg-white rounded  create-form-brand">
             <form wire:submit.prevent="save">
-                @csrf
                 <div class="col">
 
                     <div class="row">
