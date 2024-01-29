@@ -12,7 +12,7 @@ class ProductCreateColorController extends Controller
     public function create(Request $request)
     {
 
-        return view('dash.product.create.create_colors')->with('product',$request->product);
+        return view('admin_end.product.create.create_colors')->with('product',$request->product);
 
 
     }

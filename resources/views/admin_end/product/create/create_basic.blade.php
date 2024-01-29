@@ -1,9 +1,9 @@
-@extends('dash.include.master_dash')
+@extends('admin_end.include.master_dash')
 @section('dash_page_title')
     مشخصات عمومی کالا
 @endsection
 @push('dash_custom_style')
-    <link rel="stylesheet" href="{{ asset('dash/plugins/jalalidatepicker/dist/css/persian-datepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin_assets/plugins/jalalidatepicker/dist/css/persian-datepicker.min.css') }}">
 @endpush
 @section('breadcrumb')
     {{ Breadcrumbs::render('admin.create.product.basic') }}
@@ -225,7 +225,7 @@
                         {{--  image section  --}}
                         <div class="row d-flex flex-column justify-content-center align-content-center product-image">
                             <div class="col-lg-8">
-                                <img src="{{ asset('dash/images/no-image-icon-23494.png') }}"
+                                <img src="{{ asset('admin_assets/images/no-image-icon-23494.png') }}"
                                      id="image_view"
                                      class="img-thumbnail"
                                      height="300" width="300"
@@ -299,11 +299,11 @@
     </div>
 @endsection
 @push('dash_custom_script')
-    <script type="text/javascript" src="{{ asset('dash/plugins/ckeditor/ckeditor.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('admin_assets/plugins/ckeditor/ckeditor.js') }}"></script>
     <script type="text/javascript"
-            src="{{ asset('dash/plugins/jalalidatepicker/assets/persian-date.min.js')  }}"></script>
+            src="{{ asset('admin_assets/plugins/jalalidatepicker/assets/persian-date.min.js')  }}"></script>
     <script type="text/javascript"
-            src="{{ asset('dash/plugins/jalalidatepicker/dist/js/persian-datepicker.min.js')  }}"></script>
+            src="{{ asset('admin_assets/plugins/jalalidatepicker/dist/js/persian-datepicker.min.js')  }}"></script>
     <script type="javascript" src="{{ asset('dash/plugins/select2/js/select2.min.js') }}"></script>
     <script>
         CKEDITOR.replace('full_description', {

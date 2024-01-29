@@ -22,7 +22,7 @@ class ProductCreateController extends Controller
     {
         $categories =  DB::table('categories')->select('id','title_persian')->get();
         $brands = DB::table('brands')->select('id','title_persian')->get();
-        return view('dash.product.create.create_basic')
+        return view('admin_end.product.create.create_basic')
             ->with(['categories' => $categories, 'brands' => $brands]);
     }
 

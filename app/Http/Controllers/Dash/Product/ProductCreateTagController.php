@@ -10,6 +10,6 @@ class ProductCreateTagController extends Controller
     //
     public function create(Request $request)
     {
-      return view('dash.product.create.create_tag')->with('product_id', $request->product);
+      return view('admin_end.product.create.create_tag')->with('product_id', $request->product);
     }
 }

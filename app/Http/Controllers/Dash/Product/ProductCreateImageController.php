@@ -14,7 +14,7 @@ class ProductCreateImageController extends Controller
     {
         try {
             Product::findOrFail($product);
-            return view('dash.product.create.create_images')->with('product', $product);
+            return view('admin_end.product.create.create_images')->with('product', $product);
         } catch (\Exception $ex) {
             return view('errors_custom.model_not_found');
         }

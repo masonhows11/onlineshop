@@ -17,7 +17,7 @@
                                  alt="logo_image_path"
                                  class="rounded border border-2 image-product-gallery-preview">
                         @else
-                            <img src="{{ asset('dash/images/no-image-icon-23494.png') }}"
+                            <img src="{{ asset('admin_assets/images/no-image-icon-23494.png') }}"
                                  width="250" height="250"
                                  alt="logo_image_path"
                                  class="rounded border border-2 image-product-gallery-preview">
@@ -53,7 +53,7 @@
                                     @if ( $image->image_path != null && \Illuminate\Support\Facades\Storage::disk('public')->exists('images/product/gallery/'.$image->image_path) )
                                     <img src="{{ asset('storage/images/product/gallery/'.$image->image_path) }}" class="card-img-top " alt="image-product">
                                     @else
-                                        <img src="{{ asset('dash/images/no-image-icon-23494.png') }}"  id="image_view" class="img-thumbnail" height="300" width="300" alt="image">
+                                        <img src="{{ asset('admin_assets/images/no-image-icon-23494.png') }}"  id="image_view" class="img-thumbnail" height="300" width="300" alt="image">
                                     @endif
                                     <div class="card-footer">
                                         <div class="d-flex justify-content-between">

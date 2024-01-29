@@ -1,4 +1,4 @@
-@extends('dash.include.master_dash')
+@extends('admin_end.include.master_dash')
 @section('dash_page_title')
     ویرایش مشخصات عمومی کالا
 @endsection
@@ -6,7 +6,7 @@
         {{ Breadcrumbs::render('admin.edit.product.basic',$product->title_persian) }}
 @endsection
 @section('dash_main_content')
-    <link rel="stylesheet" href="{{ asset('dash/plugins/jalalidatepicker/dist/css/persian-datepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin_assets/plugins/jalalidatepicker/dist/css/persian-datepicker.min.css') }}">
     <div class="container-fluid">
 
 
@@ -230,7 +230,7 @@
                                 @if( $product->thumbnail_image != null && Storage::disk('public')->exists($product->thumbnail_image))
                                 <img src="{{  asset('storage/'.$product->thumbnail_image)  }}" id="image_view" class="img-thumbnail" height="300" width="300" alt="image">
                                @else
-                                <img src="{{ asset('dash/images/no-image-icon-23494.png') }}"  id="image_view" class="img-thumbnail" height="300" width="300" alt="image">
+                                <img src="{{ asset('admin_assets/images/no-image-icon-23494.png') }}"  id="image_view" class="img-thumbnail" height="300" width="300" alt="image">
                                 @endif
                             </div>
                             <div class="col-lg-10">
@@ -299,11 +299,11 @@
     </div>
 @endsection
 @push('dash_custom_script')
-    <script type="text/javascript" src="{{ asset('dash/plugins/ckeditor/ckeditor.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('admin_assets/plugins/ckeditor/ckeditor.js') }}"></script>
     <script type="text/javascript"
-            src="{{ asset('dash/plugins/jalalidatepicker/assets/persian-date.min.js')  }}"></script>
+            src="{{ asset('admin_assets/plugins/jalalidatepicker/assets/persian-date.min.js')  }}"></script>
     <script type="text/javascript"
-            src="{{ asset('dash/plugins/jalalidatepicker/dist/js/persian-datepicker.min.js')  }}"></script>
+            src="{{ asset('admin_assets/plugins/jalalidatepicker/dist/js/persian-datepicker.min.js')  }}"></script>
     <script type="javascript" src="{{ asset('dash/plugins/select2/js/select2.min.js') }}"></script>
     <script>
         CKEDITOR.replace('full_description', {
@@ -338,7 +338,7 @@
             // for keeping old value after failed validation
             if (tags_input.val() !== null && tags_input.val().length > 0) {
                 default_data = default_tags.split(',');
-                console.log(default_data);
+               // console.log(default_data);
             }
             // select2 config
             selected_tags.select2({

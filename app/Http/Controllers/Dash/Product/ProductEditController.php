@@ -30,7 +30,7 @@ class ProductEditController extends Controller
                 $category_ids[] = $cat->id;
             }
             $brands = DB::table('brands')->select('id','title_persian')->get();
-            return view('dash.product.edit.edit_basic')
+            return view('admin_end.product.edit.edit_basic')
                 ->with(['product' => $product,
                     'categories' => $categories,
                     'category_ids' => $category_ids,
