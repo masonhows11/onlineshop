@@ -6,6 +6,8 @@
         {{ Breadcrumbs::render('admin.create.color') }}
     @endsection
     <div class="container-fluid admin-colors-section">
+
+
         <div class="row bg-white rounded create-color-form">
             <form wire:submit.prevent="save">
                 <div class="col">
@@ -45,7 +47,7 @@
                     </div>
                 </div>
                 <div class="mb-3 mt-3">
-                    <button type="submit" id="add_attribute" class="btn btn-success btn-sm">{{ __('messages.save') }}</button>
+                    <button type="submit" id="add_attribute" class="btn btn-success ">{{ __('messages.save') }}</button>
                 </div>
             </form>
         </div>
