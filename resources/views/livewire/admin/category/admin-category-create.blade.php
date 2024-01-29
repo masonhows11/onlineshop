@@ -44,8 +44,8 @@
                                 <label for="show_in_menu" class="form-label">نمایش در منو:</label>
                                 <select class="form-control" wire:model.lazy="show_in_menu" id="show_in_menu">
                                     <option>انتخاب کنید</option>
-                                    <option value="0">@lang('messages.not_show')</option>
-                                    <option value="1">@lang('messages.show')</option>
+                                    <option value="0">{{ __('messages.not_show') }}</option>
+                                    <option value="1">{{ __('messages.show') }}</option>
                                 </select>
 
                                 @error('show_in_menu')
@@ -104,7 +104,7 @@
                                      alt="logo_image_path"
                                      class="rounded border border-2 image-admin-preview">
                             @else
-                                <img src="{{ asset('dash/images/no-image-icon-23494.png') }}"
+                                <img src="{{ asset('admin_assets/images/no-image-icon-23494.png') }}"
                                      width="200" height="200"
                                      alt="logo_image_path"
                                      class="rounded border border-2 image-admin-preview">

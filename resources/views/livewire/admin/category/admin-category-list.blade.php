@@ -26,7 +26,8 @@
         <div class="row d-flex justify-content-center search-category-section">
             <div class="col">
                 <div class="mb-3 mt-3">
-                    <input wire:model.debounce.500ms="search" placeholder="{{ __('messages.search') }}" type="text" class="form-control" id="search">
+                    <input wire:model.debounce.500ms="search" placeholder="{{ __('messages.search') }}" type="text"
+                           class="form-control" id="search">
                 </div>
             </div>
         </div>
@@ -52,10 +53,13 @@
                             <td>{{ $category->id }}</td>
                             <td>{{ $category->title_persian }}</td>
                             <td>{{ $category->parent_id ? $category->parent->title_persian : __('messages.main_category') }}</td>
-                            <td><img src="{{ $category->image_path ?
-                                              asset('storage/images/category/'.$category->image_path) :
-                                              asset('admin_assets/images/no-image-icon-23494.png')  }}"
-                                    width="100" height="100" alt="image_category">
+                            <td>
+                                @if( $category->image_path && \Illuminate\Support\Facades\Storage::disk('public')->exists('storage/images/category/'.$product->thumbnail_image ))
+                                    <img src="{{ asset('storage/images/category/'.$category->image_path)  }}" width="100" height="100" alt="image_category">
+                                @else
+                                    <img src="{{  asset('admin_assets/images/no-image-icon-23494.png')  }}" width="100" height="100" alt="image_category">
+                                @endif
+
                             </td>
                             <td><a href="#" wire:click.prevent="changeState({{ $category->id }})"
                                    class="mx-4 btn btn-sm {{ $category->is_active === 0 ? 'btn-danger' : 'btn-success' }} ">

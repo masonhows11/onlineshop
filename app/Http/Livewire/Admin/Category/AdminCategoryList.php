@@ -3,7 +3,6 @@
 namespace App\Http\Livewire\Admin\Category;
 
 use App\Models\Category;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -11,7 +10,6 @@ use Livewire\WithPagination;
 class AdminCategoryList extends Component
 {
     use WithPagination;
-    protected $queryString = ['search'];
     protected $paginationTheme = 'bootstrap';
     public $search = '';
 

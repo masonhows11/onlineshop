@@ -15,6 +15,7 @@
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^2.12",
+        "morilog/jalali": "3.*",
         "nagy/laravel-rating": "^1.0",
         "pishran/laravel-persian-slug": "^2.2",
         "spatie/laravel-permission": "^5.10",
@@ -34,7 +35,10 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "files" : [
+            "app/helpers/helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
