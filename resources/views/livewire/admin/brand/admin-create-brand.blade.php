@@ -8,7 +8,7 @@
     <div class="container-fluid">
 
 
-        <div class="row  py-2 bg-white rounded  create-form-brand">
+        <div class="row  py-2 bg-white rounded">
             <form wire:submit.prevent="save">
                 <div class="col">
 
@@ -16,6 +16,7 @@
 
                         <div class="col-sm-6">
                             <div class="row">
+
                                 <div class="mb-3 mt-3">
                                     <label for="title_p" class="form-label">عنوان ( فارسی )</label>
                                     <input wire:model.defer="title_persian" type="text" class="form-control"
@@ -61,7 +62,7 @@
 
                         <div class="col-sm-6">
 
-                            <div class="mb-3 mt-10">
+                            <div class="mb-3 mt-10 d-flex justify-content-center">
                                 @if($logo)
                                     <img src="{{ $logo->temporaryUrl() }}"
                                          width="200" height="200"
@@ -75,7 +76,7 @@
                                 @endif
                             </div>
 
-                            <div class="mb-1 mt-10">
+                            <div class="mb-1 mt-5">
                                 <label for="logo" class="form-label">تصویر برند</label>
                                 <input type="file" accept="image/*" class="form-control" wire:model.defer="logo"
                                        id="logo">
@@ -88,14 +89,12 @@
 
                         </div>
                     </div>
-
                 </div>
 
 
                 <button type="submit" class="btn btn-success">ذخیره</button>
                 <a href="{{ route('admin.brand.index') }}" class="btn btn-primary">لیست برندها</a>
             </form>
-
         </div>
 
 
