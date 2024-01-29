@@ -1,4 +1,4 @@
-@extends('dash.include.master_dash')
+@extends('admin_end.include.master_dash')
 @section('dash_page_title')
     {{ __('messages.stock_management') }}
 @endsection
@@ -33,7 +33,13 @@
                     <tr class="text-center">
                         <td>{{ $product->id }}</td>
                         <td>{{ $product->title_persian }}</td>
-                        <td><img class="img-thumbnail" width="100" height="100" src="{{ $product->thumbnail_image ? asset('storage/'.$product->thumbnail_image) : asset('dash/images/no-image-icon-23494.png') }}" alt=""></td>
+                        <td>
+                            @if( $product->thumbnail_image && \Illuminate\Support\Facades\Storage::disk('public')->exists($product->thumbnail_image ) )
+                                <img class="img-thumbnail" width="100" height="100" src="{{ asset('storage/'.$product->thumbnail_image) }}" alt="product_image">
+                            @else
+                                <img class="img-thumbnail" width="100" height="100" src="{{ asset('admin_assets/images/no-image-icon-23494.png') }}" alt="product_image">
+                            @endif
+                        </td>
                         <td>{{ $product->available_in_stock }}</td>
                         <td>{{ $product->number_sold }}</td>
                         <td>{{ $product->frozen_number }}</td>

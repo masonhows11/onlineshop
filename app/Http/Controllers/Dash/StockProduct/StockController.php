@@ -19,7 +19,7 @@ class StockController extends Controller
             $products = DB::table('products')
                 ->select('id', 'title_persian', 'thumbnail_image', 'number_sold', 'frozen_number','available_in_stock','salable_quantity')
                 ->paginate(10);
-            return view('dash.stock.index', ['products' => $products]);
+            return view('admin_end.stock.index', ['products' => $products]);
         }catch (\Exception $ex){
             return  view('errors_custom.model_not_found')->with(['error' => $ex->getMessage()]);
         }
@@ -31,7 +31,7 @@ class StockController extends Controller
         $product = DB::table('products')
             ->select('id','title_persian')
             ->where('id',$request->product)->first();
-        return view('dash.stock.add_to_stock')->with(['product'=>$product]);
+        return view('admin_end.stock.add_to_stock')->with(['product'=>$product]);
     }
 
     public function addToStock(AddToStockRequest $request){
@@ -63,7 +63,7 @@ class StockController extends Controller
                 ->where('id',$request->product)
                 ->select('id','title_persian','number_sold','frozen_number','salable_quantity','available_in_stock')
                 ->first();
-            return view('dash.stock.modify_stock')
+            return view('admin_end.stock.modify_stock')
                 ->with( ['product'=>$product] );
         }catch (\Exception $ex){
             return  view('errors_custom.model_store_error')->with(['error' => $ex->getMessage()]);
