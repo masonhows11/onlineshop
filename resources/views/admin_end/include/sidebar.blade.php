@@ -177,7 +177,7 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">لیست دسته بندی ها</span>
+                                <span class="menu-title"> مدیریت دسته بندی ها</span>
                             </a>
                         </div>
                         <div class="menu-item">
@@ -186,7 +186,7 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">ایجاد دسته بندی</span>
+                                <span class="menu-title"> دسته بندی جدید</span>
                             </a>
                         </div>
 

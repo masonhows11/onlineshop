@@ -50,7 +50,14 @@
                     @foreach($brands as $brand)
                         <tr class="text-center">
                             <td>{{ $brand->id }}</td>
-                            <td><img width="120" height="120" src="{{ $brand->logo_path ? asset('storage/images/'.$brand->logo_path) : asset('dash/images/no-image-icon-23494.png') }}" alt=""></td>
+                            <td>
+                                @if( $brand->logo_path && \Illuminate\Support\Facades\Storage::disk('public')->exists('images/brand/'.$brand->logo_path ))
+                                    <img src="{{ asset('storage/images/brand/'.$brand->logo_path)  }}" width="120" height="120" alt="image_brand">
+                                @else
+                                    <img src="{{  asset('admin_assets/images/no-image-icon-23494.png')  }}" width="120" height="120" alt="image_brand">
+                                @endif
+                            </td>
+
                             <td>{{ $brand->title_persian }}</td>
                             <td>{{ $brand->title_english }}</td>
                             <td><a href="javascript:void(0)" wire:click.prevent="active({{ $brand->id }})" class="btn {{ $brand->is_active  === 1  ? 'btn-success' : 'btn-danger'}}  btn-sm">{{ $brand->is_active === 1  ? __('messages.active') : __('messages.deactivate')}}</a></td>

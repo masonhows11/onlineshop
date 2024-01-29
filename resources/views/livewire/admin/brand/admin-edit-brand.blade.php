@@ -46,13 +46,13 @@
                                      alt="brand_photo"
                                      class="rounded border border-2 image-admin-preview">
                             @else
-                                @if($brand_logo)
-                                    <img src="{{ asset('storage/images/'.$brand_logo) }}"
+                                @if($brand_logo && \Illuminate\Support\Facades\Storage::disk('public')->exists('images/brand/'.$brand_logo ))
+                                    <img src="{{ asset('storage/images/brand/'.$brand_logo) }}"
                                          width="200" height="200"
                                          alt="brand_photo"
                                          class="rounded border border-2 image-admin-preview">
                                 @else
-                                    <img src="{{  asset('dash/images/no-image-icon-23494.png') }}"
+                                    <img src="{{  asset('admin_assets/images/no-image-icon-23494.png') }}"
                                          width="200" height="200"
                                          alt="brand_photo"
                                          class="rounded border border-2 image-admin-preview">

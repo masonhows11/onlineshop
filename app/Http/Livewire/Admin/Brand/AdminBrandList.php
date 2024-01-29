@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Livewire\Admin;
+namespace App\Http\Livewire\Admin\Brand;
 
 use App\Models\Brand;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class AdminBrands extends Component
+class AdminBrandList extends Component
 {
     protected $paginationTheme = 'bootstrap';
     public $search = '';
@@ -72,7 +72,7 @@ class AdminBrands extends Component
 
     public function render()
     {
-        return view('livewire.admin.admin-brands')
+        return view('livewire.admin.brand.admin-brand-list')
             ->extends('admin_end.include.master_dash')
             ->section('dash_main_content')
             ->with(['brands' => Brand::where('title_persian','like','%'.$this->search.'%')

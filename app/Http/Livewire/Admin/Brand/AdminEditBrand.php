@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Admin;
+namespace App\Http\Livewire\Admin\Brand;
 
 use App\Models\Brand;
 use Illuminate\Support\Facades\DB;
@@ -81,11 +81,11 @@ class AdminEditBrand extends Component
                 // create image name
                 $image_path = 'UIMG' . date('YmdHis') . uniqid('', true) . '.' . $this->image_extension;
                 // save image with given name
-                $this->logo->storeAs('images', $image_path, 'public');
+                $this->logo->storeAs('images/brand/', $image_path, 'public');
 
                 if ($brand->logo_path != null) {
-                    if (Storage::disk('public')->exists('images/' . $brand->logo_path)) {
-                        Storage::disk('public')->delete('images/' . $brand->logo_path);
+                    if (Storage::disk('public')->exists('images/brand/' . $brand->logo_path)) {
+                        Storage::disk('public')->delete('images/brand/' . $brand->logo_path);
                     }
                 }
                 $brand->logo_path = $image_path;
@@ -107,7 +107,7 @@ class AdminEditBrand extends Component
 
     public function render()
     {
-        return view('livewire.admin.admin-edit-brand')
+        return view('livewire.admin.brand.admin-edit-brand')
             ->extends('admin_end.include.master_dash')
             ->section('dash_main_content')
             ->with(['brand_title' => $this->brand_title]);

@@ -38,16 +38,22 @@ use App\Http\Controllers\Dash\Ticket\AdminCategoryTicketController;
 use App\Http\Controllers\Dash\Ticket\AdminPriorityTicketController;
 use App\Http\Controllers\Dash\Ticket\AdminTicketController;
 use App\Http\Controllers\HomeController;
+
+// admin controllers livewire
 use App\Http\Livewire\Admin\AdminAdmins;
-use App\Http\Livewire\Admin\AdminBrands;
+
 use App\Http\Livewire\Admin\AdminCategoryAttribute;
 use App\Http\Livewire\Admin\AdminCategoryAttributeValue;
+use App\Http\Livewire\Admin\AdminColors;
+// colors
 use App\Http\Livewire\Admin\Category\AdminCategoryCreate;
 use App\Http\Livewire\Admin\Category\AdminCategoryEdit;
 use App\Http\Livewire\Admin\Category\AdminCategoryList;
-use App\Http\Livewire\Admin\AdminColors;
-use App\Http\Livewire\Admin\AdminCreateBrand;
-use App\Http\Livewire\Admin\AdminEditBrand;
+//  brands
+use App\Http\Livewire\Admin\Brand\AdminBrandList;
+use App\Http\Livewire\Admin\Brand\AdminCreateBrand;
+use App\Http\Livewire\Admin\Brand\AdminEditBrand;
+
 use App\Http\Livewire\Admin\AdminPerms;
 use App\Http\Livewire\Admin\AdminRoles;
 use App\Http\Livewire\Admin\AdminTag;
@@ -288,7 +294,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin'
 // crud brands
 Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin', 'role:admin|super_admin'])->group(function () {
 
-    Route::get('/brand/index', AdminBrands::class)->name('brand.index');
+    Route::get('/brand/index', AdminBrandList::class)->name('brand.index');
     Route::get('/brand/create', AdminCreateBrand::class)->name('brand.create');
     Route::get('/brand/edit/{id}', AdminEditBrand::class)->name('brand.edit');
 

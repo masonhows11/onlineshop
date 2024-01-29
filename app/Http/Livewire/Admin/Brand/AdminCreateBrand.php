@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Admin;
+namespace App\Http\Livewire\Admin\Brand;
 
 use App\Models\Brand;
 use Livewire\Component;
@@ -67,7 +67,7 @@ class AdminCreateBrand extends Component
                 $this->image_path = 'UIMG' . '_' . date('YmdHis') . '_' . uniqid('img', true) . '.' . $this->image_extension;
 
                 // save image with given name
-                $this->logo->storeAs('images', $this->image_path, 'public');
+                $this->logo->storeAs('images/brand/', $this->image_path, 'public');
 
                 $this->new_brand->logo_path = $this->image_path;
             }
@@ -88,7 +88,7 @@ class AdminCreateBrand extends Component
 
     public function render()
     {
-        return view('livewire.admin.admin-create-brand')
+        return view('livewire.admin.brand.admin-create-brand')
             ->extends('admin_end.include.master_dash')
             ->section('dash_main_content');
     }
