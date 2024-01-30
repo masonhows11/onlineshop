@@ -1,4 +1,4 @@
-@extends('dash.include.master_dash')
+@extends('admin_end.include.master_dash')
 @section('dash_page_title')
     {{ __('messages.slider_product_by_category') }}
 @endsection

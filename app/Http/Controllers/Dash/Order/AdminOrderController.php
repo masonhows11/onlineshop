@@ -16,7 +16,7 @@ class AdminOrderController extends Controller
         $body_title = __('messages.orders_new');
         $breadcrumbs = 'admin.orders.new';
         $orders = Order::where('order_status',0)->paginate(20);
-        return view('dash.orders.index')
+        return view('admin_end.orders.index')
             ->with(['orders' => $orders ,
                    'page_title' => $page_title ,
                    'body_title' => $body_title,
@@ -29,7 +29,7 @@ class AdminOrderController extends Controller
         $body_title = __('messages.orders_sending');
         $breadcrumbs = 'admin.orders.sending';
         $orders = Order::where('delivery_status',1)->paginate(20);
-        return view('dash.orders.index')->with(['orders' => $orders ,
+        return view('admin_end.orders.index')->with(['orders' => $orders ,
             'page_title' => $page_title ,
             'body_title' => $body_title,
             'breadcrumbs' => $breadcrumbs]);
@@ -41,7 +41,7 @@ class AdminOrderController extends Controller
         $body_title = __('messages.orders_unpaid');
         $breadcrumbs = 'admin.orders.unpaid';
         $orders = Order::where('payment_status',0)->paginate(20);
-        return view('dash.orders.index')->with(['orders' => $orders ,
+        return view('admin_end.orders.index')->with(['orders' => $orders ,
             'page_title' => $page_title ,
             'body_title' => $body_title,
             'breadcrumbs' => $breadcrumbs]);
@@ -53,7 +53,7 @@ class AdminOrderController extends Controller
         $body_title = __('messages.orders_canceled');
         $breadcrumbs = 'admin.orders.canceled';
         $orders = Order::where('order_status',4)->paginate(20);
-        return view('dash.orders.index')->with(['orders' => $orders ,
+        return view('admin_end.orders.index')->with(['orders' => $orders ,
             'page_title' => $page_title ,
             'body_title' => $body_title,
             'breadcrumbs' => $breadcrumbs]);
@@ -66,7 +66,7 @@ class AdminOrderController extends Controller
         $body_title = __('messages.orders_returned');
         $breadcrumbs = 'admin.orders.returned';
         $orders = Order::where('order_status',5)->paginate(20);
-        return view('dash.orders.index')->with(['orders' => $orders ,
+        return view('admin_end.orders.index')->with(['orders' => $orders ,
             'page_title' => $page_title ,
             'body_title' => $body_title,
             'breadcrumbs' => $breadcrumbs]);
@@ -74,12 +74,12 @@ class AdminOrderController extends Controller
 
     public function show(Order $order)
     {
-        return view('dash.orders.show_order',['order' => $order]);
+        return view('admin_end.orders.show_order',['order' => $order]);
     }
 
     public function details(Order $order){
 
-        return view('dash.orders.details',['order' => $order]);
+        return view('admin_end.orders.details',['order' => $order]);
     }
 
 
