@@ -66,10 +66,11 @@
 
                 <div class="col-lg-6">
                     <div class="row">
-                        <div class="col">
-                            {{--  logo section  --}}
-                            <div class="row d-flex flex-column justify-content-center align-content-center">
-                                <div class="col-lg-8 logo-section">
+
+                        {{--  logo section  --}}
+                        <div class="col-sm-6">
+                            <div class="row d-flex mt-5 justify-content-center align-content-center">
+                                <div class="col-lg-8 logo-section d-flex  justify-content-center">
                                     <img src="{{ $setting->logo && \Illuminate\Support\Facades\Storage::disk('public')->exists($setting->logo ) ?
                                             asset('storage/'.$setting->logo) :
                                             asset('admin_assets/images/no-image-icon-23494.png') }}"
@@ -93,11 +94,11 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col">
-                            {{-- icon section  --}}
-                            <div
-                                class="row d-flex flex-column justify-content-center align-content-center product-image">
-                                <div class="col-lg-8 icon-section">
+
+                        {{-- icon section  --}}
+                        <div class="col-sm-6">
+                            <div class="row d-flex mt-5   justify-content-center align-content-center product-image">
+                                <div class="col-lg-8 icon-section d-flex  justify-content-center">
                                     <img src="{{ $setting->icon && \Illuminate\Support\Facades\Storage::disk('public')->exists($setting->icon ) ?
                                             asset('storage/'.$setting->icon) :
                                             asset('admin_assets/images/no-image-icon-23494.png') }}"
