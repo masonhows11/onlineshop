@@ -97,7 +97,7 @@
 </div>
 
 @push('dash_custom_script')
-    <script type="text/javascript" src="{{ asset('dash/plugins/jscolor/jscolor.js') }}">
+    <script type="text/javascript" src="{{ asset('admin_assets/plugins/jscolor/jscolor.js') }}">
 
     </script>
     <script type="text/javascript">
