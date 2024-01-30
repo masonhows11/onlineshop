@@ -1,6 +1,6 @@
 <div>
     @section('dash_page_title')
-        دسته بندی ها
+        {{ __('messages.categories') }}
     @endsection
     @section('breadcrumb')
         {{ Breadcrumbs::render('admin.category.index') }}

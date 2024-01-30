@@ -13,18 +13,18 @@ use Illuminate\Support\Facades\Log;
 class StockController extends Controller
 {
     //
-    public function index()
-    {
-        try {
-            $products = DB::table('products')
-                ->select('id', 'title_persian', 'thumbnail_image', 'number_sold', 'frozen_number','available_in_stock','salable_quantity')
-                ->paginate(10);
-            return view('admin_end.stock.index', ['products' => $products]);
-        }catch (\Exception $ex){
-            return  view('errors_custom.model_not_found')->with(['error' => $ex->getMessage()]);
-        }
-
-    }
+    //    public function index()
+    //    {
+    //        try {
+    //            $products = DB::table('products')
+    //                ->select('id', 'title_persian', 'thumbnail_image', 'number_sold', 'frozen_number','available_in_stock','salable_quantity')
+    //                ->paginate(10);
+    //            return view('admin_end.stock.index', ['products' => $products]);
+    //        }catch (\Exception $ex){
+    //            return  view('errors_custom.model_not_found')->with(['error' => $ex->getMessage()]);
+    //        }
+    //
+    //    }
 
     public function addToStockForm(Request $request)
     {

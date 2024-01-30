@@ -133,6 +133,7 @@ return [
     'send' => 'ارسال',
     'answer' => 'پاسخ به نظر',
     'support_response' => 'پاسخ پشتیبانی',
+    'stock' => 'انبار',
     'stock_management' => 'مدیریت انبار',
     'number_sold' => 'تعداد فروخته شده',
     'frozen_number' => 'تعداد رزوز شده',
@@ -511,5 +512,6 @@ return [
     'new_tag' => 'جدید',
     'edit_mobile' => 'تغییر شماره موبایل',
     'keep_me_update_if_exists' => 'موجود شد خبرم کن',
+
 
 ];

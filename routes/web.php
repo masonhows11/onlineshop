@@ -69,6 +69,7 @@ use App\Http\Livewire\Admin\ListUsersForPerm;
 use App\Http\Livewire\Admin\ListUsersForRole;
 use App\Http\Livewire\Admin\Orders\AdminAllOrders;
 use App\Http\Livewire\Admin\Setting\AdminSetting;
+use App\Http\Livewire\Admin\Stock\StockProduct;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -348,7 +349,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin'
 // stock product routes
 Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin', 'role:admin|super_admin'])->group(function () {
 
-    Route::get('/stock-product/index', [StockController::class, 'index'])->name('stock.product.index');
+    Route::get('/stock-product/index', StockProduct::class)->name('stock.product.index');
 
     Route::get('/add_to_stock/{product}', [StockController::class, 'addToStockForm'])->name('add_to_stock.form');
     Route::post('/add_to_stock', [StockController::class, 'addToStock'])->name('add_to_stock');
