@@ -144,3 +144,8 @@
        display: none;
     }
 }
+@media (max-width: 1199.98px) {
+    .list-products table  .status-field{
+        display: none;
+    }
+}

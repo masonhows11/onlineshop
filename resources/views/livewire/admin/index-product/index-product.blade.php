@@ -76,7 +76,7 @@
                     <th class="p-4">{{ __('messages.image') }}</th>
                     <th class="p-4">{{ __('messages.name_persian') }}</th>
 
-                    <th class="pro-field p-4">{{ __('messages.status') }}</th>
+                    <th class="pro-field status-field p-4">{{ __('messages.status') }}</th>
                     <th class="pro-field p-4">{{ __('messages.product_price') }}</th>
                     <th class="pro-field p-4">{{ __('messages.product_guarantee') }}</th>
                     <th class="pro-field p-4">{{ __('messages.product_meta') }}</th>
@@ -84,8 +84,8 @@
                     <th class="pro-field p-4">{{ __('messages.product_colors') }}</th>
                     <th class="pro-field p-4">{{ __('messages.product_tags') }}</th>
 
-                    <th class="p-4">{{ __('messages.edit_model') }}</th>
-                    <th class="p-4">{{ __('messages.delete_model')}}</th>
+                    <th class="p-4">{{ __('messages.operation') }}</th>
+
                 </tr>
                 </thead>
                 <tbody>
@@ -107,7 +107,7 @@
                             <div class="mt-3">{{ Str::limit($product->title_persian,50)  }}</div>
                         </td>
 
-                        <td class="pro-field">
+                        <td class="pro-field status-field">
                             <a href="javascript:void(0)" wire:click.prevent="changeState({{ $product->id }})"
                                class="btn btn-sm  {{ $product->status == 1 ? 'btn-success': 'btn-danger' }}">
                                 {{ $product->status == 1 ? __('messages.published')  : __('messages.unpublished') }}
@@ -140,14 +140,14 @@
                         </td>
 
                         <td>
-                            <a class="mt-3" href="{{ route('admin.product.edit.basic',['product'=>$product->id]) }}"><i
-                                    class="mt-3 fa fa-edit"></i></a></td>
-                        <td>
-                            <a class="mt-3" href="javascript:void(0)"
-                               wire:click.prevent="deleteConfirmation({{ $product->id }})">
+                            <a class="mt-3" href="{{ route('admin.product.edit.basic',['product'=>$product->id]) }}">
+                                <i class="mt-3 fa fa-edit"></i>
+                            </a>
+                            <a class="mt-3" href="javascript:void(0)" wire:click.prevent="deleteConfirmation({{ $product->id }})">
                                 <i class="mt-3 fa fa-trash"></i>
                             </a>
                         </td>
+
                     </tr>
                 @endforeach
                 </tbody>
