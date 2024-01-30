@@ -70,7 +70,7 @@
                             {{--  logo section  --}}
                             <div class="row d-flex flex-column justify-content-center align-content-center">
                                 <div class="col-lg-8 logo-section">
-                                    <img src="{{ $setting->logo ?
+                                    <img src="{{ $setting->logo && \Illuminate\Support\Facades\Storage::disk('public')->exists($setting->logo ) ?
                                             asset('storage/'.$setting->logo) :
                                             asset('admin_assets/images/no-image-icon-23494.png') }}"
                                          id="logo_view"
@@ -98,7 +98,7 @@
                             <div
                                 class="row d-flex flex-column justify-content-center align-content-center product-image">
                                 <div class="col-lg-8 icon-section">
-                                    <img src="{{ $setting->icon ?
+                                    <img src="{{ $setting->icon && \Illuminate\Support\Facades\Storage::disk('public')->exists($setting->icon ) ?
                                             asset('storage/'.$setting->icon) :
                                             asset('admin_assets/images/no-image-icon-23494.png') }}"
                                          id="icon_view"

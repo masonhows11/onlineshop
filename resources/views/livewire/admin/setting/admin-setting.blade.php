@@ -48,7 +48,7 @@
                             </td>
                             <td>
                                 @if( $setting->logo && \Illuminate\Support\Facades\Storage::disk('public')->exists($setting->logo ))
-                                    <img class="img-thumbnail" width="100" height="100"
+                                    <img class="img-thumbnail"
                                          src="{{ asset('storage'.$setting->logo) }}" alt="setting_logo">
                                 @else
                                     <img class="img-thumbnail" width="100" height="100" src="{{  asset('admin_assets/images/no-image-icon-23494.png') }}" alt="setting_logo">
@@ -56,7 +56,7 @@
                             </td>
                             <td>
                                 @if( $setting->icon && \Illuminate\Support\Facades\Storage::disk('public')->exists($setting->icon ))
-                                    <img class="img-thumbnail" width="100" height="100"
+                                    <img class="img-thumbnail"
                                          src="{{ asset('storage'.$setting->icon) }}" alt="setting_logo">
                                 @else
                                     <img class="img-thumbnail" width="100" height="100" src="{{  asset('admin_assets/images/no-image-icon-23494.png') }}" alt="setting_logo">
