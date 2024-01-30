@@ -2,18 +2,16 @@
 @section('dash_page_title')
     {{ __('messages.all_payments') }}
 @endsection
-
 @section('breadcrumb')
     {{ Breadcrumbs::render('admin.show.payment',$payment->paymentable->transaction_id) }}
 @endsection
-
 @section('dash_main_content')
     <div class="container-fluid payment-single-section">
 
         <div class="row  my-3">
             <div class="col-lg-3 col-md-3 col title-payment">
-                <div class="alert bg-white text-center h3">
-                    {{ __('messages.show_payment') }}
+                <div class="alert bg-white">
+                  <h3>{{ __('messages.show_payment') }}</h3>
                 </div>
             </div>
         </div>
