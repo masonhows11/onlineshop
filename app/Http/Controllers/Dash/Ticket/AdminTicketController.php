@@ -15,7 +15,7 @@ class AdminTicketController extends Controller
     {
         $tickets = Ticket::whereNull('ticket_id')->paginate(10);
         $title_page = __('messages.all_tickets');
-        return view('dash.tickets.index')
+        return view('admin_end.tickets.index')
             ->with(['tickets'=> $tickets ,'title_page' => $title_page]);
     }
 
@@ -27,28 +27,26 @@ class AdminTicketController extends Controller
             $ticket->save();
         }
         $title_page = __('messages.new_tickets');
-        return view('dash.tickets.index')
+        return view('admin_end.tickets.index')
             ->with(['tickets'=> $tickets ,'title_page' => $title_page]);
     }
 
     public function openTickets(){
         $tickets = Ticket::where('status',0)->paginate(10);
         $title_page = __('messages.open_tickets');
-        return view('dash.tickets.index')
+        return view('admin_end.tickets.index')
             ->with(['tickets'=> $tickets ,'title_page' => $title_page]);
     }
 
     public function closeTickets(){
         $tickets = Ticket::where('status',1)->paginate(10);
         $title_page = __('messages.close_tickets');
-        return view('dash.tickets.index')
+        return view('admin_end.tickets.index')
             ->with(['tickets'=> $tickets ,'title_page' => $title_page]);
     }
     public function showTicket(Ticket $ticket)
     {
-
-
-        return view('dash.tickets.ticket',['ticket' => $ticket]);
+        return view('admin_end.tickets.ticket',['ticket' => $ticket]);
     }
 
     public function answer(Ticket $ticket,Request $request)

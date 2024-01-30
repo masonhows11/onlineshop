@@ -14,7 +14,7 @@ class TopBannerController extends Controller
 
     public function create()
     {
-        return view('dash.top_banner.create');
+        return view('admin_end.top_banner.create');
     }
 
     public function store(BannerRequest $request)
@@ -49,7 +49,7 @@ class TopBannerController extends Controller
 
     public function edit(TopBanner $banner){
 
-        return view('dash.top_banner.edit',['banner' => $banner]);
+        return view('admin_end.top_banner.edit',['banner' => $banner]);
     }
 
 

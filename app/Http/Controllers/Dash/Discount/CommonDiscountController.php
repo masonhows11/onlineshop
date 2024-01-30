@@ -11,13 +11,13 @@ class CommonDiscountController extends Controller
 
     public function index()
     {
-        return view('dash.common_discount.index');
+        return view('admin_end.common_discount.index');
     }
 
     public function create()
     {
 
-        return view('dash.common_discount.create');
+        return view('admin_end.common_discount.create');
 
     }
 
@@ -52,7 +52,7 @@ class CommonDiscountController extends Controller
     public function edit(CommonDiscount $discount)
     {
 
-        return view('dash.common_discount.edit',['discount'=>$discount]);
+        return view('admin_end.common_discount.edit',['discount'=>$discount]);
     }
 
     public function update(CommonDiscountRequest $request)

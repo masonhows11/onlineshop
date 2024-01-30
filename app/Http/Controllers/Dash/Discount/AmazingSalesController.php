@@ -12,14 +12,14 @@ class AmazingSalesController extends Controller
 {
     public function index()
     {
-        return view('dash.amazing_sales.index');
+        return view('admin_end.amazing_sales.index');
     }
 
     public function create()
     {
 
         $products = Product::select('id','title_persian')->get();
-        return view('dash.amazing_sales.create',['products'=>$products]);
+        return view('admin_end.amazing_sales.create',['products'=>$products]);
 
     }
 
@@ -53,7 +53,7 @@ class AmazingSalesController extends Controller
     {
 
         $products = Product::select('id','title_persian')->get();
-        return view('dash.amazing_sales.edit')
+        return view('admin_end.amazing_sales.edit')
             ->with(['sale' => $amazingSale , 'products' => $products ]);
     }
 

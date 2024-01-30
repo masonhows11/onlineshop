@@ -13,7 +13,7 @@ class BottomBannerController extends Controller
 {
     public function create()
     {
-        return view('dash.bottom_banner.create');
+        return view('admin_end.bottom_banner.create');
     }
 
     public function store(BannerRequest $request)
@@ -47,7 +47,7 @@ class BottomBannerController extends Controller
     }
 
     public function edit(bottomTwoBanner $banner){
-        return view('dash.bottom_banner.edit',['banner' => $banner]);
+        return view('admin_end.bottom_banner.edit',['banner' => $banner]);
     }
 
 

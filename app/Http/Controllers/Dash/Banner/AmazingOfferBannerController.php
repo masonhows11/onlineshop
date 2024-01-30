@@ -13,7 +13,7 @@ class AmazingOfferBannerController extends Controller
 {
     public function create()
     {
-        return view('dash.amazing_offer_banner.create');
+        return view('admin_end.amazing_offer_banner.create');
     }
 
     public function store(BannerRequest $request)
@@ -45,7 +45,7 @@ class AmazingOfferBannerController extends Controller
     }
 
     public function edit(AmazingOfferBanner $banner){
-        return view('dash.amazing_offer_banner.edit',['banner' => $banner]);
+        return view('admin_end.amazing_offer_banner.edit',['banner' => $banner]);
     }
 
 

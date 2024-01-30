@@ -13,7 +13,7 @@ class AdminCrudController extends Controller
         try {
             $province  = Province::findOrFail($request->id);
             $provinceId = $province->id;
-            return view('dash.address_city.create', ['province' => $province ,'provinceId' => $provinceId]);
+            return view('admin_end.address_city.create', ['province' => $province ,'provinceId' => $provinceId]);
         } catch (\Exception $ex) {
             return view('errors_custom.model_not_found')
                 ->with(['error' => $ex->getMessage()]);

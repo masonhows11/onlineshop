@@ -12,12 +12,12 @@ class AdminCategoryTicketController extends Controller
 {
     public function categoryTickets()
     {
-        return view('dash.ticket_category.index');
+        return view('admin_end.ticket_category.index');
     }
 
     public function create(){
 
-        return view('dash.ticket_category.create');
+        return view('admin_end.ticket_category.create');
     }
 
     public function store(Request $request)
@@ -36,7 +36,6 @@ class AdminCategoryTicketController extends Controller
             session()->flash('success',__('messages.New_record_saved_successfully'));
             return redirect()->route('admin.category.tickets');
         }catch (\Exception $ex){
-            return $ex->getMessage();
             session()->flash('success',__('messages.An_error_occurred'));
             return view('errors_custom.model_store_error',['error' => $ex->getMessage()]);
         }
@@ -44,7 +43,7 @@ class AdminCategoryTicketController extends Controller
 
     public function edit(TicketCategory $ticketCategory){
 
-       return view('dash.ticket_category.edit',['category' => $ticketCategory]);
+       return view('admin_end.ticket_category.edit',['category' => $ticketCategory]);
     }
 
     public function update(Request $request){

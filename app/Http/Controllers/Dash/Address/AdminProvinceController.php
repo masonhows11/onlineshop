@@ -13,7 +13,7 @@ class AdminProvinceController extends Controller
     public function index()
     {
         $provinces = Province::paginate(5);
-        return view('dash.address_province.index', ['provinces' => $provinces]);
+        return view('admin_end.address_province.index', ['provinces' => $provinces]);
     }
 
 
@@ -46,7 +46,7 @@ class AdminProvinceController extends Controller
     {
 
         try {
-            return view('dash.address_province.edit',['province' => $province]);
+            return view('admin_end.address_province.edit',['province' => $province]);
 
         } catch (\Exception $ex) {
 

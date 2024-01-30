@@ -11,12 +11,12 @@ class AdminPriorityTicketController extends Controller
 {
     public function priorityTickets()
     {
-        return view('dash.ticket_priority.index');
+        return view('admin_end.ticket_priority.index');
     }
 
     public function create(){
 
-        return view('dash.ticket_priority.create');
+        return view('admin_end.ticket_priority.create');
     }
 
     public function store(Request $request)
@@ -42,7 +42,7 @@ class AdminPriorityTicketController extends Controller
 
     public function edit(TicketPriority $ticketPriority)
     {
-        return view('dash.ticket_priority.edit',['priority' => $ticketPriority]);
+        return view('admin_end.ticket_priority.edit',['priority' => $ticketPriority]);
     }
 
     public function update(Request $request){

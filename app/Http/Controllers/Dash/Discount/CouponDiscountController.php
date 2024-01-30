@@ -12,14 +12,14 @@ class CouponDiscountController extends Controller
 {
     public function index()
     {
-        return view('dash.coupon_discount.index');
+        return view('admin_end.coupon_discount.index');
     }
 
     public function create()
     {
 
         $users = User::all();
-        return view('dash.coupon_discount.create', ['users' => $users]);
+        return view('admin_end.coupon_discount.create', ['users' => $users]);
 
     }
 
@@ -67,7 +67,7 @@ class CouponDiscountController extends Controller
     {
 
         $users = User::all();
-        return view('dash.coupon_discount.edit')
+        return view('admin_end.coupon_discount.edit')
             ->with(['coupon' => $coupon, 'users' => $users]);
     }
 

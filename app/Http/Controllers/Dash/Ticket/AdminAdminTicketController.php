@@ -14,7 +14,7 @@ class AdminAdminTicketController extends Controller
     {
 
         $admins = Admin::all();
-        return view('dash.ticket_admin.index', ['admins' => $admins]);
+        return view('admin_end.ticket_admin.index', ['admins' => $admins]);
 
     }
 

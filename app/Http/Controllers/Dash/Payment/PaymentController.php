@@ -15,26 +15,26 @@ class PaymentController extends Controller
 
     public function index()
     {
-        return view('dash.payment.index')->with(['payments' => Payment::paginate(20)]);
+        return view('admin_end.payment.index')->with(['payments' => Payment::paginate(20)]);
     }
 
     public function offline()
     {
         $payments = Payment::where('paymentable_type', 'App\Models\OfflinePayment')->paginate(20);
-        return view('dash.payment.offline_payments', ['payments' => $payments]);
+        return view('admin_end.payment.offline_payments', ['payments' => $payments]);
     }
 
     public function online()
     {
 
         $payments = Payment::where('paymentable_type', 'App\Models\OnlinePayment')->paginate(20);
-        return view('dash.payment.online_payments', ['payments' => $payments]);
+        return view('admin_end.payment.online_payments', ['payments' => $payments]);
     }
 
     public function cash()
     {
         $payments = Payment::where('paymentable_type', 'App\Models\CashPayment')->paginate(20);
-        return view('dash.payment.cash_payments', ['payments' => $payments]);
+        return view('admin_end.payment.cash_payments', ['payments' => $payments]);
     }
 
     public function canceled(Payment $payment)
@@ -55,7 +55,7 @@ class PaymentController extends Controller
 
     public function show(Payment $payment){
 
-        return view('dash.payment.payment',['payment'=>$payment]);
+        return view('admin_end.payment.payment',['payment'=>$payment]);
     }
 
 

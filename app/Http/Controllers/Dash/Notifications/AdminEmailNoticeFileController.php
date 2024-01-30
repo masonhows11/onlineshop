@@ -13,12 +13,12 @@ class AdminEmailNoticeFileController extends Controller
 
     public function emailFileIndex(Request $request)
     {
-        return view('dash.notice_email_file.index',['file' => $request->id]);
+        return view('admin_end.notice_email_file.index',['file' => $request->id]);
     }
 
     public function create(Request $request)
     {
-        return view('dash.notice_email_file.create', ['mail_id' => $request->mail_id]);
+        return view('admin_end.notice_email_file.create', ['mail_id' => $request->mail_id]);
     }
 
     public function store(MailNoticeRequest $request, FileService $fileService)

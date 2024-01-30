@@ -15,14 +15,14 @@ class AdminEmailNoticesController extends Controller
     //
     public function index()
     {
-        return view('dash.notice_email.index');
+        return view('admin_end.notice_email.index');
     }
 
 
 
     public function create()
     {
-        return view('dash.notice_email.create');
+        return view('admin_end.notice_email.create');
     }
 
     public function store(Request $request){

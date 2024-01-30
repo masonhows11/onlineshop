@@ -12,12 +12,12 @@ class AdminSMSNoticeController extends Controller
     //
     public function index()
     {
-        return view('dash.notice_sms.index');
+        return view('admin_end.notice_sms.index');
     }
 
     public function create()
     {
-        return view('dash.notice_sms.create');
+        return view('admin_end.notice_sms.create');
     }
 
     public function store(Request $request){
@@ -49,7 +49,7 @@ class AdminSMSNoticeController extends Controller
 
     public function edit(PublicSms $publicSms)
     {
-        return view('dash.notice_sms.edit',['notice' => $publicSms]);
+        return view('admin_end.notice_sms.edit',['notice' => $publicSms]);
     }
 
     public function update(Request $request)

@@ -14,7 +14,7 @@ class DeliveryController extends Controller
     public function create()
     {
 
-        return view('dash.delivery.create');
+        return view('admin_end.delivery.create');
     }
 
     public function store(ShipmentRequest $request)
@@ -39,7 +39,7 @@ class DeliveryController extends Controller
     {
 
         try {
-            return view('dash.delivery.edit', ['delivery' => $delivery]);
+            return view('admin_end.delivery.edit', ['delivery' => $delivery]);
         } catch (\Exception $ex) {
             return view('errors_custom.model_not_found');
         }

@@ -13,7 +13,7 @@ class ProductByCategorySliderController extends Controller
     {
         $categories = Category::all();
         $productByCategory = ProductByCategory::all();
-        return view('dash.product_category_slider.index')
+        return view('admin_end.product_category_slider.index')
             ->with(['categories' => $categories, 'productByCategory' => $productByCategory]);
     }
 

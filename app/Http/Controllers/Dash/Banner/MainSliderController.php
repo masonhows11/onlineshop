@@ -13,7 +13,7 @@ class MainSliderController extends Controller
 {
     public function create()
     {
-        return view('dash.main_slider.create');
+        return view('admin_end.main_slider.create');
     }
 
     public function store(BannerRequest $request)
@@ -44,7 +44,7 @@ class MainSliderController extends Controller
     }
 
     public function edit(MainSlider $banner){
-        return view('dash.main_slider.edit',['banner' => $banner]);
+        return view('admin_end.main_slider.edit',['banner' => $banner]);
     }
 
 
