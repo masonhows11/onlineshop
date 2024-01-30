@@ -139,7 +139,8 @@
 
 /* media query */
 @media (max-width: 576px) {
-    .list-products table thead .pro-field{
+    .list-products table thead .pro-field,
+    .list-products table tbody .pro-field{
        display: none;
     }
 }
