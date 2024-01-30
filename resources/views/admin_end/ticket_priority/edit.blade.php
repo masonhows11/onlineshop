@@ -20,7 +20,7 @@
 
         <div class="row my-4 bg-white">
             <div class="col-lg-4 col-md-4 col my-2">
-                <a href="{{ route('admin.priority.tickets') }}" class="btn btn-sm btn-primary">{{ __('messages.priority_tickets') }}</a>
+                <a href="{{ route('admin.priority.tickets') }}" class="btn  btn-primary">{{ __('messages.priority_tickets') }}</a>
             </div>
         </div>
 

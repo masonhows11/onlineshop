@@ -11,7 +11,7 @@
                         @if( $product->thumbnail_image != null && \Illuminate\Support\Facades\Storage::disk('public')->exists($product->thumbnail_image ) )
                         <img src="{{ asset('storage/'.$product->thumbnail_image) }}" class="img-fluid rounded-start" alt="product_image">
                         @else
-                            <img src="{{ asset('dash/images/no-image-icon-23494.png') }}" class="img-fluid rounded-start" alt="product_image">
+                            <img src="{{ asset('admin_assets/images/no-image-icon-23494.png') }}" class="img-fluid rounded-start" alt="product_image">
                         @endif
                     </div>
                     <div class="col-md-8 d-flex justify-content-center align-items-center">

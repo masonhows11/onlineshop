@@ -11,7 +11,7 @@
         <div class="row d-flex flex-column my-4 bg-white">
 
             <div class="col-lg-4 my-2">
-                <a href="{{ route('admin.all.tickets') }}" class="btn btn-sm btn-primary">{{ __('messages.all_tickets') }}</a>
+                <a href="{{ route('admin.all.tickets') }}" class="btn btn-primary">{{ __('messages.all_tickets') }}</a>
             </div>
             <div class="col-lg-4 col-md-4 col  my-2">
                 <div class="alert my-4">
