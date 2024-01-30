@@ -72,7 +72,7 @@
                                 <div class="col-lg-8 logo-section">
                                     <img src="{{ $setting->logo ?
                                             asset('storage/'.$setting->logo) :
-                                            asset('dash/images/no-image-icon-23494.png') }}"
+                                            asset('admin_assets/images/no-image-icon-23494.png') }}"
                                          id="logo_view"
                                          class="img-thumbnail"
                                          height="300" width="300"
@@ -100,7 +100,7 @@
                                 <div class="col-lg-8 icon-section">
                                     <img src="{{ $setting->icon ?
                                             asset('storage/'.$setting->icon) :
-                                            asset('dash/images/no-image-icon-23494.png') }}"
+                                            asset('admin_assets/images/no-image-icon-23494.png') }}"
                                          id="icon_view"
                                          class="img-thumbnail"
                                          height="300" width="300"

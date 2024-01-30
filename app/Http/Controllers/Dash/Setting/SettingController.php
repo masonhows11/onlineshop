@@ -15,7 +15,7 @@ class SettingController extends Controller
     public function edit(Setting $setting)
     {
 
-        return view('dash.setting.edit', ['setting' => $setting]);
+        return view('admin_end.setting.edit', ['setting' => $setting]);
     }
 
     public function update(SettingRequest $request)
@@ -32,7 +32,7 @@ class SettingController extends Controller
                     }
 
                 }
-                $result = $imgService->customSaveStoragePath($request->file('logo'), 'setting','logo', 250, 250);
+                $result = $imgService->customSaveStoragePath($request->file('logo'), 'setting','logo', 64, 64);
                 $logo_path = $result;
                 $setting->logo = $logo_path;
             }

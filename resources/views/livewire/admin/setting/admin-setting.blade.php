@@ -47,17 +47,17 @@
                                 <div class="mt-3">{{ $setting->keywords }}</div>
                             </td>
                             <td>
-                                @if( $setting->logo && \Illuminate\Support\Facades\Storage::disk('public')->exists('images/'.$setting->logo ))
+                                @if( $setting->logo && \Illuminate\Support\Facades\Storage::disk('public')->exists($setting->logo ))
                                     <img class="img-thumbnail" width="100" height="100"
-                                         src="{{ asset('storage/images/'.$setting->logo) }}" alt="setting_logo">
+                                         src="{{ asset('storage'.$setting->logo) }}" alt="setting_logo">
                                 @else
                                     <img class="img-thumbnail" width="100" height="100" src="{{  asset('admin_assets/images/no-image-icon-23494.png') }}" alt="setting_logo">
                                 @endif
                             </td>
                             <td>
-                                @if( $setting->icon && \Illuminate\Support\Facades\Storage::disk('public')->exists('images/'.$setting->icon ))
+                                @if( $setting->icon && \Illuminate\Support\Facades\Storage::disk('public')->exists($setting->icon ))
                                     <img class="img-thumbnail" width="100" height="100"
-                                         src="{{ asset('storage/images/'.$setting->icon) }}" alt="setting_logo">
+                                         src="{{ asset('storage'.$setting->icon) }}" alt="setting_logo">
                                 @else
                                     <img class="img-thumbnail" width="100" height="100" src="{{  asset('admin_assets/images/no-image-icon-23494.png') }}" alt="setting_logo">
                                 @endif
