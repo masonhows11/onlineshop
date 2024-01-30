@@ -47,14 +47,20 @@
                                 <div class="mt-3">{{ $setting->keywords }}</div>
                             </td>
                             <td>
-                                <img class="img-thumbnail" width="100" height="100"
-                                     src="{{ $setting->logo ? asset('storage'.$setting->logo) : asset('dash/images/no-image-icon-23494.png') }}"
-                                     alt="">
+                                @if( $setting->logo && \Illuminate\Support\Facades\Storage::disk('public')->exists('images/'.$setting->logo ))
+                                    <img class="img-thumbnail" width="100" height="100"
+                                         src="{{ asset('storage/images/'.$setting->logo) }}" alt="setting_logo">
+                                @else
+                                    <img class="img-thumbnail" width="100" height="100" src="{{  asset('admin_assets/images/no-image-icon-23494.png') }}" alt="setting_logo">
+                                @endif
                             </td>
                             <td>
-                                <img class="img-thumbnail" width="100" height="100"
-                                     src="{{ $setting->icon ? asset('storage'.$setting->icon) : asset('dash/images/no-image-icon-23494.png') }}"
-                                     alt="">
+                                @if( $setting->icon && \Illuminate\Support\Facades\Storage::disk('public')->exists('images/'.$setting->icon ))
+                                    <img class="img-thumbnail" width="100" height="100"
+                                         src="{{ asset('storage/images/'.$setting->icon) }}" alt="setting_logo">
+                                @else
+                                    <img class="img-thumbnail" width="100" height="100" src="{{  asset('admin_assets/images/no-image-icon-23494.png') }}" alt="setting_logo">
+                                @endif
                             </td>
                             <td>
                                 <a class="mt-3" href="{{ route('admin.setting.edit',['setting' => $setting->id]) }}">

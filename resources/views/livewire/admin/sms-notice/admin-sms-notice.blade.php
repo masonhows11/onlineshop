@@ -13,7 +13,7 @@
         <div class="row my-4 bg-white">
             <div class="col-lg-4 col-md-4 col my-2">
                 <a href="{{ route('admin.sms.notices.create') }}"
-                   class="btn btn-sm btn-primary">{{ __('messages.new_sms_notice') }}</a>
+                   class="btn  btn-primary">{{ __('messages.new_sms_notice') }}</a>
             </div>
         </div>
 
