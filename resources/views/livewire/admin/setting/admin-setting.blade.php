@@ -26,8 +26,8 @@
                         <th>{{ __('messages.title') }}</th>
                         <th>{{ __('messages.description') }}</th>
                         <th>{{ __('messages.keywords') }}</th>
-                        <th>{{ __('messages.logo') }}</th>
-                        <th>{{ __('messages.icon') }}</th>
+                        <th class="logo-section">{{ __('messages.logo') }}</th>
+                        <th class="icon-section">{{ __('messages.icon') }}</th>
                         <th>{{ __('messages.operation') }}</th>
                     </tr>
                     </thead>
@@ -46,7 +46,7 @@
                             <td>
                                 <div class="mt-3">{{ $setting->keywords }}</div>
                             </td>
-                            <td>
+                            <td class="logo-section">
                                 @if( $setting->logo && \Illuminate\Support\Facades\Storage::disk('public')->exists($setting->logo ))
                                     <img class="img-thumbnail"
                                          src="{{ asset('storage'.$setting->logo) }}" alt="setting_logo">
@@ -54,7 +54,7 @@
                                     <img class="img-thumbnail" width="100" height="100" src="{{  asset('admin_assets/images/no-image-icon-23494.png') }}" alt="setting_logo">
                                 @endif
                             </td>
-                            <td>
+                            <td class="icon-section">
                                 @if( $setting->icon && \Illuminate\Support\Facades\Storage::disk('public')->exists($setting->icon ))
                                     <img class="img-thumbnail"
                                          src="{{ asset('storage'.$setting->icon) }}" alt="setting_logo">
