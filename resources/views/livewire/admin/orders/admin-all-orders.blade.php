@@ -15,12 +15,12 @@
             </div>
         </div>
 
-        <div class="row  order-list bg-white">
+        <div class="row  order-list bg-white overflow-auto">
             <div class=" my-5">
                 <table class="table table-striped">
                     <thead class="border-bottom-3 border-top-3">
                     <tr class="text-center">
-                        <th>{{ __('messages.id') }}</th>
+                        <th class="model-field">{{ __('messages.id') }}</th>
                         <th>{{ __('messages.order_number') }}</th>
                         <th>{{ __('messages.order_final_amount') }}</th>
 
