@@ -44,28 +44,26 @@
                 <table class="table">
                     <thead>
                     <tr class="text-center">
-                        <th>{{ __('messages.id') }}</th>
+                        <th class="model-field">{{ __('messages.id') }}</th>
                         <th>{{ __('messages.name_persian') }}</th>
-                        <th>{{ __('messages.name_english') }}</th>
+                        <th class="model-field">{{ __('messages.name_english') }}</th>
                         <th>{{ __('messages.slug') }}</th>
-                        <th>{{ __('messages.edit_model') }}</th>
-                        <th>{{ __('messages.delete_model') }}</th>
+                        <th>{{ __('messages.operation') }}</th>
+
                     </tr>
                     </thead>
                     <tbody>
                     @isset($tags)
                         @foreach($tags as $tag)
                             <tr class="text-center">
-                                <td>{{ $tag->id }}</td>
+                                <td class="model-field">{{ $tag->id }}</td>
                                 <td>{{ $tag->title_persian }}</td>
-                                <td>{{ $tag->title_english }}</td>
+                                <td class="model-field">{{ $tag->title_english }}</td>
                                 <td>{{ $tag->slug }}</td>
                                 <td class="mb-3">
                                     <a href="javascript:void(0)" wire:click.prevent="deleteConfirmation({{ $tag->id }})" class="btn  mb-3">
                                         <i class="fa fa-trash"></i>
                                     </a>
-                                </td>
-                                <td class="mb-3">
                                     <a href="javascript:void(0)" wire:click.prevent="editTag({{ $tag->id }})" class="btn btn-sm mb-3">
                                         <i class="fa fa-edit"></i>
                                     </a>

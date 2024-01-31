@@ -147,6 +147,8 @@
     }
 }
 @media (max-width: 576px) {
+    .admin-tag-list table thead .model-field,
+    .admin-tag-list table tbody .model-field,
     .category-attribute-value-list table thead .model-field,
     .category-attribute-value-list table tbody .model-field,
     .category-attribute table thead .model-field,
