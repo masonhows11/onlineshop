@@ -14,7 +14,7 @@
         <div class="col-lg-4 col-md-4 col my-4">
             <a href="{{ route('admin.category.ticket.create') }}" class="btn btn-primary">{{ __('messages.new_category_ticket') }}</a>
         </div>
-        <div class="my-5">
+        <div class="my-5 overflow-auto">
 
             <table class="table table-striped">
                 <thead class="border-bottom-3 border-top-3">

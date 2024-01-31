@@ -16,7 +16,7 @@
                 </div>
             </div>
         </div>
-        <div class="row mt-4 list-type-brand-assign">
+        <div class="row mt-4 list-type-brand-assign overflow-auto">
 
             <div class="col">
                 <table class="table table-bordered bg-white rounded-2">

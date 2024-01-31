@@ -84,7 +84,7 @@
                         {{--  logo section  --}}
                         <div class="row d-flex flex-column justify-content-center align-content-center">
                             <div class="col-lg-8 top-banner-section">
-                                <img src="{{  asset('dash/images/no-image-icon-23494.png') }}"
+                                <img src="{{  asset('admin_assets/images/no-image-icon-23494.png') }}"
                                      id="image_view"
                                      class="img-thumbnail" height="300" width="300" alt="image">
                             </div>
