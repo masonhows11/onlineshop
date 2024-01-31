@@ -12,7 +12,7 @@
             <form wire:submit.prevent="save">
                 <div class="col">
                     <div class="row">
-                        <div class="col">
+                        <div class="col-sm-4">
                             <div class="mt-3 mb-3">
                                 <label for="title_persian" class="form-label">{{ __('messages.name_persian') }}</label>
                                 <input type="text" class="form-control" id="title_persian"
@@ -24,7 +24,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col-sm-4">
                             <div class="mt-3 mb-3">
                                 <label for="title_english" class="form-label">{{ __('messages.name_english') }}</label>
                                 <input type="text" class="form-control" id="title_english"
@@ -36,7 +36,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col-sm-4">
                             <div class="mt-3 mt-3">
                                 <label for="color_code" class="form-label">{{ __('messages.color_code') }}</label>
                                 <input wire:model.defer="color_code" id="color_code" class="form-control" data-jscolor="{previewPosition:
@@ -60,32 +60,36 @@
         </div>
         <div class="row mt-5 bg-white">
             <div class="my-5 list-colors">
-                    <table class="table table-striped">
-                        <thead class="border-bottom-3 border-top-3">
+                <table class="table table-striped">
+                    <thead class="border-bottom-3 border-top-3">
+                    <tr class="text-center">
+                        <th>{{ __('messages.id') }}</th>
+                        <th>{{ __('messages.name_persian') }}</th>
+                        <th>{{ __('messages.name_english') }}</th>
+                        <th>{{ __('messages.color_code') }}</th>
+                        <th>{{ __('messages.display_color') }}</th>
+                        <th>{{ __('messages.edit_model') }}</th>
+                        <th>{{ __('messages.delete_model') }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($colors as $color)
                         <tr class="text-center">
-                            <th>{{ __('messages.id') }}</th>
-                            <th>{{ __('messages.name_persian') }}</th>
-                            <th>{{ __('messages.name_english') }}</th>
-                            <th>{{ __('messages.color_code') }}</th>
-                            <th>{{ __('messages.display_color') }}</th>
-                            <th>{{ __('messages.edit_model') }}</th>
-                            <th>{{ __('messages.delete_model') }}</th>
+                            <td>{{ $color->id }}</td>
+                            <td>{{ $color->title_persian }}</td>
+                            <td>{{ $color->title_english }}</td>
+                            <td>{{ $color->code }}</td>
+                            <td><span class="badge badge-circle" style=" background-color: {{ $color->code }}"></span>
+                            </td>
+                            <td><a class="mt-3" href="javascript:void(0)" wire:click.edit="edit({{$color->id}})"><i
+                                        class="mt-3 fa fa-edit"></i></a></td>
+                            <td><a class="mt-3" href="javascript:void(0)"
+                                   wire:click.prevent="deleteConfirmation({{ $color->id }})"><i
+                                        class="mt-3 fa fa-trash"></i></a></td>
                         </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($colors as $color)
-                            <tr class="text-center">
-                                <td>{{ $color->id }}</td>
-                                <td>{{ $color->title_persian }}</td>
-                                <td>{{ $color->title_english }}</td>
-                                <td>{{ $color->code }}</td>
-                                <td><span class="badge badge-circle" style=" background-color: {{ $color->code }}"></span></td>
-                                <td><a class="mt-3" href="javascript:void(0)" wire:click.edit="edit({{$color->id}})"><i class="mt-3 fa fa-edit"></i></a></td>
-                                <td><a class="mt-3" href="javascript:void(0)" wire:click.prevent="deleteConfirmation({{ $color->id }})"><i class="mt-3 fa fa-trash"></i></a></td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
+                    @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
         <div class="row d-flex justify-content-center">
