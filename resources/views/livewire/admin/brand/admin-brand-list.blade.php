@@ -37,20 +37,19 @@
                 <table class="table table-striped">
                     <thead class="border-bottom-3 border-top-3">
                     <tr class="text-center">
-                        <th>{{ __('messages.id') }}</th>
-                        <th>{{ __('messages.image') }}</th>
+                        <th class="model-field">{{ __('messages.id') }}</th>
+                        <th class="model-field">{{ __('messages.image') }}</th>
                         <th>{{ __('messages.name_persian') }}</th>
                         <th>{{ __('messages.name_english') }}</th>
-                        <th>{{ __('messages.status') }}</th>
-                        <th>{{ __('messages.edit_model') }}</th>
-                        <th>{{ __('messages.delete_model') }}</th>
+                        <th class="model-field">{{ __('messages.status') }}</th>
+                        <th>{{ __('messages.operation') }}</th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach($brands as $brand)
                         <tr class="text-center">
-                            <td>{{ $brand->id }}</td>
-                            <td>
+                            <td class="model-field">{{ $brand->id }}</td>
+                            <td class="model-field">
                                 @if( $brand->logo_path && \Illuminate\Support\Facades\Storage::disk('public')->exists('images/brand/'.$brand->logo_path ))
                                     <img src="{{ asset('storage/images/brand/'.$brand->logo_path)  }}" width="120" height="120" alt="image_brand">
                                 @else
@@ -60,9 +59,11 @@
 
                             <td>{{ $brand->title_persian }}</td>
                             <td>{{ $brand->title_english }}</td>
-                            <td><a href="javascript:void(0)" wire:click.prevent="active({{ $brand->id }})" class="btn {{ $brand->is_active  === 1  ? 'btn-success' : 'btn-danger'}}  btn-sm">{{ $brand->is_active === 1  ? __('messages.active') : __('messages.deactivate')}}</a></td>
-                            <td><a href="{{ route('admin.brand.edit',['id'=>$brand->id]) }}"><i class="fa fa-edit"></i></a></td>
-                            <td><a href="javascript:void(0)" wire:click.prevent="deleteConfirmation({{$brand->id}})"><i class="fa fa-trash" id="delete_item"></i></a></td>
+                            <td class="model-field"><a href="javascript:void(0)" wire:click.prevent="active({{ $brand->id }})" class="btn {{ $brand->is_active  === 1  ? 'btn-success' : 'btn-danger'}}  btn-sm">{{ $brand->is_active === 1  ? __('messages.active') : __('messages.deactivate')}}</a></td>
+                            <td>
+                                <a href="{{ route('admin.brand.edit',['id'=>$brand->id]) }}"><i class="fa fa-edit"></i></a>
+                                <a href="javascript:void(0)" wire:click.prevent="deleteConfirmation({{$brand->id}})"><i class="fa fa-trash" id="delete_item"></i></a>
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>

@@ -147,6 +147,8 @@
     }
 }
 @media (max-width: 576px) {
+    .brand-list table thead .model-field,
+    .brand-list table tbody .model-field,
     .category-list table thead .model-field,
     .category-list table tbody .model-field,
     .list-products table thead .pro-field,
