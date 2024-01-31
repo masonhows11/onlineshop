@@ -12,7 +12,7 @@
                 <form wire:submit.prevent="save">
                     <div class="col">
                         <div class="row">
-                            <div class="col">
+                            <div class="col-sm-4">
                                 <div class="mt-3 mb-3">
                                     <label for="title" class="form-label">{{ __('messages.title') }}</label>
                                     <input type="text" class="form-control" id="title" wire:model.defer="title">
@@ -23,7 +23,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col">
+                            <div class="col-sm-4">
                                 <div class="mt-3 mb-3">
                                     <label for="title_english" class="form-label">{{ __('messages.unit') }}</label>
                                     <input type="text" class="form-control" id="title_english" wire:model.defer="unit">
@@ -34,7 +34,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col">
+                            <div class="col-sm-4">
                                 <div class="mt-3 mt-3">
                                     <label for="category_id" class="form-label">{{ __('messages.category') }}</label>
                                     <select wire:model.defer="category_id" id="category_id" class="form-select">
@@ -65,26 +65,27 @@
                     <table class="table table-striped">
                         <thead class="border-bottom-3 border-top-3">
                         <tr class="text-center">
-                            <th>{{ __('messages.id') }}</th>
+                            <th class="model-field">{{ __('messages.id') }}</th>
                             <th>{{ __('messages.title') }}</th>
-                            <th>{{ __('messages.unit') }}</th>
-                            <th>{{ __('messages.category') }}</th>
+                            <th class="model-field">{{ __('messages.unit') }}</th>
+                            <th class="model-field">{{ __('messages.category') }}</th>
                             <th>{{ __('messages.attribute_value') }}</th>
-                            <th>{{ __('messages.edit_model') }}</th>
-                            <th>{{ __('messages.delete_model') }}</th>
+                            <th>{{ __('messages.operation') }}</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($attributes as $attribute)
                             <tr class="text-center">
-                                <td>{{ $attribute->id }}</td>
+                                <td class="model-field">{{ $attribute->id }}</td>
                                 <td>{{ $attribute->title }}</td>
-                                <td>{{ $attribute->unit }}</td>
-                                <td>{{ $attribute->category->title_persian }}</td>
+                                <td class="model-field">{{ $attribute->unit }}</td>
+                                <td class="model-field">{{ $attribute->category->title_persian }}</td>
                                 <td><a class="mt-3" href="{{ route('admin.category.attribute.value.index',['attribute'=>$attribute->id]) }}">{{ __('messages.attribute_value') }}</a></td>
-                                <td><a class="mt-3" href="javascript:void(0)" wire:click.edit="edit({{$attribute->id}})"><i class="mt-3 fa fa-edit"></i></a>
+                                <td>
+                                    <a class="mt-3" href="javascript:void(0)" wire:click.edit="edit({{$attribute->id}})"><i class="mt-3 fa fa-edit"></i></a>
+                                    <a class="mt-3" href="javascript:void(0)" wire:click.prevent="deleteConfirmation({{ $attribute->id }})"><i class="mt-3 fa fa-trash"></i></a>
                                 </td>
-                                <td><a class="mt-3" href="javascript:void(0)" wire:click.prevent="deleteConfirmation({{ $attribute->id }})"><i class="mt-3 fa fa-trash"></i></a></td>
+
                             </tr>
                         @endforeach
                         </tbody>

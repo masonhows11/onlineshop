@@ -147,6 +147,10 @@
     }
 }
 @media (max-width: 576px) {
+    .category-attribute-value-list table thead .model-field,
+    .category-attribute-value-list table tbody .model-field,
+    .category-attribute table thead .model-field,
+    .category-attribute table tbody .model-field,
     .brand-list table thead .model-field,
     .brand-list table tbody .model-field,
     .category-list table thead .model-field,

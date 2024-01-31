@@ -113,6 +113,8 @@ return [
     'product_color' => 'رنگ کالا',
     'price_increase' => 'افزایش قیمت',
     'salable_quantity' => 'تعداد قابل فروش',
+    'attribute' => 'ویژگی',
+    'category_attribute_value' => 'مقدار ویژگی',
     'category_attribute_management' => 'مدیریت ویژگی ها',
     'unit' => 'واحد اندازه گیری',
     'attribute_value' => 'مقادیر ویژگی',

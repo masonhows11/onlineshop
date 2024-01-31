@@ -1,6 +1,6 @@
 <div>
     @section('dash_page_title')
-        {{ __('messages.category_attribute') }}
+        {{ __('messages.category_attribute_value') }}
     @endsection
     @section('breadcrumb')
         {{ Breadcrumbs::render('admin.create.category.attribute.value',$categoryAttribute->title) }}
@@ -8,9 +8,9 @@
     <div class="container-fluid category-attribute-section">
 
         <div class="row">
-            <div class="col-6">
+            <div class="col">
                 <div class="alert bg-white text-center">
-                    ویژگی‌ : {{ $categoryAttribute->title }}
+                  <h3>  {{ __('messages.attribute') }}‌ : {{ $categoryAttribute->title }}</h3>
                 </div>
             </div>
         </div>
@@ -20,7 +20,7 @@
 
                     <div class="col">
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-sm-3">
                                 <div class="mt-3 mb-3">
                                     <label for="product_id" class="form-label">{{ __('messages.select_product') }}</label>
                                     <select class="form-select" id="product_id" wire:model.defer="product_id">
@@ -36,7 +36,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-6">
+                            <div class="col-sm-3">
                                 <div class="mt-3 mb-3">
                                     <label for="value" class="form-label">{{ __('messages.value') }}</label>
                                     <input type="text" class="form-control" id="value" wire:model.defer="value">
@@ -47,7 +47,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-6">
+                            <div class="col-sm-3">
                                 <div class="mt-3 mb-3">
                                     <label for="price_increase" class="form-label">{{ __('messages.price_increase') }}</label>
                                     <input type="text" class="form-control" value="0" id="price_increase" wire:model.defer="price_increase">
@@ -58,7 +58,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-6">
+                            <div class="col-sm-3">
                                 <div class="mt-3 mb-3">
                                     <label for="type" class="form-label">{{ __('messages.type') }}</label>
                                     <select class="form-select" id="type" wire:model.defer="type">
@@ -90,32 +90,35 @@
         </div>
 
 
-        <div class="row category-attribute-value mt-5 bg-white">
+        <div class="row category-attribute-value-list mt-5 bg-white">
             <div class="my-5">
                 <table class="table table-striped">
                     <thead class="border-bottom-3 border-top-3">
                     <tr class="text-center">
-                        <th>{{ __('messages.id') }}</th>
+                        <th class="model-field">{{ __('messages.id') }}</th>
                         <th>نام ویژگی</th>
                         <th>نام محصول</th>
                         <th>مقدار</th>
-                        <th>افزایش قیمت</th>
-                        <th>نوع</th>
-                        <th>{{ __('messages.edit_model') }}</th>
-                        <th>{{ __('messages.delete_model') }}</th>
+                        <th class="model-field">افزایش قیمت</th>
+                        <th class="model-field">نوع</th>
+                        <th>{{ __('messages.operation') }}</th>
+
                     </tr>
                     </thead>
                     <tbody>
                     @foreach($categoryAttribute->values as $value)
                         <tr class="text-center">
-                            <td>{{ $value->id }}</td>
+                            <td class="model-field">{{ $value->id }}</td>
                             <td>{{ $categoryAttribute->title }}</td>
                             <td>{{ $value->product->title_persian }}</td>
                             <td>{{ $value->value }}</td>
-                            <td>{{ number_format(floatval($value->price_increase)) }}</td>
-                            <td>{{ $value->type == 0 ? __('messages.simple') : __('messages.select') }}</td>
-                            <td><a class="mt-3" href="javascript:void(0)" wire:click.edit="edit({{$value->id}})"><i class="mt-3 fa fa-edit"></i></a></td>
-                            <td><a class="mt-3" href="javascript:void(0)" wire:click.prevent="deleteConfirmation({{ $value->id }})"><i class="mt-3 fa fa-trash"></i></a></td>
+                            <td class="model-field">{{ number_format(floatval($value->price_increase)) }}</td>
+                            <td class="model-field">{{ $value->type == 0 ? __('messages.simple') : __('messages.select') }}</td>
+                            <td>
+                                <a class="mt-3" href="javascript:void(0)" wire:click.edit="edit({{$value->id}})"><i class="mt-3 fa fa-edit"></i></a>
+                                <a class="mt-3" href="javascript:void(0)" wire:click.prevent="deleteConfirmation({{ $value->id }})"><i class="mt-3 fa fa-trash"></i></a>
+                            </td>
+
                         </tr>
                     @endforeach
                     </tbody>
