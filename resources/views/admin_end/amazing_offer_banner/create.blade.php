@@ -10,6 +10,7 @@
 
     <div class="container-fluid">
 
+
         <div class="row d-flex justify-content-start my-4 bg-white">
             <div class="col-lg-4 col-md-4 col  my-5  border-bottom title-add-to-stock">
                 <div class="alert my-4">
@@ -48,7 +49,6 @@
                             @enderror
                         </div>
 
-
                         <div class="col-12">
                             <div class="mt-3">
                                 <label for="url" class="form-label">{{ __('messages.url_image') }}</label>
@@ -81,9 +81,9 @@
 
                 <div class="col">
                         {{--  logo section  --}}
-                        <div class="row d-flex flex-column justify-content-center align-content-center">
-                            <div class="col-lg-8 top-banner-section">
-                                <img src="{{  asset('dash/images/no-image-icon-23494.png') }}"
+                        <div class="row mt-4 d-flex flex-column justify-content-center align-content-center">
+                            <div class="col-lg-5 d-flex justify-content-center align-content-center top-banner-section">
+                                <img src="{{  asset('admin_assets/images/no-image-icon-23494.png') }}"
                                      id="image_view"
                                      class="img-thumbnail" height="300" width="300" alt="image">
                             </div>

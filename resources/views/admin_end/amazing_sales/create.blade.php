@@ -34,6 +34,7 @@
 
 
                 <div class="col-sm-6">
+
                     <div class="mt-3">
                         <label for="product" class="form-label">{{ __('messages.product_name') }}</label>
                         <select  class="form-control" id="product" name="product">

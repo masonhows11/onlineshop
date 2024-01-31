@@ -3,7 +3,7 @@
     {{ __('messages.edit_email_notice') }}
 @endsection
 @push('dash_custom_style')
-    <link rel="stylesheet" href="{{ asset('dash/plugins/jalalidatepicker/dist/css/persian-datepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin_assets/plugins/jalalidatepicker/dist/css/persian-datepicker.min.css') }}">
 @endpush
 @section('breadcrumb')
     {{-- {{ Breadcrumbs::render('admin.delivery.create') }}--}}
@@ -33,7 +33,8 @@
 
             <div class="row create-email-notice my-4 bg-white">
                 <input type="hidden" name="notice" value="{{ $notice->id }}">
-                <div class="col mt-2">
+
+                <div class="col-sm-4 mt-2">
                     <div class="">
                         <label for="subject" class="form-label">{{ __('messages.title') }}</label>
                         <input type="text" id="subject" class="form-control @error('subject') is-invalid @enderror form-control-lg" name="subject" value="{{ $notice->subject }}">
@@ -45,7 +46,7 @@
                     @enderror
                 </div>
 
-                <div class="col mt-2">
+                <div class="col-sm-4 mt-2">
                     <div class="">
                         <label for="status" class="form-label">{{ __('messages.status') }}</label>
                         <select name="status" id="status" class="form-select">
@@ -60,7 +61,7 @@
                     @enderror
                 </div>
 
-                <div class="col  mt-2">
+                <div class="col-sm-4 mt-2">
                     <div class="">
                         <label for="published_at" class="form-label">تاریخ انتشار</label>
                         <input type="text" id="published_at" class="d-none form-control form-control-lg" name="published_at">
@@ -100,11 +101,11 @@
 
 @endsection
 @push('dash_custom_script')
-    <script type="text/javascript" src="{{ asset('dash/plugins/ckeditor/ckeditor.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('admin_assets/plugins/ckeditor/ckeditor.js') }}"></script>
     <script type="text/javascript"
-            src="{{ asset('dash/plugins/jalalidatepicker/assets/persian-date.min.js')  }}"></script>
+            src="{{ asset('admin_assets/plugins/jalalidatepicker/assets/persian-date.min.js')  }}"></script>
     <script type="text/javascript"
-            src="{{ asset('dash/plugins/jalalidatepicker/dist/js/persian-datepicker.min.js')  }}"></script>
+            src="{{ asset('admin_assets/plugins/jalalidatepicker/dist/js/persian-datepicker.min.js')  }}"></script>
 
     <script>
         CKEDITOR.replace('email-body', {
