@@ -147,6 +147,8 @@
     }
 }
 @media (max-width: 576px) {
+    .category-list table thead .model-field,
+    .category-list table tbody .model-field,
     .list-products table thead .pro-field,
     .list-products table tbody .pro-field,
     .setting-list table tbody .logo-section,
@@ -154,7 +156,7 @@
        display: none;
     }
 }
-@media (max-width: 1199.98px) {
+@media (max-width: 1200px) {
     .setting-list table tbody .logo-section,
     .setting-list table thead .logo-section,
     .list-products table  .status-field{

@@ -34,26 +34,26 @@
 
         <div class="row  category-list bg-white">
             <div class="my-5">
-                <table class="table table-striped">
+                <table class="table table-striped table-responsive">
                     <thead class="border-bottom-3 border-top-3">
                     <tr class="text-center">
-                        <th>{{ __('messages.id') }} </th>
+                        <th class="model-field">{{ __('messages.id') }} </th>
                         <th>{{ __('messages.name')}}</th>
                         <th>{{ __('messages.category_parent')}}</th>
-                        <th>{{ __('messages.image')}}</th>
+
+                        <th class="model-field">{{ __('messages.image')}}</th>
                         <th>{{ __('messages.status')}}</th>
                         <th>{{ __('messages.Detach')}}</th>
-                        <th>{{ __('messages.edit_model')}}</th>
-                        <th>{{ __('messages.delete_model')}}</th>
+                        <th>{{ __('messages.operation')}}</th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach($categories as $category)
                         <tr class="text-center">
-                            <td>{{ $category->id }}</td>
+                            <td class="model-field">{{ $category->id }}</td>
                             <td>{{ $category->title_persian }}</td>
                             <td>{{ $category->parent_id ? $category->parent->title_persian : __('messages.main_category') }}</td>
-                            <td>
+                            <td class="model-field">
                                 @if( $category->image_path && \Illuminate\Support\Facades\Storage::disk('public')->exists('images/category/'.$category->thumbnail_image ))
                                     <img src="{{ asset('storage/images/category/'.$category->image_path)  }}" width="100" height="100" alt="image_category">
                                 @else
@@ -70,11 +70,11 @@
                                     <i class="fa fa-unlink"></i>
                                 </a>
                             </td>
-                            <td><a href="{{ route('admin.category.edit',['id'=>$category->id]) }}" class="mx-4">
+                            <td>
+                                <a href="{{ route('admin.category.edit',['id'=>$category->id]) }}" class="mx-4">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                            </td>
-                            <td><a href="#" wire:click.prevent="deleteConfirmation({{ $category->id }})">
+                                <a href="#" wire:click.prevent="deleteConfirmation({{ $category->id }})">
                                     <i class="fas fa-trash"></i>
                                 </a>
                             </td>
