@@ -226,6 +226,24 @@
                                 <span class="menu-title">مدیریت ویژگی ها</span>
                             </a>
                         </div>
+                       <div class="menu-item">
+                           <a class="menu-link"
+                              href="#">
+                               <span class="menu-bullet">
+                               <span class="bullet bullet-dot"></span>
+                               </span>
+                               <span class="menu-title">{{ __('messages.product_specifications') }}</span>
+                           </a>
+                       </div>
+                       <div class="menu-item">
+                           <a class="menu-link "
+                              href="#">
+                               <span class="menu-bullet">
+                               <span class="bullet bullet-dot"></span>
+                               </span>
+                               <span class="menu-title">{{ __('messages.product_specifications_values') }}</span>
+                           </a>
+                       </div>
                         <div class="menu-item">
                             <a class="menu-link {{ $route === 'admin.tag.index' ? 'active' : '' }}"
                                href="{{ route('admin.tag.index') }}">
@@ -262,24 +280,7 @@
                                 <span class="menu-title">تخصیص برندها</span>
                             </a>
                         </div> --}}
-                        {{-- <div class="menu-item">
-                            <a class="menu-link"
-                               href="#">
-								<span class="menu-bullet">
-								<span class="bullet bullet-dot"></span>
-								</span>
-                                <span class="menu-title">ویژگی های کالا</span>
-                            </a>
-                        </div>
-                        <div class="menu-item">
-                            <a class="menu-link "
-                               href="#">
-								<span class="menu-bullet">
-								<span class="bullet bullet-dot"></span>
-								</span>
-                                <span class="menu-title">مقادیر ویژگی های کالا</span>
-                            </a>
-                        </div> --}}
+
                     </div>
                 </div>
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">

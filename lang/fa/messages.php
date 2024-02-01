@@ -22,7 +22,8 @@ return [
     'roles_assignment' => 'تخصیص نقش ها',
     'perms_assignment' => 'تخصیص مجوزها',
     'admin_users_list' => 'لیست کاربران',
-
+    'product_specifications' => 'مشخصات کالا',
+    'product_specifications_values' => 'مقادیر مشخصات کالا',
     'not_confirmed' => 'تایید نشده',
     'confirm_status' => 'وضعیت تایید',
     'published' => 'منتشر شده',
