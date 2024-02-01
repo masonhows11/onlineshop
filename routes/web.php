@@ -1,5 +1,6 @@
 <?php
 
+// normal route controllers
 use App\Http\Controllers\Auth_Admin\AdminLoginController;
 use App\Http\Controllers\Auth_Admin\AdminProfileController;
 use App\Http\Controllers\Auth_Admin\AdminValidateController;
@@ -39,7 +40,7 @@ use App\Http\Controllers\Dash\Ticket\AdminPriorityTicketController;
 use App\Http\Controllers\Dash\Ticket\AdminTicketController;
 use App\Http\Controllers\HomeController;
 
-// admin controllers livewire
+// admin livewire routes
 use App\Http\Livewire\Admin\AdminAdmins;
 
 use App\Http\Livewire\Admin\AdminCategoryAttribute;
@@ -53,7 +54,7 @@ use App\Http\Livewire\Admin\Category\AdminCategoryList;
 use App\Http\Livewire\Admin\Brand\AdminBrandList;
 use App\Http\Livewire\Admin\Brand\AdminCreateBrand;
 use App\Http\Livewire\Admin\Brand\AdminEditBrand;
-
+// others
 use App\Http\Livewire\Admin\AdminPerms;
 use App\Http\Livewire\Admin\AdminRoles;
 use App\Http\Livewire\Admin\AdminTag;
@@ -70,6 +71,7 @@ use App\Http\Livewire\Admin\ListUsersForRole;
 use App\Http\Livewire\Admin\Orders\AdminAllOrders;
 use App\Http\Livewire\Admin\Setting\AdminSetting;
 use App\Http\Livewire\Admin\Stock\StockProduct;
+
 use Illuminate\Support\Facades\Route;
 
 /*
