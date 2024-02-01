@@ -32,16 +32,16 @@
             </div>
         </div>
 
-        <div class="row  category-list bg-white">
+        <div class="row  category-list bg-white overflow-auto">
             <div class="my-5">
                 <table class="table table-striped table-responsive">
                     <thead class="border-bottom-3 border-top-3">
                     <tr class="text-center">
-                        <th class="model-field">{{ __('messages.id') }} </th>
+                        <th >{{ __('messages.id') }} </th>
                         <th>{{ __('messages.name')}}</th>
                         <th>{{ __('messages.category_parent')}}</th>
 
-                        <th class="model-field">{{ __('messages.image')}}</th>
+                        <th >{{ __('messages.image')}}</th>
                         <th>{{ __('messages.status')}}</th>
                         <th>{{ __('messages.Detach')}}</th>
                         <th>{{ __('messages.operation')}}</th>
@@ -50,10 +50,10 @@
                     <tbody>
                     @foreach($categories as $category)
                         <tr class="text-center">
-                            <td class="model-field">{{ $category->id }}</td>
+                            <td >{{ $category->id }}</td>
                             <td>{{ $category->title_persian }}</td>
                             <td>{{ $category->parent_id ? $category->parent->title_persian : __('messages.main_category') }}</td>
-                            <td class="model-field">
+                            <td>
                                 @if( $category->image_path && \Illuminate\Support\Facades\Storage::disk('public')->exists('images/category/'.$category->thumbnail_image ))
                                     <img src="{{ asset('storage/images/category/'.$category->image_path)  }}" width="100" height="100" alt="image_category">
                                 @else

@@ -1,5 +1,5 @@
 <div>
-    <div class="row  list-cities bg-white mb-4">
+    <div class="row  list-cities bg-white overflow-auto mb-4">
         <div class="my-5" style="height:320px">
             <table class="table table-striped">
                 <thead class="border-bottom-3 border-top-3">

@@ -48,7 +48,7 @@
             </div>
         </div>
 
-        <div class="row mx-2 my-3 product-meta-list bg-white rounded rounded-1">
+        <div class="row mx-2 my-3 product-meta-list bg-white rounded rounded-1 overflow-auto">
             <div class="col">
                 <table class="table ">
                     <thead>

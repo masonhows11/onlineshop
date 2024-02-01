@@ -66,7 +66,7 @@
         </div>
 
 
-        <div class="row mt-5 result-search-product list-products">
+        <div class="row mt-5 result-search-product list-products overflow-auto">
 
             <table class="table py-4 table-bordered border-2 rounded-3 bg-white">
                 <thead class="">

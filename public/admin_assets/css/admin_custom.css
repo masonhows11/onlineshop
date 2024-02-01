@@ -152,15 +152,7 @@
     .category-attribute-value-list table thead .model-field,
     .category-attribute-value-list table tbody .model-field,
     .category-attribute table thead .model-field,
-    .category-attribute table tbody .model-field,
-    .brand-list table thead .model-field,
-    .brand-list table tbody .model-field,
-    .category-list table thead .model-field,
-    .category-list table tbody .model-field,
-    .list-products table thead .pro-field,
-    .list-products table tbody .pro-field,
-    .setting-list table tbody .logo-section,
-    .setting-list table thead .logo-section{
+    .category-attribute table tbody .model-field{
        display: none;
     }
 }
