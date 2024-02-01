@@ -57,7 +57,7 @@
                                 </svg>
                             </span>
                         </span>
-                        <span class="menu-title">داشبورد</span>
+                        <span class="menu-title">{{ __('messages.admin_dashboard') }}</span>
                     </a>
                 </div>
                 <div class="menu-item">
@@ -71,13 +71,13 @@
                                 </svg>
                             </span>
                         </span>
-                        <span class="menu-title">صفحه فرود</span>
+                        <span class="menu-title">{{ __('messages.home_page') }}</span>
                     </a>
                 </div>
                 {{-- ---------------------------begin main menu  and sub menu------------------------ --}}
                 <div class="menu-item">
                     <div class="menu-content pt-8 pb-2">
-                        <span class="menu-section text-muted text-uppercase fs-8 ls-1">ساخته شده</span>
+                        <span class="menu-section text-muted text-uppercase fs-8 ls-1">{{ __('messages.main_menu') }}</span>
                     </div>
                 </div>
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">

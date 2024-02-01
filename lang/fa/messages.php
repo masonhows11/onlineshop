@@ -10,6 +10,7 @@ return [
     'confirmed' => 'تایید شده',
     'wait_for_confirmed' => 'در انتظار تایید',
     'unknown' => 'نامشخص',
+    'main_menu'=> 'منو',
 
     'first_name' => 'نام',
     'last_name' => 'نام خانوادگی',
