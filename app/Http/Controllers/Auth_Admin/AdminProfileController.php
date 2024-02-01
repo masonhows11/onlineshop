@@ -21,7 +21,7 @@ class AdminProfileController extends Controller
     public function profile()
     {
         $admin = Admin::where('id', Auth::guard('admin')->id())->first();
-        return view('auth_admin.profile.profile')->with(['admin' => $admin]);
+        return view('admin_auth.profile.profile')->with(['admin' => $admin]);
     }
 
     public function update(Request $request)
@@ -75,7 +75,7 @@ class AdminProfileController extends Controller
     {
 
         $admin = Admin::where('id', Auth::guard('admin')->id())->first();
-        return view('auth_admin.profile.change_mobile')->with(['admin' => $admin]);
+        return view('admin_auth.profile.change_mobile')->with(['admin' => $admin]);
     }
 
     public function updateMobile(Request $request)

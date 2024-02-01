@@ -1,4 +1,4 @@
-@extends('dash.include.master_dash')
+@extends('admin_end.include.master_dash')
 @section('dash_page_title')
     پروفایل مدیریت
 @endsection
@@ -18,7 +18,7 @@
                 <div class="col-sm-3 d-flex flex-column justify-content-center align-items-center admin-image-section pt-3">
 
                     <div class="image-upload-content mt-5 ">
-                        <img class="img-thumbnail" id="image_admin" width="250" height="250" src="{{ $admin->image_path ?  asset('storage/admin_images/'.$admin->image_path)  : asset('dash/images/no-user.png') }}" alt="">
+                        <img class="img-thumbnail" id="image_admin" width="250" height="250" src="{{ $admin->image_path ?  asset('storage/admin_images/'.$admin->image_path)  : asset('admin_assets/images/no-user.png') }}" alt="">
                     </div>
 
                     <div class="image-upload-btn">
