@@ -22,7 +22,7 @@
                 </div>
             </div>
         </div>
-        <div class="row product-stock-list bg-white">
+        <div class="row product-stock-list bg-white overflow-auto">
             <div class=" my-5">
                 <table class="table">
                     <thead>

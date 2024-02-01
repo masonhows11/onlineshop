@@ -139,27 +139,11 @@
 
 /* media query */
 @media (max-width: 281px) {
-    .setting-list table tbody .icon-section,
-    .setting-list table thead .icon-section,
-    .setting-list table tbody .logo-section,
-    .setting-list table thead .logo-section{
-        display: none;
-    }
+
 }
 @media (max-width: 576px) {
-    .admin-tag-list table thead .model-field,
-    .admin-tag-list table tbody .model-field,
-    .category-attribute-value-list table thead .model-field,
-    .category-attribute-value-list table tbody .model-field,
-    .category-attribute table thead .model-field,
-    .category-attribute table tbody .model-field{
-       display: none;
-    }
+
 }
 @media (max-width: 1200px) {
-    .setting-list table tbody .logo-section,
-    .setting-list table thead .logo-section,
-    .list-products table  .status-field{
-        display: none;
-    }
+
 }
