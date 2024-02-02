@@ -317,18 +317,22 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin'
     Route::get('/colors/index', AdminColors::class)->name('colors.index');
 
 });
-// crud attribute
+// crud attribute & attribute value
 Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin', 'role:admin|super_admin'])->group(function () {
 
     Route::get('/category/attribute/index', AdminCategoryAttribute::class)->name('category.attribute.index');
-
-});
-// crud attribute value
-Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin', 'role:admin|super_admin'])->group(function () {
-
     Route::get('/category/attribute/value/index/{attribute}', AdminCategoryAttributeValue::class)->name('category.attribute.value.index');
 
 });
+
+// crud product attribute & attribute value
+Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin', 'role:admin|super_admin'])->group(function () {
+
+    Route::get('/attribute/index', )->name('attribute.index');
+    Route::get('/attribute/value/index/{attribute}', )->name('attribute.value.index');
+
+});
+
 
 // crud product routes
 Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin', 'role:admin|super_admin'])->group(function () {
