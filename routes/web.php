@@ -47,6 +47,8 @@ use App\Http\Livewire\Admin\AdminCategoryAttribute;
 use App\Http\Livewire\Admin\AdminCategoryAttributeValue;
 use App\Http\Livewire\Admin\AdminColors;
 // colors
+use App\Http\Livewire\Admin\Attrbute\AdminAttribute;
+use App\Http\Livewire\Admin\Attrbute\AdminAttributeValue;
 use App\Http\Livewire\Admin\Category\AdminCategoryCreate;
 use App\Http\Livewire\Admin\Category\AdminCategoryEdit;
 use App\Http\Livewire\Admin\Category\AdminCategoryList;
@@ -328,8 +330,8 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin'
 // crud product attribute & attribute value
 Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin', 'role:admin|super_admin'])->group(function () {
 
-    Route::get('/attribute/index', )->name('attribute.index');
-    Route::get('/attribute/value/index/{attribute}', )->name('attribute.value.index');
+    Route::get('/attribute/index',AdminAttribute::class )->name('attribute.index');
+    Route::get('/attribute/value/index/{attribute}',AdminAttributeValue::class )->name('attribute.value.index');
 
 });
 
