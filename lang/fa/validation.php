@@ -251,6 +251,7 @@ return [
         'salable_quantity' => 'تغداد قابل فروش',
         'has_specifications' => 'مشخصات فنی',
         'has_default_value' => 'مقادیر پیش فرص',
+        'value' => 'مقدار',
 
     ],
 ];
