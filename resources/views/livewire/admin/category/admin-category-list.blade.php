@@ -61,10 +61,13 @@
                                 @endif
 
                             </td>
-                            <td>
-                                {{ $category->has_specifications  == 1 ? __('messages.has_technical_specifications') : __('messages.No_technical_specifications') }}
+                            <td class="">
+                                <a href="javascript:void(0)" class="btn btn-sm  {{ $category->has_specifications  == 1 ? 'btn-success' : 'btn-danger' }}">
+                                    {{ $category->has_specifications  == 1 ? __('messages.has_technical_specifications') : __('messages.No_technical_specifications') }}
+                                </a>
                             </td>
-                            <td><a href="#" wire:click.prevent="changeState({{ $category->id }})"
+                            <td>
+                                <a href="#" wire:click.prevent="changeState({{ $category->id }})"
                                    class="mx-4 btn btn-sm {{ $category->is_active === 0 ? 'btn-danger' : 'btn-success' }} btn-sm">
                                     {{ $category->is_active === 0 ? __('messages.deactivate') : __('messages.active') }}
                                 </a>

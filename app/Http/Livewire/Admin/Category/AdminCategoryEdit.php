@@ -28,26 +28,20 @@ class AdminCategoryEdit extends Component
     public $edit_id;
 
 
-
     public function mount($id)
     {
         $this->edit_id = $id;
         $this->category = Category::findOrFail($id);
         $this->category_title = $this->category->title_persian;
         $this->category_image = $this->category->image_path;
+        $this->title_persian = $this->category->title_persian;
+        $this->title_english = $this->category->title_english;
+        $this->status = $this->category->status;
+        $this->show_in_menu = $this->category->show_in_menu;
+        $this->has_specifications = $this->category->has_specifications;
         if ($this->category->parent_id == null) {
-            $this->title_persian = $this->category->title_persian;
-            $this->title_english = $this->category->title_english;
-            $this->status = $this->category->status;
-            $this->show_in_menu = $this->category->show_in_menu;
-            $this->has_specifications = $this->category->has_specifications;
             $this->parent = null;
         } else {
-            $this->title_persian = $this->category->title_persian;
-            $this->title_english = $this->category->title_english;
-            $this->status = $this->category->status;
-            $this->show_in_menu = $this->category->show_in_menu;
-            $this->has_specifications = $this->category->has_specifications;
             $this->parent = $this->category->parent_id;
         }
     }
@@ -63,6 +57,7 @@ class AdminCategoryEdit extends Component
             'image_path' => ['nullable', 'image', 'mimes:png,jpg,jpeg', 'max:2000'],
         ];
     }
+
     protected $messages = [
         'title_english.required' => 'عنوان دسته بندی را به انگلیسی وارد کنید.',
         'title_english.min' => 'حداقل ۲ کارکتر.',
@@ -134,8 +129,8 @@ class AdminCategoryEdit extends Component
             ->extends('admin_end.include.master_dash')
             ->section('dash_main_content')
             ->with(['categories' => Category::all(),
-                'category' => $this->category ,
-                'category_title'=>$this->category_title]);
+                'category' => $this->category,
+                'category_title' => $this->category_title]);
     }
 
 

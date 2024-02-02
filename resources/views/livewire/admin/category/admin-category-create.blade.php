@@ -48,8 +48,8 @@
                                     <label for="has_specifications" class="form-label">مشخصات فنی</label>
                                     <select class="form-control" wire:model.lazy="has_specifications" id="has_specifications">
                                         <option>انتخاب کنید</option>
-                                        <option value="0">{{ __('messages.has_technical_specifications') }}</option>
-                                        <option value="1">{{ __('messages.No_technical_specifications') }}</option>
+                                        <option value="1">{{ __('messages.has_technical_specifications') }}</option>
+                                        <option value="0">{{ __('messages.No_technical_specifications') }}</option>
                                     </select>
                                     @error('has_specifications')
                                     <div class="alert alert-danger mt-3">{{ $message }}</div>
