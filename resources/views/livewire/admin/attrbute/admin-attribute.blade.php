@@ -1,3 +1,12 @@
 <div>
-    {{-- The Master doesn't talk, he acts. --}}
+    @section('dash_page_title')
+        {{ __('messages.product_specifications') }}
+    @endsection
+    @section('breadcrumb')
+        {{-- {{ Breadcrumbs::render('admin.delivery.index') }}--}}
+    @endsection
+        <div class="container-fluid">
+
+        </div>
+
 </div>

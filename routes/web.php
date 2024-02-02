@@ -47,8 +47,8 @@ use App\Http\Livewire\Admin\AdminCategoryAttribute;
 use App\Http\Livewire\Admin\AdminCategoryAttributeValue;
 use App\Http\Livewire\Admin\AdminColors;
 // colors
-use App\Http\Livewire\Admin\Attrbute\AdminAttribute;
-use App\Http\Livewire\Admin\Attrbute\AdminAttributeValue;
+use App\Http\Livewire\Admin\Attribute\AdminAttribute;
+use App\Http\Livewire\Admin\Attribute\AdminAttributeValue;
 use App\Http\Livewire\Admin\Category\AdminCategoryCreate;
 use App\Http\Livewire\Admin\Category\AdminCategoryEdit;
 use App\Http\Livewire\Admin\Category\AdminCategoryList;
