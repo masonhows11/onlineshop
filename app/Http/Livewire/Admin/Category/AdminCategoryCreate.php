@@ -15,6 +15,7 @@ class AdminCategoryCreate extends Component
     public $title_persian;
     public $title_english;
     public $parent;
+    public $has_specifications;
     public $show_in_menu;
     public $image_path;
     public $status;
@@ -28,7 +29,7 @@ class AdminCategoryCreate extends Component
         return [
             'title_persian' => ['required', Rule::unique('categories')->ignore($this->category_id), 'min:2', 'max:30'],
             'title_english' => ['required', Rule::unique('categories')->ignore($this->category_id), 'min:2', 'max:30', 'alpha_dash'],
-
+            'has_specifications' => ['required'],
             'show_in_menu' => ['required'],
             'status' => ['required'],
             'image_path' => ['nullable', 'image', 'mimes:png,jpg,jpeg', 'max:2000'],
@@ -85,6 +86,7 @@ class AdminCategoryCreate extends Component
                 $this->category->status = $this->status;
                 $this->category->show_in_menu = $this->show_in_menu;
                 $this->category->parent_id = $this->parent;
+                $this->category->has_specifications = $this->has_specifications;
 
             } else {
 
@@ -92,6 +94,7 @@ class AdminCategoryCreate extends Component
                 $this->category->title_english = $this->title_english;
                 $this->category->status = $this->status;
                 $this->category->show_in_menu = $this->show_in_menu;
+                $this->category->has_specifications = $this->has_specifications;
 
             }
             $this->category->save();

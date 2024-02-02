@@ -237,7 +237,7 @@
                        </div>
                        <div class="menu-item">
                            <a class="menu-link {{ $route === 'admin.attribute.value.index' ? 'active' : '' }}"
-                              href="{{ route('admin.attribute.value.index) }}">
+                              href="{{ route('admin.attribute.value.index') }}">
                                <span class="menu-bullet">
                                <span class="bullet bullet-dot"></span>
                                </span>

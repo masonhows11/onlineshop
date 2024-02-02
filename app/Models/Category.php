@@ -16,6 +16,7 @@ class Category extends Model
     protected $fillable = ['title_english',
                           'title_persian',
                           'image_path',
+                          'has_specifications',
                           'show_in_menu',
                           'tags',
                           'slug',

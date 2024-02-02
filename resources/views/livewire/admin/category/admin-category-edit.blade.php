@@ -13,7 +13,7 @@
                         <div class="col-sm-4">
                             <div class="row">
                                 <div class=" mb-3 mt-3">
-                                    <label for="title" class="form-label">عنوان دسته بندی به فارسی :</label>
+                                    <label for="title" class="form-label">عنوان دسته بندی به فارسی </label>
                                     <input type="text" wire:model.lazy="title_persian" class="form-control" id="title">
                                     @error('title_persian')
                                     <div class="alert alert-danger mt-3">{{ $message }}</div>
@@ -22,7 +22,7 @@
 
 
                                 <div class=" mb-3 mt-3">
-                                    <label for="name" class="form-label">عنوان دسته بندی به انگلیسی:</label>
+                                    <label for="name" class="form-label">عنوان دسته بندی به انگلیسی</label>
                                     <input type="text" wire:model.lazy="title_english" dir="ltr" class="form-control text-left"
                                            id="name">
                                     @error('title_english')
@@ -32,14 +32,25 @@
 
 
                                 <div class=" mb-3 mt-3">
-                                    <label for="show_in_menu" class="form-label">نمایش در منو:</label>
+                                    <label for="show_in_menu" class="form-label">نمایش در منو</label>
                                     <select class="form-control" wire:model.lazy="show_in_menu" id="show_in_menu">
                                         <option>انتخاب کنید</option>
-                                        <option value="0">@lang('messages.not_show')</option>
-                                        <option value="1">@lang('messages.show')</option>
+                                        <option value="0">{{ __('messages.not_show') }}</option>
+                                        <option value="1">{{ __('messages.show') }}</option>
                                     </select>
-
                                     @error('show_in_menu')
+                                    <div class="alert alert-danger mt-3">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class=" mb-3 mt-3">
+                                    <label for="has_specifications" class="form-label">مشخصات فنی</label>
+                                    <select class="form-control" wire:model.lazy="has_specifications" id="has_specifications">
+                                        <option>انتخاب کنید</option>
+                                        <option value="0">{{ __('messages.has_technical_specifications') }}</option>
+                                        <option value="1">{{ __('messages.No_technical_specifications') }}</option>
+                                    </select>
+                                    @error('has_specifications')
                                     <div class="alert alert-danger mt-3">{{ $message }}</div>
                                     @enderror
                                 </div>
@@ -56,7 +67,7 @@
                                 <div class="alert alert-danger">{{ $message}}</div>
                                 @enderror
                                 <div class=" mb-3 mt-3">
-                                    <label for="status" class="form-label">وضعیت دسته بندی:</label>
+                                    <label for="status" class="form-label">وضعیت دسته بندی</label>
                                     <select class="form-control" wire:model.lazy="status" id="status">
                                         <option>انتخاب کنید</option>
                                         <option value="0">{{ __('messages.deactivate') }}</option>
@@ -70,7 +81,7 @@
 
 
                                 <div class=" mb-3 mt-3">
-                                    <label for="parent" class="form-label">انتخاب دسته بندی والد:</label>
+                                    <label for="parent" class="form-label">انتخاب دسته بندی والد</label>
                                     <select class="form-control" wire:model.lazy="parent" id="parent">
                                         <option value="null">فاقد دسته بندی</option>
                                         @foreach($categories as $item)

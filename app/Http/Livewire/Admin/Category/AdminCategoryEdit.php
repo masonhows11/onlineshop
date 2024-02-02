@@ -16,6 +16,7 @@ class AdminCategoryEdit extends Component
     public $title_persian;
     public $title_english;
     public $parent;
+    public $has_specifications;
     public $show_in_menu;
     public $image_path;
     public $status;
@@ -39,12 +40,14 @@ class AdminCategoryEdit extends Component
             $this->title_english = $this->category->title_english;
             $this->status = $this->category->status;
             $this->show_in_menu = $this->category->show_in_menu;
+            $this->has_specifications = $this->category->has_specifications;
             $this->parent = null;
         } else {
             $this->title_persian = $this->category->title_persian;
             $this->title_english = $this->category->title_english;
             $this->status = $this->category->status;
             $this->show_in_menu = $this->category->show_in_menu;
+            $this->has_specifications = $this->category->has_specifications;
             $this->parent = $this->category->parent_id;
         }
     }
@@ -55,7 +58,7 @@ class AdminCategoryEdit extends Component
             'title_persian' => ['required', Rule::unique('categories')->ignore($this->edit_id), 'min:2', 'max:30'],
             'title_english' => ['required', Rule::unique('categories')->ignore($this->edit_id), 'min:2', 'max:30', 'alpha_dash'],
             'show_in_menu' => ['required'],
-
+            'has_specifications' => ['required'],
             'status' => ['required'],
             'image_path' => ['nullable', 'image', 'mimes:png,jpg,jpeg', 'max:2000'],
         ];
@@ -109,11 +112,13 @@ class AdminCategoryEdit extends Component
                 $this->category->status = $this->status;
                 $this->category->show_in_menu = $this->show_in_menu;
                 $this->category->parent_id = $this->parent;
+                $this->category->has_specifications = $this->has_specifications;
             } else {
                 $this->category->title_persian = $this->title_persian;
                 $this->category->title_english = $this->title_english;
                 $this->category->status = $this->status;
                 $this->category->show_in_menu = $this->show_in_menu;
+                $this->category->has_specifications = $this->has_specifications;
             }
             $this->category->save();
             session()->flash('success', __('messages.The_update_was_completed_successfully'));

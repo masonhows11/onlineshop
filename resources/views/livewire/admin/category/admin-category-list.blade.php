@@ -40,8 +40,8 @@
                         <th >{{ __('messages.id') }} </th>
                         <th>{{ __('messages.name')}}</th>
                         <th>{{ __('messages.category_parent')}}</th>
-
                         <th >{{ __('messages.image')}}</th>
+                        <th>{{ __('messages.has_specifications') }}</th>
                         <th>{{ __('messages.status')}}</th>
                         <th>{{ __('messages.Detach')}}</th>
                         <th>{{ __('messages.operation')}}</th>
@@ -60,6 +60,9 @@
                                     <img src="{{  asset('admin_assets/images/no-image-icon-23494.png')  }}" width="100" height="100" alt="image_category">
                                 @endif
 
+                            </td>
+                            <td>
+                                {{ $category->has_specifications  == 1 ? __('messages.has_technical_specifications') : __('messages.No_technical_specifications') }}
                             </td>
                             <td><a href="#" wire:click.prevent="changeState({{ $category->id }})"
                                    class="mx-4 btn btn-sm {{ $category->is_active === 0 ? 'btn-danger' : 'btn-success' }} btn-sm">
