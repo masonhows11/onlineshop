@@ -319,7 +319,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin'
     Route::get('/colors/index', AdminColors::class)->name('colors.index');
 
 });
-// crud attribute & attribute value
+// crud category attribute & attribute value
 Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin', 'role:admin|super_admin'])->group(function () {
 
     Route::get('/category/attribute/index', AdminCategoryAttribute::class)->name('category.attribute.index');

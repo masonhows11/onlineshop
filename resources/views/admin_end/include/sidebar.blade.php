@@ -177,7 +177,7 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title"> مدیریت دسته بندی ها</span>
+                                <span class="menu-title">{{ __('messages.categories') }}</span>
                             </a>
                         </div>
                         <div class="menu-item">
@@ -186,7 +186,7 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title"> دسته بندی جدید</span>
+                                <span class="menu-title">{{ __('messages.new_category') }}</span>
                             </a>
                         </div>
 
@@ -196,7 +196,7 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">مدیریت برندها</span>
+                                <span class="menu-title">{{ __('messages.brands') }}</span>
                             </a>
                         </div>
                         <div class="menu-item">
@@ -205,7 +205,7 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">برند جدید</span>
+                                <span class="menu-title">{{ __('messages.new_brand') }}</span>
                             </a>
                         </div>
                         <div class="menu-item">
@@ -214,7 +214,7 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">مدیریت رنگ ها</span>
+                                <span class="menu-title">{{ __('messages.colors') }}</span>
                             </a>
                         </div>
                         <div class="menu-item">
@@ -223,7 +223,7 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">مدیریت ویژگی ها</span>
+                                <span class="menu-title">{{ __('messages.attributes') }}</span>
                             </a>
                         </div>
                        <div class="menu-item">
@@ -250,7 +250,7 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">مدیریت تگ ها</span>
+                                <span class="menu-title">{{ __('messages.tags') }}</span>
                             </a>
                         </div>
                         {{-- <div class="menu-item">

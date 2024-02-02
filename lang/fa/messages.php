@@ -512,6 +512,7 @@ return [
     'contact_us' => 'تماس با ما',
     'about_us' => 'درباره ما',
     'support' => 'پشتیبانی',
+    'tags' => 'تگ ها',
     'tags_management' => 'مدیریت تگ ها',
     'product_tags' => 'مدیریت تگ ها',
     'new_tag' => 'جدید',

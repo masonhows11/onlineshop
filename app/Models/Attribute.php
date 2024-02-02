@@ -12,7 +12,7 @@ class Attribute extends Model
     protected $table = 'attributes';
 
     protected $fillable = [
-        'code', 'name', 'frontend_type', 'is_filterable', 'is_required'
+        'code', 'name', 'frontend_type','has_default_value','is_filterable', 'is_required'
     ];
 
 

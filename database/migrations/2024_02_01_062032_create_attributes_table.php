@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('code')->unique()->nullable();
             $table->string('name')->nullable();
-            $table->string('type',['select','radio','text','text_area']);
+            $table->enum('type',['select','radio','text','text_area']);
+            $table->tinyInteger('has_default_value')->nullable();
             $table->boolean('is_filterable')->default(0);
             $table->boolean('is_required')->default(0);
             $table->timestamps();
