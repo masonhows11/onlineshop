@@ -332,8 +332,10 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin'
 Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin', 'role:admin|super_admin'])->group(function () {
 
     Route::get('/attribute/index',AdminAttribute::class )->name('attribute.index');
-    Route::get('/attribute/create/{category}',AdminAttributeCreate::class )->name('attribute.create');
+    Route::get('/attribute/create/{id}',AdminAttributeCreate::class )->name('attribute.create');
+
     Route::get('/attribute/value/index',AdminAttributeValue::class )->name('attribute.value.index');
+    Route::get('/attribute/value/create/{id}',AdminAttributeValue::class )->name('attribute.value.create');
 
 });
 

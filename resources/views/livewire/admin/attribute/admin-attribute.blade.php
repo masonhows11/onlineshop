@@ -31,7 +31,7 @@
                             <td>{{ $category->id }}</td>
                             <td>{{ $category->title_persian }}</td>
                             <td>
-                                <a href="{{ route('admin.attribute.create',['category'=>$category->id]) }}" class="mx-4 btn btn-sm btn-success ">
+                                <a href="{{ route('admin.attribute.create',['id'=>$category->id]) }}" class="mx-4 btn btn-sm btn-success ">
                                         {{ __('messages.add_new_specification') }}
                                 </a>
                             </td>

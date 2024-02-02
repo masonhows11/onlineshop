@@ -12,7 +12,7 @@ class Attribute extends Model
     protected $table = 'attributes';
 
     protected $fillable = [
-        'code', 'name', 'type','has_default_value','is_filterable', 'is_required'
+        'code','name', 'type','has_default_value','category_id','is_filterable', 'is_required'
     ];
 
 
@@ -24,5 +24,27 @@ class Attribute extends Model
     public function values()
     {
         return $this->hasMany(AttributeValue::class);
+    }
+
+    public function getTypeValueAttribute()
+    {
+        switch ($this->type) {
+            case 'select':
+                $result = 'Select_box';
+                break;
+            case 'radio':
+                $result = 'Radio_button';
+                break;
+            case 'text_box':
+                $result = 'Text_Box';
+                break;
+            case 'text_area':
+                $result = 'Text_Area';
+                break;
+            default:
+                $result = 'Text_Box';
+
+        }
+        return $result;
     }
 }
