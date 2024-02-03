@@ -31,7 +31,7 @@ class AdminAttributeValueCreate extends Component
     protected $rules = [
         'name' => ['required'],
         'value' => ['required', 'min:3', 'max:30'],
-        'priority' => ['required', 'numeric', 'gt:0', 'lt:999'],
+        'priority' => ['required', 'numeric', 'gt:0'],
 
     ];
 
@@ -45,7 +45,7 @@ class AdminAttributeValueCreate extends Component
 
                 AttributeValue::create([
                     'value' => $this->value,
-                    'attribute_id' => $this->attribute_id,
+                    'attribute_id' => $this->name,
                     'priority' => $this->priority,
                 ]);
                 $this->name = '';
@@ -60,7 +60,7 @@ class AdminAttributeValueCreate extends Component
             } elseif ($this->edit_mode == true) {
                 AttributeValue::where('id', $this->attribute_value_id)
                          ->update(['value' => $this->value,
-                                   'attribute_id' => $this->attribute_id,
+                                   'attribute_id' => $this->name,
                                    'priority' => $this->priority,]);
 
                 $this->name = '';
@@ -101,7 +101,7 @@ class AdminAttributeValueCreate extends Component
 
     public function deleteConfirmation($id)
     {
-        $this->attribute_id = $id;
+        $this->attribute_value_id = $id;
         $this->dispatchBrowserEvent('show-delete-confirmation');
     }
 
