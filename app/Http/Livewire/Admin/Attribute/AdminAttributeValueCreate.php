@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin\Attribute;
 
 use App\Models\Attribute;
+use App\Models\AttributeValue;
 use App\Models\Category;
 use Livewire\Component;
 
@@ -15,6 +16,7 @@ class AdminAttributeValueCreate extends Component
 
     public $name;
     public $value;
+    public $priority;
 
     public function mount($id)
     {
@@ -37,10 +39,10 @@ class AdminAttributeValueCreate extends Component
         try {
             if ($this->edit_mode == false) {
 
-                Attribute::create([
-                    'name' => $this->name,
-                    'type' => $this->type,
-                    'category_id' => $this->category_id,
+                AttributeValue::create([
+
+                    'value' => $this->value,
+                    'attribute_id' => $this->category_id,
                     'has_default_value' => $this->has_default_value,
                 ]);
                 $this->name = '';

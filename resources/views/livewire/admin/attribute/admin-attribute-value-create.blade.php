@@ -21,7 +21,7 @@
                 <div class="col">
                     <div class="row">
 
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             <div class="mt-3 mb-3">
                                 <label for="name" class="form-label">{{ __('messages.name') }}</label>
                                 <select class="form-control" wire:model.lazy="name" id="name">
@@ -36,9 +36,21 @@
                             </div>
                         </div>
 
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             <div class="mt-3 mb-3">
-                                <label for="value" class="form-label">{{ __('messages.name') }}</label>
+                                <label for="priority" class="form-label">{{ __('messages.priority') }}</label>
+                                <input type="number" min="1" max="999" class="form-control" id="priority" wire:model.defer="priority">
+                                @error('priority')
+                                <div class="alert alert-danger mt-3">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="mt-3 mb-3">
+                                <label for="value" class="form-label">{{ __('messages.value') }}</label>
                                 <input type="text" class="form-control" id="value" wire:model.defer="value">
                                 @error('value')
                                 <div class="alert alert-danger mt-3">
@@ -47,6 +59,7 @@
                                 @enderror
                             </div>
                         </div>
+
                     </div>
                 </div>
                 <div class="mb-3 mt-3">
@@ -71,31 +84,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingTwo">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Accordion Item #2
-                        </button>
-                    </h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingThree">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Accordion Item #3
-                        </button>
-                    </h2>
-                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                        </div>
-                    </div>
-                </div>
             </div>
+
         </div>
 
     </div>
