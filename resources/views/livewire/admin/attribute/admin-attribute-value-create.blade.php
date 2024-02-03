@@ -39,7 +39,8 @@
                         <div class="col-sm-4">
                             <div class="mt-3 mb-3">
                                 <label for="priority" class="form-label">{{ __('messages.priority') }}</label>
-                                <input type="number" min="1" max="999" class="form-control" id="priority" wire:model.defer="priority">
+                                <input type="number" min="1" max="999" class="form-control" id="priority"
+                                       wire:model.defer="priority">
                                 @error('priority')
                                 <div class="alert alert-danger mt-3">
                                     {{ $message }}
@@ -73,22 +74,107 @@
         <div class="row mt-4 category-list bg-white overflow-auto">
             <div class="accordion my-4" id="accordionExample">
                 @foreach($attributes as $attribute)
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingOne">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                           {{ $attribute->name }}
-                        </button>
-                    </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne-{{ $attribute->id }}" aria-expanded="true"
+                                    aria-controls="collapseOne">
+                                {{ $attribute->name }}
+                            </button>
+                        </h2>
+                        <div id="collapseOne-{{ $attribute->id }}" class="accordion-collapse collapse show"
+                             aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <table class="table table-striped table-responsive">
+                                    <thead class="border-bottom-3 border-top-3">
+                                    <tr class="text-center">
+                                        <th>{{ __('messages.id') }} </th>
+                                        <th>{{ __('messages.value')}}</th>
+                                        <th>{{ __('messages.priority') }}</th>
+                                        <th>{{ __('messages.edit_model')}}</th>
+                                        <th>{{ __('messages.delete_model')}}</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @forelse($attribute->values as $attribute)
+                                        <tr class="text-center">
+                                            <td>{{ $attribute->id }}</td>
+                                            <td>{{ $attribute->value }}</td>
+                                            <td>{{ $attribute->priority }}</td>
+                                            <td><a class="mt-3" href="javascript:void(0)"
+                                                   wire:click.edit="edit({{$attribute->id}})">
+                                                    <i class="mt-3 fa fa-edit"></i>
+                                                </a>
+                                            </td>
+                                            <td><a class="mt-3" href="javascript:void(0)"
+                                                   wire:click.prevent="deleteConfirmation({{ $attribute->id }})">
+                                                    <i class="mt-3 fa fa-trash"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @empty
+
+                                    @endforelse
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
-                </div>
                 @endforeach
             </div>
+
 
         </div>
 
     </div>
 </div>
+@push('dash_custom_script')
+    <script type="text/javascript">
+        window.addEventListener('show-delete-confirmation', event => {
+            Swal.fire({
+                title: 'آیا مطمئن هستید این ایتم حذف شود؟',
+                icon: 'error',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'بله حذف کن!',
+                cancelButtonText: 'خیر',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Livewire.emit('deleteConfirmed')
+                }
+            });
+        })
+    </script>
+    <script>
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top',
+            showConfirmButton: false,
+            showCloseButton: true,
+            timer: 5000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        });
+        window.addEventListener('show-result', ({detail: {type, message}}) => {
+            Toast.fire({
+                icon: type,
+                title: message
+            })
+        })
+        @if(session()->has('warning'))
+        Toast.fire({
+            icon: 'warning',
+            title: '{{ session()->get('warning') }}'
+        })
+        @elseif(session()->has('success'))
+        Toast.fire({
+            icon: 'success',
+            title: '{{ session()->get('success') }}'
+        })
+        @endif
+    </script>
+@endpush

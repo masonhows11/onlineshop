@@ -126,7 +126,7 @@ class AdminAttributeValueCreate extends Component
         return view('livewire.admin.attribute.admin-attribute-value-create')
             ->extends('admin_end.include.master_dash')
             ->section('dash_main_content')
-            ->with(['attributes' => Attribute::where('category_id', $this->category_id)->get(),
+            ->with(['attributes' => Attribute::where('category_id', $this->category_id)->where('has_default_value',1)->get(),
                     'category_name' => $this->category->title_persian]);
     }
 }
