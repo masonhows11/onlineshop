@@ -253,5 +253,6 @@ return [
         'has_default_value' => 'مقادیر پیش فرص',
         'value' => 'مقدار',
 
+
     ],
 ];

@@ -528,6 +528,7 @@ return [
     'new_tag' => 'جدید',
     'edit_mobile' => 'تغییر شماره موبایل',
     'keep_me_update_if_exists' => 'موجود شد خبرم کن',
+    'priority' => 'اولویت',
 
 
 ];

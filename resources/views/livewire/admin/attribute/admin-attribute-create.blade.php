@@ -20,7 +20,7 @@
                 <div class="col">
                     <div class="row">
 
-                        <div class="col-sm-4">
+                        <div class="col-sm-6">
                             <div class="mt-3 mb-3">
                                 <label for="name" class="form-label">{{ __('messages.name') }}</label>
                                 <input type="text" class="form-control" id="name"
@@ -33,7 +33,19 @@
                             </div>
                         </div>
 
-                        <div class="col-sm-4">
+                        <div class="col-sm-6">
+                            <div class="mt-3 mb-3">
+                                <label for="priority" class="form-label">{{ __('messages.priority') }}</label>
+                                <input type="number" min="1" max="999" class="form-control" id="priority" wire:model.defer="priority">
+                                @error('priority')
+                                <div class="alert alert-danger mt-3">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
                             <div class="mt-3 mb-3">
                                 <label for="type" class="form-label">{{ __('messages.type') }}</label>
                                 <select class="form-control" wire:model.lazy="type" id="type">
@@ -49,7 +61,7 @@
                             </div>
                         </div>
 
-                        <div class="col-sm-4">
+                        <div class="col-sm-6">
                             <div class="mt-3 mb-3">
                                 <label for="has_default_value"
                                        class="form-label">{{ __('messages.has_default_value') }}</label>
@@ -84,6 +96,7 @@
                         <th>{{ __('messages.id') }} </th>
                         <th>{{ __('messages.name')}}</th>
                         <th>{{ __('messages.type') }}</th>
+                        <th>{{ __('messages.priority') }}</th>
                         <th>{{ __('messages.has_default_value') }}</th>
 {{--                        <th>{{ __('messages.add_new_value') }}</th>--}}
                         <th>{{ __('messages.edit_model')}}</th>
@@ -96,6 +109,7 @@
                             <td>{{ $attribute->id }}</td>
                             <td>{{ $attribute->name }}</td>
                             <td>{{ $attribute->type_value }}</td>
+                            <td>{{ $attribute->priority }}</td>
                             <td>{{ $attribute->has_default_value == 1 ? __('messages.has_default_value') : __('messages.no_default_value') }}</td>
 
                            {{-- <td>

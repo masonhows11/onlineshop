@@ -16,18 +16,21 @@ class AdminAttributeCreate extends Component
 
     public $name;
     public $type;
+    public $priority;
     public $has_default_value;
 
-    public function mount($id){
+    public function mount($id)
+    {
 
         $this->category_id = $id;
-        $this->category = Category::where('id',$this->category_id)->select('title_persian')->first();
+        $this->category = Category::where('id', $this->category_id)->select('title_persian')->first();
 
     }
 
     protected $rules = [
         'name' => ['required', 'min:3', 'max:30'],
         'type' => ['required'],
+        'priority' => ['required', 'numeric', 'gt:0', 'lt:999'],
         'has_default_value' => ['required']
     ];
 
@@ -42,11 +45,13 @@ class AdminAttributeCreate extends Component
                 Attribute::create([
                     'name' => $this->name,
                     'type' => $this->type,
+                    'priority' => $this->priority,
                     'category_id' => $this->category_id,
                     'has_default_value' => $this->has_default_value,
                 ]);
                 $this->name = '';
                 $this->type = '';
+                $this->priority = '';
                 $this->has_default_value = '';
 
                 $this->dispatchBrowserEvent('show-result',
@@ -55,13 +60,15 @@ class AdminAttributeCreate extends Component
 
 
             } elseif ($this->edit_mode == true) {
-                Attribute::where('id',$this->attribute_id)
+                Attribute::where('id', $this->attribute_id)
                     ->update(['name' => $this->name,
-                             'type' => $this->type,
-                             'has_default_value'=>$this->has_default_value]);
+                        'type' => $this->type,
+                        'priority' => $this->priority,
+                        'has_default_value' => $this->has_default_value]);
 
                 $this->name = '';
                 $this->type = '';
+                $this->priority = '';
                 $this->has_default_value = '';
                 $this->edit_mode = false;
 
@@ -79,11 +86,12 @@ class AdminAttributeCreate extends Component
     public function edit($id)
     {
 
-        $this->attribute_id= $id;
+        $this->attribute_id = $id;
         try {
             $attribute = Attribute::findOrFail($id);
             $this->name = $attribute->name;
             $this->type = $attribute->type;
+            $this->priority = $attribute->priority;
             $this->has_default_value = $attribute->has_default_value;
             $this->edit_mode = true;
 
@@ -120,12 +128,13 @@ class AdminAttributeCreate extends Component
         }
         return null;
     }
+
     public function render()
     {
         return view('livewire.admin.attribute.admin-attribute-create')
             ->extends('admin_end.include.master_dash')
             ->section('dash_main_content')
-            ->with(['attributes' => Attribute::where('category_id',$this->category_id)->get() ,
+            ->with(['attributes' => Attribute::where('category_id', $this->category_id)->orderBy('priority','asc')->get(),
                 'category_name' => $this->category->title_persian]);
     }
 }
