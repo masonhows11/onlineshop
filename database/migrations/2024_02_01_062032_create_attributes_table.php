@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('code')->unique()->nullable();
             $table->string('name')->nullable();
             $table->enum('type',['select','radio','text_box','text_area'])->nullable();
+            $table->unsignedInteger('priority')->nullable();
             $table->tinyInteger('has_default_value')->nullable();
             $table->unsignedBigInteger('category_id')->nullable();
             $table->boolean('is_filterable')->default(0);

@@ -13,7 +13,7 @@ class AttributeValue extends Model
 
 
     protected $fillable = [
-        'attribute_id', 'value'
+        'attribute_id','priority','value',
     ];
 
     protected $casts = [

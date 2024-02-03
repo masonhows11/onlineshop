@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('attribute_id');
             $table->foreign('attribute_id')->references('id')->on('attributes');
+            $table->unsignedInteger('priority')->nullable();
             $table->text('value');
             $table->timestamps();
         });
