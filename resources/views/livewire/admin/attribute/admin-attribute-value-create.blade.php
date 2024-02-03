@@ -38,19 +38,6 @@
 
                         <div class="col-sm-4">
                             <div class="mt-3 mb-3">
-                                <label for="priority" class="form-label">{{ __('messages.priority') }}</label>
-                                <input type="number" min="1" max="999" class="form-control" id="priority"
-                                       wire:model.defer="priority">
-                                @error('priority')
-                                <div class="alert alert-danger mt-3">
-                                    {{ $message }}
-                                </div>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="col-sm-4">
-                            <div class="mt-3 mb-3">
                                 <label for="value" class="form-label">{{ __('messages.value') }}</label>
                                 <input type="text" class="form-control" id="value" wire:model.defer="value">
                                 @error('value')
@@ -61,12 +48,25 @@
                             </div>
                         </div>
 
+                        <div class="col-sm-4">
+                            <div class="mt-3 mb-3">
+                                <label for="priority" class="form-label">{{ __('messages.priority') }}</label>
+                                <input type="number" min="1" max="999" class="form-control" id="priority" wire:model.defer="priority">
+                                @error('priority')
+                                <div class="alert alert-danger mt-3">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                        </div>
+
+
+
                     </div>
                 </div>
                 <div class="mb-3 mt-3">
                     <button type="submit" id="add_attribute" class="btn btn-success ">{{ __('messages.save') }}</button>
-                    <a href="{{ route('admin.attribute.value.index') }}"
-                       class="btn btn-secondary">{{ __('messages.return') }}</a>
+                    <a href="{{ route('admin.attribute.value.index') }}" class="btn btn-secondary">{{ __('messages.return') }}</a>
                 </div>
             </form>
         </div>

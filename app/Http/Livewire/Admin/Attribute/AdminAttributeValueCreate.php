@@ -10,6 +10,7 @@ use Livewire\Component;
 class AdminAttributeValueCreate extends Component
 {
     public $category;
+    public $category_name;
     public $category_id;
     public $attribute_id;
     public $attribute_value_id;
@@ -22,14 +23,16 @@ class AdminAttributeValueCreate extends Component
     public function mount($id)
     {
         $this->category_id = $id;
-        $this->category = Category::where('id', $this->category_id)->select('title_persian')->first();
+        $this->category = Category::where('id', $id)->select('title_persian')->first();
+        $this->category_name = $this->category->title_persian;
 
     }
 
     protected $rules = [
         'name' => ['required'],
-        'priority' => ['required', 'numeric', 'gt:0', 'lt:999'],
         'value' => ['required', 'min:3', 'max:30'],
+        'priority' => ['required', 'numeric', 'gt:0', 'lt:999'],
+
     ];
 
 
@@ -41,9 +44,8 @@ class AdminAttributeValueCreate extends Component
             if ($this->edit_mode == false) {
 
                 AttributeValue::create([
-
                     'value' => $this->value,
-                    'attribute_id' => $this->category_id,
+                    'attribute_id' => $this->attribute_id,
                     'priority' => $this->priority,
                 ]);
                 $this->name = '';
@@ -56,9 +58,10 @@ class AdminAttributeValueCreate extends Component
 
 
             } elseif ($this->edit_mode == true) {
-                Attribute::where('id', $this->attribute_id)
+                AttributeValue::where('id', $this->attribute_value_id)
                          ->update(['value' => $this->value,
-                                 'priority' => $this->priority,]);
+                                   'attribute_id' => $this->attribute_id,
+                                   'priority' => $this->priority,]);
 
                 $this->name = '';
                 $this->value = '';
@@ -79,10 +82,10 @@ class AdminAttributeValueCreate extends Component
     public function edit($id)
     {
 
-        $this->attribute_id = $id;
+        $this->attribute_value_id = $id;
         try {
             $attribute = AttributeValue::findOrFail($id);
-
+            $this->name = $attribute->attribute_id;
             $this->value = $attribute->value;
             $this->priority = $attribute->priority;
             $this->edit_mode = true;
@@ -126,7 +129,7 @@ class AdminAttributeValueCreate extends Component
         return view('livewire.admin.attribute.admin-attribute-value-create')
             ->extends('admin_end.include.master_dash')
             ->section('dash_main_content')
-            ->with(['attributes' => Attribute::where('category_id', $this->category_id)->where('has_default_value',1)->get(),
-                    'category_name' => $this->category->title_persian]);
+            ->with(['attributes' =>
+                Attribute::where('category_id', $this->category_id)->where('has_default_value',1)->get()]);
     }
 }
