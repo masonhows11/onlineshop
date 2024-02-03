@@ -42,6 +42,7 @@ return [
     'not_defined' => 'تعریف نشده',
     'enabled' => 'فعال',
     'disabled' => 'غیر فعال',
+    'reset_input' => 'ریست کردن فرم',
 
     'delete_model' => 'حذف',
     'edit_model' => 'ویرایش',

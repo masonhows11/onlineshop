@@ -66,6 +66,7 @@
                 </div>
                 <div class="mb-3 mt-3">
                     <button type="submit" id="add_attribute" class="btn btn-success ">{{ __('messages.save') }}</button>
+                    <button type="reset" wire:click.reset="resetInput()" id="reset_attribute" class="btn btn-primary">{{ __('messages.reset_input') }}</button>
                     <a href="{{ route('admin.attribute.value.index') }}" class="btn btn-secondary">{{ __('messages.return') }}</a>
                 </div>
             </form>

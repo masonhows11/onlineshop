@@ -98,6 +98,14 @@ class AdminAttributeValueCreate extends Component
 
     }
 
+    public function resetInput()
+    {
+        $this->name = '';
+        $this->value = '';
+        $this->priority = '';
+        $this->edit_mode = false;
+    }
+
 
     public function deleteConfirmation($id)
     {
