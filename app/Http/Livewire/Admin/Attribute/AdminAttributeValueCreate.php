@@ -12,6 +12,7 @@ class AdminAttributeValueCreate extends Component
     public $category;
     public $category_id;
     public $attribute_id;
+    public $attribute_value_id;
     public $edit_mode = false;
 
     public $name;
@@ -27,8 +28,8 @@ class AdminAttributeValueCreate extends Component
 
     protected $rules = [
         'name' => ['required'],
+        'priority' => ['required', 'numeric', 'gt:0', 'lt:999'],
         'value' => ['required', 'min:3', 'max:30'],
-
     ];
 
 
@@ -43,11 +44,11 @@ class AdminAttributeValueCreate extends Component
 
                     'value' => $this->value,
                     'attribute_id' => $this->category_id,
-                    'has_default_value' => $this->has_default_value,
+                    'priority' => $this->priority,
                 ]);
                 $this->name = '';
-                $this->type = '';
-                $this->has_default_value = '';
+                $this->value = '';
+                $this->priority = '';
 
                 $this->dispatchBrowserEvent('show-result',
                     ['type' => 'success',
@@ -56,13 +57,12 @@ class AdminAttributeValueCreate extends Component
 
             } elseif ($this->edit_mode == true) {
                 Attribute::where('id', $this->attribute_id)
-                    ->update(['name' => $this->name,
-                        'type' => $this->type,
-                        'has_default_value' => $this->has_default_value]);
+                         ->update(['value' => $this->value,
+                                 'priority' => $this->priority,]);
 
                 $this->name = '';
-                $this->type = '';
-                $this->has_default_value = '';
+                $this->value = '';
+                $this->priority = '';
                 $this->edit_mode = false;
 
                 $this->dispatchBrowserEvent('show-result',
@@ -81,10 +81,10 @@ class AdminAttributeValueCreate extends Component
 
         $this->attribute_id = $id;
         try {
-            $attribute = Attribute::findOrFail($id);
-            $this->name = $attribute->name;
-            $this->type = $attribute->type;
-            $this->has_default_value = $attribute->has_default_value;
+            $attribute = AttributeValue::findOrFail($id);
+
+            $this->value = $attribute->value;
+            $this->priority = $attribute->priority;
             $this->edit_mode = true;
 
 
@@ -110,7 +110,7 @@ class AdminAttributeValueCreate extends Component
     {
         try {
 
-            $model = Attribute::findOrFail($this->attribute_id);
+            $model = AttributeValue::findOrFail($this->attribute_value_id);
             $model->delete();
             $this->dispatchBrowserEvent('show-result',
                 ['type' => 'success',
@@ -126,6 +126,7 @@ class AdminAttributeValueCreate extends Component
         return view('livewire.admin.attribute.admin-attribute-value-create')
             ->extends('admin_end.include.master_dash')
             ->section('dash_main_content')
-            ->with(['attributes' => Attribute::where('category_id', $this->category_id)->get(), 'category_name' => $this->category->title_persian]);
+            ->with(['attributes' => Attribute::where('category_id', $this->category_id)->get(),
+                    'category_name' => $this->category->title_persian]);
     }
 }
