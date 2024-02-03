@@ -74,7 +74,7 @@
         <div class="row mt-4 category-list bg-white overflow-auto">
             <div class="accordion my-4" id="accordionExample">
                 @foreach($attributes as $attribute)
-                    <div class="accordion-item">
+                    <div class="accordion-item mt-5 border border-2">
                         <h2 class="accordion-header" id="headingOne">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseOne-{{ $attribute->id }}" aria-expanded="true"
