@@ -441,7 +441,6 @@ Breadcrumbs::for('admin.order.details', function ($trail) {
 });
 
 // setting
-
 Breadcrumbs::for('admin.setting.index', function ($trail) {
     $trail->parent('admin.dashboard');
     $trail->push(__('messages.setting_site'),route('admin.setting.index'));
@@ -464,69 +463,3 @@ Breadcrumbs::for('admin.product.create.tags', function ($trail,$title) {
     $trail->push($title);
     $trail->push(__('messages.tags_management'));
 });
-
-
-
-// specification
-//Breadcrumbs::for('admin.specification', function ($trail) {
-//    $trail->parent('admin.dashboard');
-//    $trail->push('مشخصات فنی', route('admin.specification.index'));
-//});
-//
-//Breadcrumbs::for('admin.specification.create', function ($trail,$type_id,$type_title) {
-//    $trail->parent('admin.dashboard');
-//    $trail->push('نوع کالا',route('admin.specification.index'));
-//    $trail->push('مشخصات فنی', route('admin.specification.new',$type_id));
-//    $trail->push($type_title);
-//});
-
-// specification options
-
-//Breadcrumbs::for('admin.specification.options', function ($trail) {
-//    $trail->parent('admin.dashboard');
-//    $trail->push('مقادیر مشخصات فنی',route('admin.specification.option.index'));
-//
-//});
-//
-//Breadcrumbs::for('admin.specification.options.create', function ($trail,$category_id,$category_title) {
-//    $trail->parent('admin.dashboard');
-//    $trail->push('نوع کالا', route('admin.specification.option.index'));
-//    $trail->push('مقادیر مشخصات فنی', route('admin.specification.option.new',$category_id));
-//    $trail->push($category_title);
-//});
-
-
-// attribute
-//
-//Breadcrumbs::for('admin.attributes', function ($trail) {
-//    $trail->parent('admin.dashboard');
-//    $trail->push('ویژگی ها', route('admin.attributes.index'));
-//});
-//
-//Breadcrumbs::for('admin.attributes.create', function ($trail) {
-//    $trail->parent('admin.dashboard');
-//    $trail->push('ویژگی ها', route('admin.attributes.index'));
-//    $trail->push('ویژگی جدید', route('admin.attributes.create'));
-//});
-//
-//Breadcrumbs::for('admin.attributes.edit', function ($trail, $attribute) {
-//    $trail->parent('admin.dashboard');
-//    $trail->push('ویژگی ها', route('admin.attributes.index'));
-//    $trail->push('ویرایش ویژگی');
-//    $trail->push($attribute, route('admin.attributes.edit', $attribute));
-//});
-
-// attribute value
-
-//Breadcrumbs::for('admin.attributes.value', function ($trail, $attribute) {
-//    $trail->parent('admin.dashboard');
-//    $trail->push('ویژگی ها', route('admin.attributes.index'));
-//    $trail->push($attribute, route('admin.attributes.value', $attribute));
-//});
-//
-//
-//Breadcrumbs::for('admin.attributes.value.create', function ($trail) {
-//    $trail->parent('admin.dashboard');
-//    $trail->push('ویژگی ها', route('admin.attributes.index'));
-//    $trail->push('مقدار جدید', route('admin.attributes.values.create'));
-//});
