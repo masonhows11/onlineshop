@@ -78,8 +78,9 @@
 
                     <th class="pro-field status-field p-4">{{ __('messages.status') }}</th>
                     <th class="pro-field p-4">{{ __('messages.product_price') }}</th>
-                    <th class="pro-field p-4">{{ __('messages.product_guarantee') }}</th>
+                    <th class="pro-field p-4">{{ __('messages.product_manage_guarantee') }}</th>
                     <th class="pro-field p-4">{{ __('messages.product_property') }}</th>
+                    <th class="pro-field p-4">{{ __('messages.product_manage_specifications') }}</th>
                     <th class="pro-field p-4">{{ __('messages.product_images') }}</th>
                     <th class="pro-field p-4">{{ __('messages.product_colors') }}</th>
                     <th class="pro-field p-4">{{ __('messages.product_tags') }}</th>
@@ -128,6 +129,11 @@
                         <td class="pro-field">
                             <a href="{{ route('admin.product.create.property',['product' => $product->id ]) }}" class="btn btn-sm btn-primary">
                               {{ __('messages.properties') }}
+                            </a>
+                        </td>
+                        <td class="pro-field">
+                            <a href="{{ route('admin.product.create.specifications',['product' => $product->id ]) }}" class="btn btn-sm btn-primary">
+                                {{ __('messages.product_specifications') }}
                             </a>
                         </td>
 {{--                        <i class="fa fa-images mt-3"></i>--}}

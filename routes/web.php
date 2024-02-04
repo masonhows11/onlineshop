@@ -28,6 +28,7 @@ use App\Http\Controllers\Dash\Payment\PaymentController;
 use App\Http\Controllers\Dash\Product\ProductCreateColorController;
 use App\Http\Controllers\Dash\Product\ProductCreateController;
 use App\Http\Controllers\Dash\Product\ProductCreateImageController;
+use App\Http\Controllers\Dash\Product\ProductCreateSpecificationsController;
 use App\Http\Controllers\Dash\Product\ProductCreateTagController;
 use App\Http\Controllers\Dash\Product\ProductEditController;
 use App\Http\Controllers\Dash\Product\ProductMetaController;
@@ -354,7 +355,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin'
 
     // crud other product feathers
     Route::get('/product/create/property/{product}', [ProductMetaController::class, 'index'])->name('product.create.property');
-
+    Route::get('/product/create/specifications/{product}', [ProductCreateSpecificationsController::class, 'index'])->name('product.create.specifications');
     Route::get('/product/create/images/{product}', [ProductCreateImageController::class, 'create'])->name('product.create.images');
     Route::get('/product/create/colors/{product}', [ProductCreateColorController::class, 'create'])->name('product.create.colors');
     Route::get('/product/create/tags/{product}',[ProductCreateTagController::class,'create'])->name('product.create.tags');

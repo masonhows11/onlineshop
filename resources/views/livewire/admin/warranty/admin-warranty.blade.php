@@ -56,7 +56,7 @@
                     <div class="row my-4">
                         <div class="col">
                             <button type="submit" id="add_attribute" class="btn btn-success btn-sm">{{ __('messages.save') }}</button>
-                            <a href="{{ route('admin.product.create.meta',['product' => $product->id]) }}" class="btn btn-primary btn-sm">{{ __('messages.product_meta') }}</a>
+                            <a href="{{ route('admin.product.create.property',['product' => $product->id]) }}" class="btn btn-primary btn-sm">{{ __('messages.product_property') }}</a>
                         </div>
                         <div class="col d-flex justify-content-end">
                             <a href="{{ route('admin.product.index') }}" class="btn btn-secondary btn-sm">{{ __('messages.product_list') }}</a>

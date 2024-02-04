@@ -7,7 +7,7 @@
         <div class="row ms-2 my-3">
             <div class="col-lg-3 col-md-3 col title-product">
                 <div class="alert bg-white text-center">
-                    {{ __('messages.product_meta') }}
+                    {{ __('messages.product_property') }}
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col title-product">
@@ -67,8 +67,8 @@
                    <thead>
                    <tr class="text-center">
                        <th>{{ __('messages.id') }}</th>
-                       <th>{{ __('messages.product_meta_key') }}</th>
-                       <th>{{ __('messages.product_meta_value') }}</th>
+                       <th>{{ __('messages.product_property_key') }}</th>
+                       <th>{{ __('messages.product_property_value') }}</th>
                        <th>{{ __('messages.edit_model') }}</th>
                        <th>{{ __('messages.delete_model') }}</th>
                    </tr>
