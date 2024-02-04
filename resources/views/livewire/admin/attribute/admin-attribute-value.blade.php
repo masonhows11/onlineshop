@@ -3,7 +3,7 @@
         {{ __('messages.product_specifications_values') }}
     @endsection
     @section('breadcrumb')
-        {{ Breadcrumbs::render('admin.create.specification.values') }}
+        {{ Breadcrumbs::render('admin.create.specification.values.category') }}
     @endsection
         <div class="container-fluid">
             <div class="row d-flex justify-content-start my-4 bg-white">

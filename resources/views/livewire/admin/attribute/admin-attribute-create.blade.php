@@ -3,7 +3,7 @@
         {{ __('messages.add_new_specification') }}
     @endsection
     @section('breadcrumb')
-        {{-- {{ Breadcrumbs::render('admin.delivery.index') }}--}}
+        {{ Breadcrumbs::render('admin.create.specifications',$category_name) }}
     @endsection
     <div class="container-fluid">
 
@@ -98,7 +98,6 @@
                         <th>{{ __('messages.type') }}</th>
                         <th>{{ __('messages.priority') }}</th>
                         <th>{{ __('messages.has_default_value') }}</th>
-{{--                        <th>{{ __('messages.add_new_value') }}</th>--}}
                         <th>{{ __('messages.edit_model')}}</th>
                         <th>{{ __('messages.delete_model')}}</th>
                     </tr>
@@ -111,18 +110,6 @@
                             <td>{{ $attribute->type_value }}</td>
                             <td>{{ $attribute->priority }}</td>
                             <td>{{ $attribute->has_default_value == 1 ? __('messages.has_default_value') : __('messages.no_default_value') }}</td>
-
-                           {{-- <td>
-                                @if( $attribute->has_default_value == 1)
-                                    <a href="" class="mx-4 btn btn-sm btn-success">
-                                        {{ __('messages.add_new_default_value') }}
-                                    </a>
-                                @else
-                                    <a href="javascript:void(0)" class="mx-4 btn btn-sm btn-danger">
-                                        {{ __('messages.no_default_value') }}
-                                    </a>
-                                @endif
-                            </td>--}}
                             <td>
                                 <a class="mt-3" href="javascript:void(0)" wire:click.edit="edit({{$attribute->id}})">
                                     <i class="mt-3 fa fa-edit"></i>
@@ -134,7 +121,6 @@
                                     <i class="mt-3 fa fa-trash"></i>
                                 </a>
                             </td>
-
                         </tr>
                     @endforeach
                     </tbody>

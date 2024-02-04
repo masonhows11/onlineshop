@@ -201,17 +201,33 @@ Breadcrumbs::for('admin.create.specifications.product', function ($trail,$title)
     $trail->push(__('messages.product_specifications'));
 });
 
-// create   specifications
-Breadcrumbs::for('admin.create.specifications', function ($trail,$title = null) {
+// create   specifications category list
+Breadcrumbs::for('admin.create.specifications.category', function ($trail,$title = null) {
     $trail->parent('admin.dashboard');
     $trail->push(__('messages.product_specifications'));
     $trail->push(__('messages.categories'));
 });
-// create   specification values
-Breadcrumbs::for('admin.create.specification.values', function ($trail,$title = null) {
+// create   specification values category list
+Breadcrumbs::for('admin.create.specification.values.category', function ($trail,$title = null) {
     $trail->parent('admin.dashboard');
     $trail->push(__('messages.product_specifications_values'));
     $trail->push(__('messages.categories'));
+});
+
+// create  specifications
+Breadcrumbs::for('admin.create.specifications', function ($trail,$title ) {
+    $trail->parent('admin.dashboard');
+    $trail->push(__('messages.product_specifications'));
+    $trail->push(__('messages.categories'));
+    $trail->push($title);
+});
+
+// create specification values
+Breadcrumbs::for('admin.create.specification.values', function ($trail,$title) {
+    $trail->parent('admin.dashboard');
+    $trail->push(__('messages.product_specifications_values'));
+    $trail->push(__('messages.categories'));
+    $trail->push($title);
 });
 
 
