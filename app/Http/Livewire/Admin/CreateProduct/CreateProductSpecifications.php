@@ -14,6 +14,16 @@ class CreateProductSpecifications extends Component
         $this->product_id = $product;
         $this->product = Product::where('id', $product)->select(['id', 'title_persian'])->first();
 
+
+    }
+
+    protected $rules = [
+        'name' => ['required'],
+        'type' => ['required'],
+    ];
+
+    public function save(){
+
     }
 
     public function deleteConfirmation($id)
@@ -25,6 +35,8 @@ class CreateProductSpecifications extends Component
     protected $listeners = [
         'deleteConfirmed' => 'deleteModel',
     ];
+
+
 
     public function deleteModel()
     {

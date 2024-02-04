@@ -21,7 +21,7 @@
 
                 <div class="col  bg-white">
 
-                   {{-- <form wire:submit.prevent="save">
+                    <form wire:submit.prevent="save">
 
                         <div class="row product-meta-form">
                             <div class="col-sm-6 mt-5 mb-5">
@@ -54,7 +54,7 @@
                             </div>
                         </div>
 
-                    </form>--}}
+                    </form>
 
                 </div>
             </div>
