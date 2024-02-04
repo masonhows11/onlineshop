@@ -3,7 +3,7 @@
         {{ __('messages.has_specifications') }}
     @endsection
     @section('breadcrumb')
-        {{-- {{ Breadcrumbs::render('admin.delivery.index') }}--}}
+        {{ Breadcrumbs::render('admin.create.specifications') }}
     @endsection
     <div class="container-fluid">
 

@@ -194,13 +194,26 @@ Breadcrumbs::for('admin.create.product.colors', function ($trail,$title) {
     $trail->push(__('messages.product_colors'));
 });
 
-// create attribute product value
-Breadcrumbs::for('admin.create.attribute.product', function ($trail,$title) {
+// create  product specifications value
+Breadcrumbs::for('admin.create.specifications.product', function ($trail,$title) {
     $trail->parent('admin.dashboard');
     $trail->push('لیست محصولات', route('admin.product.index'));
-    $trail->push($title);
     $trail->push(__('messages.product_specifications'));
 });
+
+// create   specifications
+Breadcrumbs::for('admin.create.specifications', function ($trail,$title = null) {
+    $trail->parent('admin.dashboard');
+    $trail->push(__('messages.product_specifications'));
+    $trail->push(__('messages.categories'));
+});
+// create   specification values
+Breadcrumbs::for('admin.create.specification.values', function ($trail,$title = null) {
+    $trail->parent('admin.dashboard');
+    $trail->push(__('messages.product_specifications_values'));
+    $trail->push(__('messages.categories'));
+});
+
 
 // create category attribute
 Breadcrumbs::for('admin.create.category.attribute', function ($trail) {
@@ -214,8 +227,6 @@ Breadcrumbs::for('admin.create.category.attribute.value', function ($trail,$titl
     $trail->push('لیست ویژگی ها',route('admin.category.attribute.index'));
     $trail->push($title);
 });
-
-
 
 // admin comment section
 Breadcrumbs::for('admin.comment.product.list', function ($trail) {
