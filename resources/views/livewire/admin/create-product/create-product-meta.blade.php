@@ -25,7 +25,7 @@
 
                     <div class="row product-meta-form">
                         <div class="col-sm-6 mt-5 mb-5">
-                            <label for="meta_key" class="form-label">{{ __('messages.product_meta_key') }}</label>
+                            <label for="meta_key" class="form-label">{{ __('messages.product_property_key') }}</label>
                             <input type="text" class="form-control" id="meta_key" wire:model.defer="meta_key">
                             @error('meta_key')
                             <div class="alert alert-danger mt-3">
@@ -34,7 +34,7 @@
                             @enderror
                         </div>
                         <div class="col-sm-6 mt-5 mb-5">
-                            <label for="meta_value" class="form-label">{{ __('messages.product_meta_value') }}</label>
+                            <label for="meta_value" class="form-label">{{ __('messages.product_property_value') }}</label>
                             <input type="text" class="form-control" id="meta_value" wire:model.defer="meta_value">
                             @error('meta_value')
                             <div class="alert alert-danger mt-3">

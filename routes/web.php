@@ -351,8 +351,10 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin'
     // edit product
     Route::get('/product/edit/basic/{product}', [ProductEditController::class, 'edit'])->name('product.edit.basic');
     Route::post('/product/update/basic', [ProductEditController::class, 'update'])->name('product.update.basic');
+
     // crud other product feathers
-    Route::get('/product/create/meta/{product}', [ProductMetaController::class, 'index'])->name('product.create.meta');
+    Route::get('/product/create/property/{product}', [ProductMetaController::class, 'index'])->name('product.create.property');
+
     Route::get('/product/create/images/{product}', [ProductCreateImageController::class, 'create'])->name('product.create.images');
     Route::get('/product/create/colors/{product}', [ProductCreateColorController::class, 'create'])->name('product.create.colors');
     Route::get('/product/create/tags/{product}',[ProductCreateTagController::class,'create'])->name('product.create.tags');

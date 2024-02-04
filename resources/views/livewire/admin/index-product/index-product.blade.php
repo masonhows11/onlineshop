@@ -79,7 +79,7 @@
                     <th class="pro-field status-field p-4">{{ __('messages.status') }}</th>
                     <th class="pro-field p-4">{{ __('messages.product_price') }}</th>
                     <th class="pro-field p-4">{{ __('messages.product_guarantee') }}</th>
-                    <th class="pro-field p-4">{{ __('messages.product_meta') }}</th>
+                    <th class="pro-field p-4">{{ __('messages.product_property') }}</th>
                     <th class="pro-field p-4">{{ __('messages.product_images') }}</th>
                     <th class="pro-field p-4">{{ __('messages.product_colors') }}</th>
                     <th class="pro-field p-4">{{ __('messages.product_tags') }}</th>
@@ -123,8 +123,8 @@
                                     class="fa fa-shield-alt mt-3"></i></a>
                         </td>
                         <td class="pro-field">
-                            <a href="{{ route('admin.product.create.meta',['product' => $product->id ]) }}"><i
-                                    class="fa fa-list mt-3"></i></a>
+                            <a href="{{ route('admin.product.create.property',['product' => $product->id ]) }}">
+                                <i class="fa fa-list mt-3"></i></a>
                         </td>
                         <td class="pro-field">
                             <a href="{{ route('admin.product.create.images',['product' => $product->id ]) }}"><i
