@@ -9,6 +9,22 @@ class AttributeProduct extends Model
 {
     use HasFactory;
     protected $table = 'attribute_products';
-    protected $fillable = [];
+    protected $fillable = ['product_id','attribute_id','type','values'];
+
+
+
+    protected  $casts = [
+        'values' => 'array',
+    ];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
+
+    public function attribute()
+    {
+        return $this->belongsTo(Attribute::class);
+    }
 
 }

@@ -13,6 +13,17 @@ return new class extends Migration
     {
         Schema::create('attribute_products', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('product_id')->nullable();
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+
+            $table->unsignedBigInteger('attribute_id')->nullable();
+            $table->foreign('attribute_id')->references('id')->on('attributes')->onDelete('cascade');
+
+            $table->string('type')->nullable();
+            $table->text('values')->nullable();
+
+
+
             $table->timestamps();
         });
     }

@@ -165,4 +165,9 @@ class Product extends Model
             $this->belongsToMany(Compare::class,'compare_product');
     }
 
+    public function attributes(){
+
+        return $this->hasMany(AttributeProduct::class);
+    }
+
 }
