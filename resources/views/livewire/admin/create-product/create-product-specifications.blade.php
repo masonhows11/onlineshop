@@ -1,6 +1,6 @@
 <div>
     @section('breadcrumb')
-       {{ Breadcrumbs::render('admin.create.attribute.product',$product->title_persian) }}
+       {{ Breadcrumbs::render('admin.create.specifications.product',$product->title_persian) }}
     @endsection
         <div class="container-fluid product-meta-section">
 

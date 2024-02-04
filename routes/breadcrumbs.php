@@ -175,7 +175,7 @@ Breadcrumbs::for('admin.create.product.meta', function ($trail,$title) {
     $trail->parent('admin.dashboard');
     $trail->push('لیست محصولات', route('admin.product.index'));
     $trail->push($title);
-    $trail->push(__('messages.product_meta'));
+    $trail->push(__('messages.product_property'));
 });
 
 // create product warranty
@@ -199,6 +199,7 @@ Breadcrumbs::for('admin.create.specifications.product', function ($trail,$title)
     $trail->parent('admin.dashboard');
     $trail->push('لیست محصولات', route('admin.product.index'));
     $trail->push(__('messages.product_specifications'));
+    $trail->push($title);
 });
 
 // create   specifications category list
