@@ -24,16 +24,23 @@
                     <form wire:submit.prevent="save">
 
                         <div class="row product-meta-form">
-                            <div class="col-sm-6 mt-5 mb-5">
-                                <label for="meta_key" class="form-label">{{ __('messages.product_property_key') }}</label>
-                                <input type="text" class="form-control" id="meta_key" wire:model.defer="meta_key">
-                                @error('meta_key')
-                                <div class="alert alert-danger mt-3">
-                                    {{ $message }}
+
+                            <div class="col-sm-4">
+                                <div class="mt-3 mb-3">
+                                    <label for="name" class="form-label">{{ __('messages.name') }}</label>
+                                    <select class="form-control" wire:model.lazy="name" id="name">
+                                        <option>انتخاب کنید</option>
+                                        @foreach($attributes as $attribute)
+                                            <option value="{{ $attribute->id }}">{{ $attribute->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('name')
+                                    <div class="alert alert-danger mt-3">{{ $message }}</div>
+                                    @enderror
                                 </div>
-                                @enderror
                             </div>
-                            <div class="col-sm-6 mt-5 mb-5">
+
+                            <div class="col-sm-4 mt-5 mb-5">
                                 <label for="meta_value" class="form-label">{{ __('messages.product_property_value') }}</label>
                                 <input type="text" class="form-control" id="meta_value" wire:model.defer="meta_value">
                                 @error('meta_value')
@@ -42,6 +49,7 @@
                                 </div>
                                 @enderror
                             </div>
+
                         </div>
 
                         <div class="row my-4">

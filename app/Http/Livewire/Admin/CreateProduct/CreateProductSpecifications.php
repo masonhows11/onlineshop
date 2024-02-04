@@ -13,8 +13,6 @@ class CreateProductSpecifications extends Component
     {
         $this->product_id = $product;
         $this->product = Product::where('id', $product)->select(['id', 'title_persian'])->first();
-
-
     }
 
     protected $rules = [
@@ -43,7 +41,8 @@ class CreateProductSpecifications extends Component
         try {
            /*
             $model = ProductMeta::findOrFail($this->meta_id);
-            $model->delete();*/
+            $model->delete();
+           */
             $this->dispatchBrowserEvent('show-result',
                 ['type' => 'success',
                     'message' => __('messages.The_deletion_was_successful')]);
