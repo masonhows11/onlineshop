@@ -194,6 +194,14 @@ Breadcrumbs::for('admin.create.product.colors', function ($trail,$title) {
     $trail->push(__('messages.product_colors'));
 });
 
+// create attribute product value
+Breadcrumbs::for('admin.create.attribute.product', function ($trail,$title) {
+    $trail->parent('admin.dashboard');
+    $trail->push('لیست محصولات', route('admin.product.index'));
+    $trail->push($title);
+    $trail->push(__('messages.product_specifications'));
+});
+
 // create category attribute
 Breadcrumbs::for('admin.create.category.attribute', function ($trail) {
     $trail->parent('admin.dashboard');
@@ -206,6 +214,8 @@ Breadcrumbs::for('admin.create.category.attribute.value', function ($trail,$titl
     $trail->push('لیست ویژگی ها',route('admin.category.attribute.index'));
     $trail->push($title);
 });
+
+
 
 // admin comment section
 Breadcrumbs::for('admin.comment.product.list', function ($trail) {
