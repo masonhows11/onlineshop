@@ -107,6 +107,7 @@ return [
     'search' => 'جستجو....',
     'save' => 'ذخیره',
     'product_list' => 'لیست محصولات',
+    'properties' => 'ویژگی ها',
     'product_property' => ' مدیریت ویژگی ها',
     'product_property_key' => 'عنوان ویژگی',
     'product_property_value' => 'مقدار ویژگی',

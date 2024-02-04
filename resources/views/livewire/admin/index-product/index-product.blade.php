@@ -118,25 +118,35 @@
                                 {{ priceFormat($product->origin_price) }} {{__('messages.toman')}}
                             </p>
                         </td>
+{{--                        <i class="fa fa-shield-alt mt-3"></i>--}}
                         <td class="pro-field">
-                            <a href="{{ route('admin.product.guarantee.index',['product' => $product->id ]) }}"><i
-                                    class="fa fa-shield-alt mt-3"></i></a>
+                            <a href="{{ route('admin.product.guarantee.index',['product' => $product->id ]) }}" class="btn btn-sm btn-primary">
+                             {{__('messages.product_guarantee')}}
+                            </a>
                         </td>
+{{--                        <i class="fa fa-list mt-3"></i>--}}
                         <td class="pro-field">
-                            <a href="{{ route('admin.product.create.property',['product' => $product->id ]) }}">
-                                <i class="fa fa-list mt-3"></i></a>
+                            <a href="{{ route('admin.product.create.property',['product' => $product->id ]) }}" class="btn btn-sm btn-primary">
+                              {{ __('messages.properties') }}
+                            </a>
                         </td>
+{{--                        <i class="fa fa-images mt-3"></i>--}}
                         <td class="pro-field">
-                            <a href="{{ route('admin.product.create.images',['product' => $product->id ]) }}"><i
-                                    class="fa fa-images mt-3"></i></a>
+                            <a href="{{ route('admin.product.create.images',['product' => $product->id ]) }}" class="btn btn-sm btn-primary">
+                                {{ __('messages.images') }}
+                            </a>
                         </td>
+{{--                        <i class="fa fa-paint-brush mt-3"></i>--}}
                         <td class="pro-field">
-                            <a href="{{ route('admin.product.create.colors',['product' => $product->id ]) }}"><i
-                                    class="fa fa-paint-brush mt-3"></i></a>
+                            <a href="{{ route('admin.product.create.colors',['product' => $product->id ]) }}" class="btn btn-sm btn-primary">
+                             {{ __('messages.colors') }}
+                            </a>
                         </td>
+{{--                        <i class="fa fa-tags mt-3"></i>--}}
                         <td class="pro-field">
-                            <a href="{{ route('admin.product.create.tags',['product' => $product->id ]) }}"><i
-                                    class="fa fa-tags mt-3"></i></a>
+                            <a href="{{ route('admin.product.create.tags',['product' => $product->id ]) }}" class="btn btn-sm btn-primary">
+                              {{ __('messages.tags') }}
+                            </a>
                         </td>
 
                         <td>
