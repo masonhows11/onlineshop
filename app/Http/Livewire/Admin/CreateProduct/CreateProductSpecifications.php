@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin\CreateProduct;
 
+use App\Models\Attribute;
 use App\Models\Product;
 use Livewire\Component;
 
@@ -9,10 +10,17 @@ class CreateProductSpecifications extends Component
 {
     public $product_id;
     public $product;
+    public $attributes;
+
+    public $name;
+    public $value;
+
     public function mount($product)
     {
         $this->product_id = $product;
-        $this->product = Product::where('id', $product)->select(['id', 'title_persian'])->first();
+        $this->product = Product::where('id', $product)->select('id','category_attribute_id','title_persian')->first();
+        $this->attributes =  Attribute::where('category_id',$this->product->category_attribute_id)->get();
+
     }
 
     protected $rules = [

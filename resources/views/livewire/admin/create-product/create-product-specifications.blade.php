@@ -40,14 +40,16 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-4 mt-5 mb-5">
-                                <label for="meta_value" class="form-label">{{ __('messages.product_property_value') }}</label>
-                                <input type="text" class="form-control" id="meta_value" wire:model.defer="meta_value">
-                                @error('meta_value')
-                                <div class="alert alert-danger mt-3">
-                                    {{ $message }}
+                            <div class="col-sm-4">
+                                <div class="mt-3 mb-3">
+                                    <label for="meta_value" class="form-label">{{ __('messages.product_property_value') }}</label>
+                                    <input type="text" class="form-control" id="meta_value" wire:model.defer="meta_value">
+                                    @error('meta_value')
+                                    <div class="alert alert-danger mt-3">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
                                 </div>
-                                @enderror
                             </div>
 
                         </div>
