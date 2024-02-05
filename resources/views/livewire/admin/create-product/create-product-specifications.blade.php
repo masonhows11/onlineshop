@@ -28,7 +28,7 @@
                             <div class="col-sm-4">
                                 <div class="mt-3 mb-3">
                                     <label for="name" class="form-label">{{ __('messages.name') }}</label>
-                                    <select class="form-control" wire:model.lazy="name" id="name">
+                                    <select class="form-control" wire:change="changeAttribute" wire:model.defer="name" id="name">
                                         <option>انتخاب کنید</option>
                                         @foreach($attributes as $attribute)
                                             <option value="{{ $attribute->id }}">{{ $attribute->name }}</option>

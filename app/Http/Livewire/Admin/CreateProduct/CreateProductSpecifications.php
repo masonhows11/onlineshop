@@ -31,6 +31,10 @@ class CreateProductSpecifications extends Component
     public function save(){
 
     }
+    public function changeAttribute(){
+
+        dd($this->name);
+    }
 
     public function deleteConfirmation($id)
     {
