@@ -51,6 +51,23 @@
                             @enderror
                         </div>
                         <div class="col mt-5 mb-5">
+                            <label for="brands" class="form-label">دسته بندی مشخصات</label>
+                            <select name="brand_id" class="form-select" id="brands">
+                                <option>انتخاب کنید...</option>
+                                @foreach($brands as $brand)
+                                    <option value="{{ $brand->id }}"
+                                            @if(old('brand_id') == $brand->id) selected @endif >
+                                        {{ $brand->title_persian }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('brand_id')
+                            <div class="alert alert-danger mt-3">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                        <div class="col mt-5 mb-5">
                             <label for="active" class="form-label">وضعیت نمایش کالا</label>
                             <select name="status" id="active" class="form-select">
                                 <option
