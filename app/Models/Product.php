@@ -38,6 +38,7 @@ class Product extends Model
         'frozen_number',
         'salable_quantity',
         'available_in_stock',
+        'category_attribute_id',
         'published_at',
         'seo_desc',
     ];

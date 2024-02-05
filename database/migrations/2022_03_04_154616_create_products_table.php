@@ -41,6 +41,7 @@ class CreateProductsTable extends Migration
             $table->integer('salable_quantity')->default(0);
 
             $table->timestamp('published_at')->nullable();
+            $table->unsignedBigInteger('category_attribute_id')->nullable();
 
             $table->unsignedBigInteger('admin_id')->nullable();
             $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');
