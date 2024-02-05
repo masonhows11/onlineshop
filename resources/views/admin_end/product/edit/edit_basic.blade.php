@@ -57,7 +57,7 @@
                                 <option>انتخاب کنید...</option>
                                 @foreach($category_attributes as $category)
                                     @if($category->id == $product->category_attribute_id)
-                                        <option value="{{ $category->id }}">{{ $category->title_persian }}</option>
+                                        <option selected value="{{ $category->id }}">{{ $category->title_persian }}</option>
                                     @else
                                         <option value="{{ $category->id }}">{{ $category->title_persian }}</option>
                                     @endif

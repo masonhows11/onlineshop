@@ -25,10 +25,13 @@ class ProductEditController extends Controller
         try {
             $category_ids[] = '';
             $product = Product::findOrFail($request->product);
+
             $category_attributes = DB::table('categories')
                 ->where('has_specifications','=',1)
                 ->select('id','title_persian')->get();
-            $categories =  DB::table('categories')->select('id','title_persian')->get();
+
+            $categories =  DB::table('categories')
+                ->select('id','title_persian')->get();
             foreach ($product->categories as $cat) {
                 $category_ids[] = $cat->id;
             }
