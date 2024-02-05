@@ -53,17 +53,17 @@
                         </div>
 
                         <div class="col mt-5 mb-5">
-                            <label for="brands" class="form-label">دسته بندی مشخصات</label>
-                            <select name="brand_id" class="form-select" id="brands">
+                            <label for="category_attribute_id" class="form-label">دسته بندی مشخصات</label>
+                            <select name="category_attribute_id" class="form-select" id="category_attribute_id">
                                 <option>انتخاب کنید...</option>
-                                @foreach($brands as $brand)
-                                    <option value="{{ $brand->id }}"
-                                            @if(old('brand_id') == $brand->id) selected @endif >
-                                        {{ $brand->title_persian }}
+                                @foreach($category_attributes as $category)
+                                    <option value="{{ $category->id }}"
+                                            @if(old('category_attribute_id') == $category->id) selected @endif >
+                                        {{ $category->title_persian }}
                                     </option>
                                 @endforeach
                             </select>
-                            @error('brand_id')
+                            @error('category_attribute_id')
                             <div class="alert alert-danger mt-3">
                                 {{ $message }}
                             </div>

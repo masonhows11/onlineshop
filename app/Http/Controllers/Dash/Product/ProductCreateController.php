@@ -20,10 +20,17 @@ class ProductCreateController extends Controller
 
     public function create()
     {
-        $categories =  DB::table('categories')->select('id','title_persian')->get();
-        $brands = DB::table('brands')->select('id','title_persian')->get();
+        $category_attributes = DB::table('categories')
+            ->where('has_specifications','=',1)
+            ->select('id','title_persian')->get();
+        $categories =  DB::table('categories')
+            ->select('id','title_persian')->get();
+        $brands = DB::table('brands')
+            ->select('id','title_persian')->get();
         return view('admin_end.product.create.create_basic')
-            ->with(['categories' => $categories, 'brands' => $brands]);
+            ->with(['categories' => $categories,
+                   'brands' => $brands,
+                   'category_attributes' => $category_attributes]);
     }
 
     public function store(ProductBasicRequest $request)

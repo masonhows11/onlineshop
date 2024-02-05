@@ -3,10 +3,11 @@
     ویرایش مشخصات عمومی کالا
 @endsection
 @section('breadcrumb')
-        {{ Breadcrumbs::render('admin.edit.product.basic',$product->title_persian) }}
+    {{ Breadcrumbs::render('admin.edit.product.basic',$product->title_persian) }}
 @endsection
 @section('dash_main_content')
-    <link rel="stylesheet" href="{{ asset('admin_assets/plugins/jalalidatepicker/dist/css/persian-datepicker.min.css') }}">
+    <link rel="stylesheet"
+          href="{{ asset('admin_assets/plugins/jalalidatepicker/dist/css/persian-datepicker.min.css') }}">
     <div class="container-fluid">
 
 
@@ -51,14 +52,15 @@
                             @enderror
                         </div>
                         <div class="col mt-5 mb-5">
-                            <label for="brands" class="form-label">دسته بندی مشخصات</label>
-                            <select name="brand_id" class="form-select" id="brands">
+                            <label for="category_attribute_id" class="form-label">دسته بندی مشخصات</label>
+                            <select name="category_attribute_id" class="form-select" id="category_attribute_id">
                                 <option>انتخاب کنید...</option>
-                                @foreach($brands as $brand)
-                                    <option value="{{ $brand->id }}"
-                                            @if(old('brand_id') == $brand->id) selected @endif >
-                                        {{ $brand->title_persian }}
-                                    </option>
+                                @foreach($category_attributes as $category)
+                                    @if($category->id == $product->category_attribute_id)
+                                        <option value="{{ $category->id }}">{{ $category->title_persian }}</option>
+                                    @else
+                                        <option value="{{ $category->id }}">{{ $category->title_persian }}</option>
+                                    @endif
                                 @endforeach
                             </select>
                             @error('brand_id')
@@ -193,7 +195,8 @@
 
                         <div class="col mt-5 mb-5">
                             <label for="available_in_stock" class="form-label">تعداد</label>
-                            <input type="text" class="form-control" id="available_in_stock" name="available_in_stock" value="{{ $product->available_in_stock }}">
+                            <input type="text" class="form-control" id="available_in_stock" name="available_in_stock"
+                                   value="{{ $product->available_in_stock }}">
                             @error('available_in_stock')
                             <div class="alert alert-danger mt-3">
                                 {{ $message }}
@@ -245,13 +248,16 @@
                         <div class="row d-flex flex-column   product-image">
                             <div class="col-lg-10 d-flex justify-content-center ">
                                 @if( $product->thumbnail_image != null && Storage::disk('public')->exists($product->thumbnail_image))
-                                <img src="{{  asset('storage/'.$product->thumbnail_image)  }}" id="image_view" class="img-thumbnail" height="300" width="300" alt="image">
-                               @else
-                                <img src="{{ asset('admin_assets/images/no-image-icon-23494.png') }}"  id="image_view" class="img-thumbnail" height="300" width="300" alt="image">
+                                    <img src="{{  asset('storage/'.$product->thumbnail_image)  }}" id="image_view"
+                                         class="img-thumbnail" height="300" width="300" alt="image">
+                                @else
+                                    <img src="{{ asset('admin_assets/images/no-image-icon-23494.png') }}"
+                                         id="image_view" class="img-thumbnail" height="300" width="300" alt="image">
                                 @endif
                             </div>
                             <div class="col-lg-10">
-                                <label for="image_label" class="mt-5 form-label">{{ __('messages.thumbnail_image') }}</label>
+                                <label for="image_label"
+                                       class="mt-5 form-label">{{ __('messages.thumbnail_image') }}</label>
                                 <input type="file" class="form-control" accept="image/png, image/jpeg" id="image_select"
                                        name="thumbnail_image" value="{{ asset('storage/'.$product->thumbnail_image) }}"
                                        readonly>
@@ -355,7 +361,7 @@
             // for keeping old value after failed validation
             if (tags_input.val() !== null && tags_input.val().length > 0) {
                 default_data = default_tags.split(',');
-               // console.log(default_data);
+                // console.log(default_data);
             }
             // select2 config
             selected_tags.select2({

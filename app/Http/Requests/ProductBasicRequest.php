@@ -43,6 +43,7 @@ class ProductBasicRequest extends FormRequest
             'width' => ['required', 'decimal:0,4'],
             'height' => ['required', 'decimal:0,4'],
             'marketable' => ['required'],
+            'category_attribute_id' => ['required']
 
         ];
     }

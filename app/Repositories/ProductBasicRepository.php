@@ -50,6 +50,7 @@ class ProductBasicRepository
                 'height' => $request->height,
                 'available_in_stock' => $request->available_in_stock,
                 'marketable' => $request->marketable,
+                'category_attribute_id' => $request->category_attribute_id,
             ]);
 
             $createdProduct->categories()->sync($request->categories);
@@ -94,6 +95,7 @@ class ProductBasicRepository
             $current_product->height = $request->height;
             $current_product->available_in_stock = $request->available_in_stock;
             $current_product->marketable = $request->marketable;
+            $current_product->category_attribute_id = $request->category_attribute_id;
             $current_product->save();
 
             $current_product->categories()->sync($request->categories);
