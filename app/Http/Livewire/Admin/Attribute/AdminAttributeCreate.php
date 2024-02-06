@@ -29,7 +29,7 @@ class AdminAttributeCreate extends Component
     }
 
     protected $rules = [
-        'name' => ['required', 'min:3', 'max:30'],
+        'name' => ['required', 'min:2', 'max:30'],
         'type' => ['required'],
         'priority' => ['required', 'numeric', 'gt:0', 'lt:999'],
         'has_default_value' => ['required']

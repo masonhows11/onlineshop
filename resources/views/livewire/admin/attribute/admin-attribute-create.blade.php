@@ -47,7 +47,7 @@
 
                         <div class="col-sm-6">
                             <div class="mt-3 mb-3">
-                                <label for="type" class="form-label">{{ __('messages.type') }}</label>
+                                <label for="type" class="form-label">{{ __('messages.attribute_type') }}</label>
                                 <select class="form-control" wire:model.lazy="type" id="type">
                                     <option>انتخاب کنید</option>
                                     <option value="select">Select</option>

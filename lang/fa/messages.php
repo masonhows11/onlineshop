@@ -129,6 +129,7 @@ return [
     'price_increase' => 'افزایش قیمت',
     'salable_quantity' => 'تعداد قابل فروش',
     'attribute' => 'ویژگی',
+    'attribute_type' => 'نوع نمایش',
     'category_attribute_value' => 'مقدار ویژگی',
     'category_attribute_management' => 'مدیریت ویژگی ها',
     'unit' => 'واحد اندازه گیری',
