@@ -5,12 +5,12 @@
         <div class="container-fluid product-meta-section">
 
             <div class="row ms-2 my-3">
-                <div class="col-lg-3 col-md-3 col title-product">
+                <div class="col-sm-3  title-product">
                     <div class="alert bg-white text-center">
                         {{ __('messages.product_manage_specifications') }}
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-3 col title-product">
+                <div class="col-sm-3  title-product">
                     <div class="alert bg-white text-center">
                         {{ $product->title_persian }}
                     </div>
@@ -72,11 +72,11 @@
                         </div>
 
                         <div class="row my-4">
-                            <div class="col">
+                            <div class="col-sm-6">
                                 <button type="submit" id="add_attribute" class="btn btn-success btn-sm">{{ __('messages.save') }}</button>
                                 <a href="{{ route('admin.product.create.images',['product'=>$product->id]) }}" class="btn btn-primary btn-sm">{{ __('messages.product_images') }}</a>
                             </div>
-                            <div class="col d-flex justify-content-end">
+                            <div class="col-sm-6 d-flex justify-content-end">
                                 <a href="{{ route('admin.product.index') }}" class="btn btn-secondary btn-sm">{{ __('messages.product_list') }}</a>
                             </div>
                         </div>
