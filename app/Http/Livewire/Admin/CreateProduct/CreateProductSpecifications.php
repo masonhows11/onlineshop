@@ -39,13 +39,11 @@ class CreateProductSpecifications extends Component
 
     public function changeAttribute()
     {
+        if($this->name == 0)
+            return null;
+        else
         $this->selectedAttribute = Attribute::where('id',$this->name)->first();
         $this->type = $this->selectedAttribute->type;
-
-       /* if($this->selectedAttribute->type == 'select'){
-            $this->selectedAttributeType = 'select';
-            $this->attributeDefaultValues = AttributeValue::where('attribute_id',$this->selectedAttribute->id)->get();
-        }*/
         switch ($this->selectedAttribute->type) {
             case 'select':
                 $this->selectedAttributeType = 'select';
@@ -69,7 +67,7 @@ class CreateProductSpecifications extends Component
 
     public function save()
     {
-
+        dd($this->value);
     }
 
 
