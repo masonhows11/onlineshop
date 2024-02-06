@@ -12,6 +12,7 @@ class CreateProductSpecifications extends Component
     public $product_id;
     public $product;
     public $attributes;
+    public $attribute_value_id;
     public $selectedAttributeType;
     public $selectedAttribute;
     public $attributeDefaultValues = null;
@@ -39,19 +40,24 @@ class CreateProductSpecifications extends Component
 
     public function changeAttribute()
     {
-        if($this->name == 0)
-            return null;
+        if($this->name == 0){
+            $this->name = null;
+        }
         else
         $this->selectedAttribute = Attribute::where('id',$this->name)->first();
         $this->type = $this->selectedAttribute->type;
-        switch ($this->selectedAttribute->type) {
+        switch ($this->type) {
             case 'select':
                 $this->selectedAttributeType = 'select';
-                $this->attributeDefaultValues = AttributeValue::where('attribute_id',$this->selectedAttribute->id)->get();
+                $this->attributeDefaultValues =
+                    AttributeValue::where('attribute_id',$this->selectedAttribute->id)
+                        ->get();
                 break;
             case 'multi_select':
                 $this->selectedAttributeType = 'multi_select';
-                $this->attributeDefaultValues = AttributeValue::where('attribute_id',$this->selectedAttribute->id)->get();
+                $this->attributeDefaultValues =
+                    AttributeValue::where('attribute_id',$this->selectedAttribute->id)
+                        ->get();
                 break;
             case 'text_area':
                 $this->selectedAttributeType = 'text_area';
@@ -60,21 +66,22 @@ class CreateProductSpecifications extends Component
                 $this->selectedAttributeType = 'text_box';
                 break;
             default:
-
+                $this->selectedAttributeType = 'text_box';
         }
 
     }
 
     public function save()
     {
-        dd($this->value);
+        $this->validate();
+
     }
 
 
 
     public function deleteConfirmation($id)
     {
-        //        $this->meta_id = $id;
+        $this->attribute_value_id = $id;
         $this->dispatchBrowserEvent('show-delete-confirmation');
     }
 

@@ -163,6 +163,7 @@ return [
         Spatie\Permission\PermissionServiceProvider::class,
         Nagy\LaravelRating\LaravelRatingServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -188,6 +189,7 @@ return [
         // 'Example' => App\Facades\Example::class,
         'Image' => Intervention\Image\Facades\Image::class,
         "LaravelRating" => \Nagy\LaravelRating\LaravelRatingFacade::class,
+        'Debugbar' => Barryvdh\Debugbar\Facades\Debugbar::class,
     ])->toArray(),
 
 ];
