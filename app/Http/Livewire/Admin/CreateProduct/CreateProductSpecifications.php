@@ -11,7 +11,9 @@ class CreateProductSpecifications extends Component
     public $product_id;
     public $product;
     public $attributes;
+    public $selectedAttributeType;
     public $selectedAttribute;
+    public $attributeDefaultValues = null;
 
     public $name;
     public $type;
@@ -20,8 +22,11 @@ class CreateProductSpecifications extends Component
     public function mount($product)
     {
         $this->product_id = $product;
-        $this->product = Product::where('id', $product)->select('id', 'category_attribute_id', 'title_persian')->first();
-        $this->attributes = Attribute::where('category_id', $this->product->category_attribute_id)->get();
+        $this->product = Product::where('id', $product)
+            ->select('id', 'category_attribute_id', 'title_persian')
+            ->first();
+        $this->attributes = Attribute::where('category_id', $this->product->category_attribute_id)
+            ->get();
 
     }
 
@@ -33,7 +38,10 @@ class CreateProductSpecifications extends Component
 
     public function changeAttribute()
     {
-        dd($this->name);
+        $this->selectedAttribute = Attribute::where('id',$this->name)
+            ->select('type')
+            ->first();
+        $this->type = $this->selectedAttribute->type;
     }
 
     public function save()

@@ -43,7 +43,7 @@
                             <div class="col-sm-4">
                                 <div class="mt-3 mb-3">
                                     <label for="type" class="form-label">{{ __('messages.attribute_type') }}</label>
-                                    <select class="form-control" wire:model.lazy="type" id="type">
+                                    <select class="form-control" wire:model.lazy="type" id="type" disabled>
                                         <option>انتخاب کنید</option>
                                         <option value="select">Select</option>
                                         <option value="multi_select">Multi_select</option>
@@ -60,7 +60,7 @@
                             <div class="col-sm-4">
                                 <div class="mt-3 mb-3">
                                     <label for="value" class="form-label">{{ __('messages.product_property_value') }}</label>
-                                    @switch($selectedAttribute)
+                                    @switch($selectedAttributeType)
                                         @case('select')
                                         <select class="form-control" wire:model.defer="value" id="type">
                                             <option>انتخاب کنید</option>
@@ -81,7 +81,8 @@
                                         @case('text_area')
                                         <textarea class="form-control" wire:model.defer="value" id="value" rows="5" cols="10"></textarea>
                                         @break
-
+                                        @default
+                                        <input type="text" class="form-control" id="value" wire:model.defer="value">
                                     @endswitch
 
                                     @error('value')
