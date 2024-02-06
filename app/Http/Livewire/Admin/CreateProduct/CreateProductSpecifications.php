@@ -74,6 +74,7 @@ class CreateProductSpecifications extends Component
     public function save()
     {
         $this->validate();
+        //  dd($this->value);
 
     }
 
