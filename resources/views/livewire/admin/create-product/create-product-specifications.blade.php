@@ -42,6 +42,22 @@
                         </div>
 
 
+                      {{--  <div class="col-sm-4">
+                            <div class="mt-3 mb-3">
+                                <label for="type" class="form-label">{{ __('messages.attribute_type') }}</label>
+                                <select class="form-control" wire:model.defer="type" id="type">
+                                    <option>انتخاب کنید</option>
+                                    <option value="select">Select</option>
+                                    <option value="multi_select">Multi_select</option>
+                                    <option value="radio">Radio_button</option>
+                                    <option value="text_box">Text</option>
+                                    <option value="text_area">Text_area</option>
+                                </select>
+                                @error('type')
+                                <div class="alert alert-danger mt-3">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>--}}
 
                         <div class="col-sm-6">
                             <div class="mt-3 mb-3">
@@ -76,9 +92,10 @@
                                                   cols="10"></textarea>
                                         @break
                                     @endswitch
-                                    @else
+                                @else
                                     <input type="text" class="form-control" id="value" wire:model.defer="value">
-                                    @endif
+                                @endif
+
                                 @error('value')
                                 <div class="alert alert-danger mt-3">
                                     {{ $message }}
