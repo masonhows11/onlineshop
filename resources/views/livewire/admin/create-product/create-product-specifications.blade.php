@@ -59,9 +59,9 @@
 
                             <div class="col-sm-4">
                                 <div class="mt-3 mb-3">
-                                    <label for="meta_value" class="form-label">{{ __('messages.product_property_value') }}</label>
-                                    <input type="text" class="form-control" id="meta_value" wire:model.defer="meta_value">
-                                    @error('meta_value')
+                                    <label for="value" class="form-label">{{ __('messages.product_property_value') }}</label>
+                                    <input type="text" class="form-control" id="value" wire:model.defer="value">
+                                    @error('value')
                                     <div class="alert alert-danger mt-3">
                                         {{ $message }}
                                     </div>

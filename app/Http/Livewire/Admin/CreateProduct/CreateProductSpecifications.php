@@ -18,27 +18,32 @@ class CreateProductSpecifications extends Component
     public function mount($product)
     {
         $this->product_id = $product;
-        $this->product = Product::where('id', $product)->select('id','category_attribute_id','title_persian')->first();
-        $this->attributes =  Attribute::where('category_id',$this->product->category_attribute_id)->get();
+        $this->product = Product::where('id', $product)->select('id', 'category_attribute_id', 'title_persian')->first();
+        $this->attributes = Attribute::where('category_id', $this->product->category_attribute_id)->get();
 
     }
 
     protected $rules = [
         'name' => ['required'],
         'type' => ['required'],
+        'value' => ['required']
     ];
 
-    public function save(){
-
-    }
-    public function changeAttribute(){
-
+    public function changeAttribute()
+    {
         dd($this->name);
     }
 
+    public function save()
+    {
+
+    }
+
+
+
     public function deleteConfirmation($id)
     {
-            //        $this->meta_id = $id;
+        //        $this->meta_id = $id;
         $this->dispatchBrowserEvent('show-delete-confirmation');
     }
 
@@ -47,14 +52,13 @@ class CreateProductSpecifications extends Component
     ];
 
 
-
     public function deleteModel()
     {
         try {
-           /*
-            $model = ProductMeta::findOrFail($this->meta_id);
-            $model->delete();
-           */
+            /*
+             $model = ProductMeta::findOrFail($this->meta_id);
+             $model->delete();
+            */
             $this->dispatchBrowserEvent('show-result',
                 ['type' => 'success',
                     'message' => __('messages.The_deletion_was_successful')]);
@@ -63,6 +67,7 @@ class CreateProductSpecifications extends Component
         }
         return null;
     }
+
     public function render()
     {
         return view('livewire.admin.create-product.create-product-specifications')
