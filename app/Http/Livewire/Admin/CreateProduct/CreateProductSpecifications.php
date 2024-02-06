@@ -40,23 +40,22 @@ class CreateProductSpecifications extends Component
 
     public function changeAttribute()
     {
-        if($this->name == 0){
+        if ($this->name == 0) {
             $this->name = null;
-        }
-        else
-        $this->selectedAttribute = Attribute::where('id',$this->name)->first();
+        } else
+            $this->selectedAttribute = Attribute::where('id', $this->name)->first();
         $this->type = $this->selectedAttribute->type;
         switch ($this->type) {
             case 'select':
                 $this->selectedAttributeType = 'select';
                 $this->attributeDefaultValues =
-                    AttributeValue::where('attribute_id',$this->selectedAttribute->id)
+                    AttributeValue::where('attribute_id', $this->selectedAttribute->id)
                         ->get();
                 break;
             case 'multi_select':
                 $this->selectedAttributeType = 'multi_select';
                 $this->attributeDefaultValues =
-                    AttributeValue::where('attribute_id',$this->selectedAttribute->id)
+                    AttributeValue::where('attribute_id', $this->selectedAttribute->id)
                         ->get();
                 break;
             case 'text_area':
@@ -74,10 +73,10 @@ class CreateProductSpecifications extends Component
     public function save()
     {
         $this->validate();
-        //  dd($this->value);
+        $values = AttributeValue::where('attribute_id', $this->name)->where('id',$this->value)->get();
+       dd($values);
 
     }
-
 
 
     public function deleteConfirmation($id)
