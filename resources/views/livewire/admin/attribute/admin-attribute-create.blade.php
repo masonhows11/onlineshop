@@ -51,9 +51,10 @@
                                 <select class="form-control" wire:model.lazy="type" id="type">
                                     <option>انتخاب کنید</option>
                                     <option value="select">Select</option>
-                                    <option value="radio">Tadio button</option>
+                                    <option value="multi_select">Multi_select</option>
+                                    <option value="radio">Radio_button</option>
                                     <option value="text_box">Text</option>
-                                    <option value="text_area">Text area</option>
+                                    <option value="text_area">Text_area</option>
                                 </select>
                                 @error('type')
                                 <div class="alert alert-danger mt-3">{{ $message }}</div>
