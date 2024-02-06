@@ -20,7 +20,7 @@ class AttributeValue extends Model
         'attribute_id' => 'integer',
     ];
 
-
+    // one to many reverse with Attribute model
     public function attribute()
     {
         return $this->belongsTo(Attribute::class);

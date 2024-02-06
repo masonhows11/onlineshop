@@ -21,6 +21,7 @@ class Attribute extends Model
         'is_required' => 'boolean',
     ];
 
+    // one to many with AttributeValue model
     public function values()
     {
         return $this->hasMany(AttributeValue::class);

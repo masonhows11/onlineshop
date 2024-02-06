@@ -13,6 +13,7 @@ class CreateProductSpecifications extends Component
     public $attributes;
 
     public $name;
+    public $type;
     public $value;
 
     public function mount($product)

@@ -23,6 +23,7 @@ class CategoryAttribute extends Model
         return $this->belongsTo(Category::class);
     }
 
+    // each category attribute might have multi value
     public function values()
     {
         return $this->hasMany(CategoryAttributeValue::class);
