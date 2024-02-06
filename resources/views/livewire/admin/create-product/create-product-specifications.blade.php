@@ -60,7 +60,30 @@
                             <div class="col-sm-4">
                                 <div class="mt-3 mb-3">
                                     <label for="value" class="form-label">{{ __('messages.product_property_value') }}</label>
-                                    <input type="text" class="form-control" id="value" wire:model.defer="value">
+                                    @switch($selectedAttribute)
+                                        @case('select')
+                                        <select class="form-control" wire:model.lazy="type" id="type">
+                                            <option>انتخاب کنید</option>
+                                            <option value="select"></option>
+
+                                        </select>
+                                        @break
+                                        @case('multi_select')
+                                        <select class="form-control" wire:model.lazy="type" id="type" multiple>
+                                            <option>انتخاب کنید</option>
+                                            <option value="select"></option>
+
+                                        </select>
+                                        @break
+                                        @case('text_box')
+                                        <input type="text" class="form-control" id="value" wire:model.defer="value">
+                                        @break
+                                        @case('text_area')
+                                        <textarea class="form-control" id="value" rows="5" cols="10"></textarea>
+                                        @break
+
+                                    @endswitch
+
                                     @error('value')
                                     <div class="alert alert-danger mt-3">
                                         {{ $message }}

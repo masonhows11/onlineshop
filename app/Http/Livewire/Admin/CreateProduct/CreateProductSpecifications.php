@@ -11,6 +11,7 @@ class CreateProductSpecifications extends Component
     public $product_id;
     public $product;
     public $attributes;
+    public $selectedAttribute;
 
     public $name;
     public $type;
