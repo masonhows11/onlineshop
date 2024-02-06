@@ -40,10 +40,10 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-4">
+                            {{--<div class="col-sm-4">
                                 <div class="mt-3 mb-3">
                                     <label for="type" class="form-label">{{ __('messages.attribute_type') }}</label>
-                                    <select class="form-control" wire:model.lazy="type" id="type" disabled>
+                                    <select class="form-control" wire:model.lazy="type" id="type">
                                         <option>انتخاب کنید</option>
                                         <option value="select">Select</option>
                                         <option value="multi_select">Multi_select</option>
@@ -55,7 +55,7 @@
                                     <div class="alert alert-danger mt-3">{{ $message }}</div>
                                     @enderror
                                 </div>
-                            </div>
+                            </div>--}}
 
                             <div class="col-sm-4">
                                 <div class="mt-3 mb-3">
@@ -63,16 +63,18 @@
                                     @switch($selectedAttributeType)
                                         @case('select')
                                         <select class="form-control" wire:model.defer="value" id="type">
-                                            <option>انتخاب کنید</option>
-                                            <option value="select"></option>
-
+                                          {{--  <option>انتخاب کنید</option>--}}
+                                            @foreach($attributeDefaultValues as $value)
+                                            <option value="{{ $value->id }}">{{ $value->value }}</option>
+                                            @endforeach
                                         </select>
                                         @break
                                         @case('multi_select')
                                         <select class="form-control" wire:model.defer="value" id="type" multiple>
-                                            <option>انتخاب کنید</option>
-                                            <option value="select"></option>
-
+                                          {{--  <option>انتخاب کنید</option>--}}
+                                            @foreach($attributeDefaultValues as $value)
+                                                <option value="{{ $value->id }}">{{ $value->value }}</option>
+                                            @endforeach
                                         </select>
                                         @break
                                         @case('text_box')

@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin\CreateProduct;
 
 use App\Models\Attribute;
+use App\Models\AttributeValue;
 use App\Models\Product;
 use Livewire\Component;
 
@@ -38,10 +39,32 @@ class CreateProductSpecifications extends Component
 
     public function changeAttribute()
     {
-        $this->selectedAttribute = Attribute::where('id',$this->name)
-            ->select('type')
-            ->first();
+        $this->selectedAttribute = Attribute::where('id',$this->name)->first();
         $this->type = $this->selectedAttribute->type;
+
+       /* if($this->selectedAttribute->type == 'select'){
+            $this->selectedAttributeType = 'select';
+            $this->attributeDefaultValues = AttributeValue::where('attribute_id',$this->selectedAttribute->id)->get();
+        }*/
+        switch ($this->selectedAttribute->type) {
+            case 'select':
+                $this->selectedAttributeType = 'select';
+                $this->attributeDefaultValues = AttributeValue::where('attribute_id',$this->selectedAttribute->id)->get();
+                break;
+            case 'multi_select':
+                $this->selectedAttributeType = 'multi_select';
+                $this->attributeDefaultValues = AttributeValue::where('attribute_id',$this->selectedAttribute->id)->get();
+                break;
+            case 'text_area':
+                $this->selectedAttributeType = 'text_area';
+                break;
+            case 'text_box':
+                $this->selectedAttributeType = 'text_box';
+                break;
+            default:
+
+        }
+
     }
 
     public function save()
