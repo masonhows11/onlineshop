@@ -28,8 +28,7 @@
                         <div class="col-sm-6">
                             <div class="mt-3 mb-3">
                                 <label for="name" class="form-label">{{ __('messages.name') }}</label>
-                                <select class="form-control" wire:change="changeAttribute" wire:model.defer="name"
-                                        id="name">
+                                <select class="form-control" wire:change="changeAttribute" wire:model.defer="name" id="name">
                                     <option value="0">انتخاب کنید</option>
                                     @foreach($attributes as $attribute)
                                         <option value="{{ $attribute->id }}">{{ $attribute->name }}</option>
@@ -65,22 +64,20 @@
                                 @if( $name != null)
                                     @switch($selectedAttributeType)
                                         @case('select')
-                                        <select class="form-control" wire:model.defer="value" id="type">
-                                            <option>انتخاب کنید...</option>
-                                            @foreach($attributeDefaultValues as $value)
-                                                <option value="{{ $value->id }}">{{ $value->value }}</option>
-                                            @endforeach
-                                        </select>
+                                                <select class="form-control" wire:model.defer="value" id="value">
+                                                    <option>انتخاب کنید...</option>
+                                                    @foreach($attributeDefaultValues as $value)
+                                                        <option value="{{ $value->id }}">{{ $value->value }}</option>
+                                                    @endforeach
+                                                </select>
                                         @break
                                         @case('multi_select')
-                                        <div wire:ignore>
-                                            <select class="form-control" wire:model.defer="value" id="value_select"
+                                            <select class="form-control" wire:model.defer="value" id="value"
                                                     multiple>
                                                 @foreach($attributeDefaultValues as $value)
                                                     <option value="{{ $value->id }}">{{ $value->value }}</option>
                                                 @endforeach
                                             </select>
-                                        </div>
                                         @break
                                         @case('text_box')
                                         <input type="text" class="form-control" id="value"
@@ -158,16 +155,16 @@
     </div>
 </div>
 @push('dash_custom_script')
-    <script type="javascript" src="{{ asset('admin_assets/plugins/select2/js/select2.min.js') }}"></script>
+   {{-- <script type="javascript" src="{{ asset('admin_assets/plugins/select2/js/select2.min.js') }}"></script>
     <script>
         $(document).ready(function () {
             $('#value_select').select2();
             $('#value_select').on('change', function (e) {
                 var data = $('#value_select').select2("val");
-            @this.set('ottPlatform', data);
+            @this.set('value', data);
             });
         });
-    </script>
+    </script>--}}
     <script type="text/javascript">
         window.addEventListener('show-delete-confirmation', event => {
             Swal.fire({
