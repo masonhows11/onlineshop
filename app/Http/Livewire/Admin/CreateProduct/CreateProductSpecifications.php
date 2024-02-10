@@ -92,6 +92,9 @@ class CreateProductSpecifications extends Component
                     'priority' => $this->priority,
                     'type' => $this->type,
                 ]);
+                $this->name = null;
+                $this->value = null;
+                $this->priority = null;
                 break;
             case 'multi_select':
                 $this->values = AttributeValue::where('attribute_id', $this->name)
@@ -108,6 +111,9 @@ class CreateProductSpecifications extends Component
                     'priority' => $this->priority,
                     'type' => $this->type,
                 ]);
+                $this->name = null;
+                $this->value = null;
+                $this->priority = null;
                 break;
             case 'text_box':
             case 'text_area':
@@ -119,11 +125,11 @@ class CreateProductSpecifications extends Component
                     'priority' => $this->priority,
                     'type' => $this->type,
                 ]);
+            $this->name = null;
+            $this->value = null;
+            $this->priority = null;
                 break;
         }
-        $this->name = null;
-        $this->values = null;
-        $this->priority = null;
         // dd($this->values, $this->type);
 
     }
@@ -143,10 +149,10 @@ class CreateProductSpecifications extends Component
     public function deleteModel()
     {
         try {
-            /*
-             $model = ProductMeta::findOrFail($this->meta_id);
+
+             $model = AttributeProduct::findOrFail($this->attribute_value_id);
              $model->delete();
-            */
+
             $this->dispatchBrowserEvent('show-result',
                 ['type' => 'success',
                     'message' => __('messages.The_deletion_was_successful')]);
