@@ -103,7 +103,7 @@ class CreateProductSpecifications extends Component
                 $this->values = $this->values->map(function ($item) {
                     return ['id' => $item['id'], 'value' => $item['value']];
                 });
-               // dd($this->values);
+              
                 AttributeProduct::create([
                     'product_id' => $this->product_id,
                     'values' => $this->values,
@@ -130,7 +130,7 @@ class CreateProductSpecifications extends Component
             $this->priority = null;
                 break;
         }
-        // dd($this->values, $this->type);
+
 
     }
 
