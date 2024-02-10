@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin\CreateProduct;
 
 use App\Models\Attribute;
+use App\Models\AttributeProduct;
 use App\Models\AttributeValue;
 use App\Models\Product;
 use Livewire\Component;
@@ -80,16 +81,32 @@ class CreateProductSpecifications extends Component
             case 'select':
                 $this->values = AttributeValue::where('attribute_id', $this->name)
                     ->where('id',$this->value)->select('id','value')
-                    ->get()->toArray();
+                    ->first();
+                $this->values = json_encode(['id'=>$this->values->id , 'value' => $this->values->value]);
+                dd($this->values);
+                //                AttributeProduct::create([
+                //
+                //                ]);
                 break;
             case 'multi_select':
                 $this->values  = AttributeValue::where('attribute_id', $this->name)
                     ->whereIn('id',$this->value)->select('id','value')
                     ->get()->toArray();
+
+                foreach ($this->values as $value){
+                    $this->values = json_encode(['id' => $value->id , 'value' => $value->value]);
+                }
+                dd($this->values);
+                //                AttributeProduct::create([
+                //
+                //                ]);
                 break;
             case 'text_box':
             case 'text_area':
                 $this->values = $this->value;
+                //                AttributeProduct::create([
+                //
+                //                ]);
                 break;
         }
         dd($this->values,$this->type);
