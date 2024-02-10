@@ -98,8 +98,9 @@ class CreateProductSpecifications extends Component
                     ->whereIn('id', $this->value)->select('id', 'value')
                     ->get();
                 $this->values = $this->values->map(function ($item) {
-                    return json_encode(['id' => $item['id'], 'value' => $item['value']]);
+                    return ['id' => $item['id'], 'value' => $item['value']];
                 });
+               // dd($this->values);
                 AttributeProduct::create([
                     'product_id' => $this->product_id,
                     'values' => $this->values,
@@ -161,6 +162,6 @@ class CreateProductSpecifications extends Component
             ->extends('admin_end.include.master_dash')
             ->section('dash_main_content')
             ->with(['product' => $this->product ,
-                'attribute_product' => AttributeProduct::where('product_id',$this->product_id)->get()]);
+                'attribute_product' => AttributeProduct::where('product_id',$this->product_id)->orderBy('priority','asc')->get()]);
     }
 }
