@@ -25,7 +25,7 @@
 
                     <div class="row product-attribute-product-form">
 
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             <div class="mt-3 mb-3">
                                 <label for="name" class="form-label">{{ __('messages.name') }}</label>
                                 <select class="form-control" wire:change="changeAttribute" wire:model.defer="name" id="name">
@@ -40,25 +40,19 @@
                             </div>
                         </div>
 
-
-                      {{--  <div class="col-sm-4">
+                        <div class="col-sm-4">
                             <div class="mt-3 mb-3">
-                                <label for="type" class="form-label">{{ __('messages.attribute_type') }}</label>
-                                <select class="form-control" wire:model.defer="type" id="type">
-                                    <option>انتخاب کنید</option>
-                                    <option value="select">Select</option>
-                                    <option value="multi_select">Multi_select</option>
-                                    <option value="radio">Radio_button</option>
-                                    <option value="text_box">Text</option>
-                                    <option value="text_area">Text_area</option>
-                                </select>
-                                @error('type')
-                                <div class="alert alert-danger mt-3">{{ $message }}</div>
+                                <label for="priority" class="form-label">{{ __('messages.priority') }}</label>
+                                <input type="number" min="1" max="999" class="form-control" id="priority" wire:model.defer="priority">
+                                @error('priority')
+                                <div class="alert alert-danger mt-3">
+                                    {{ $message }}
+                                </div>
                                 @enderror
                             </div>
-                        </div>--}}
+                        </div>
 
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             <div class="mt-3 mb-3">
                                 <label for="value" class="form-label">{{ __('messages.product_property_value') }}</label>
                                 @if( $name != null)
@@ -124,28 +118,30 @@
         <div class="row mx-2 my-3 product-meta-list bg-white">
             <div class="col">
 
-                {{--   <table class="table">
+                  <table class="table">
                        <thead>
                        <tr class="text-center">
                            <th>{{ __('messages.id') }}</th>
-                           <th>{{ __('messages.product_meta_key') }}</th>
-                           <th>{{ __('messages.product_meta_value') }}</th>
+                           <th>{{ __('messages.product_name') }}</th>
+                           <th>{{ __('messages.specification_name') }}</th>
+                           <th>{{ __('messages.specification_value') }}</th>
                            <th>{{ __('messages.edit_model') }}</th>
                            <th>{{ __('messages.delete_model') }}</th>
                        </tr>
                        </thead>
                        <tbody>
-                       @foreach($metas as $meta)
+                       @foreach($attribute_product as $item)
                            <tr class="text-center">
-                               <td>{{ $meta->id }}</td>
-                               <td>{{ $meta->meta_key }}</td>
-                               <td>{{ $meta->meta_value }}</td>
-                               <td><a class="mt-3" href="javascript:void(0)" wire:click.edit="edit({{$meta->id}})"><i class="mt-3 fa fa-edit"></i></a></td>
-                               <td><a class="mt-3" href="javascript:void(0)" wire:click.prevent="deleteConfirmation({{ $meta->id }})"><i class="mt-3 fa fa-trash"></i></a></td>
+                               <td>{{ $item->id }}</td>
+                               <td>{{ $item->product->title_persian }}</td>
+                               <td>{{ $item->attribute->name }}</td>
+                               <td>{{ $item->attribute->name }}</td>
+                               <td><a class="mt-3" href="javascript:void(0)" wire:click.edit="edit({{$item->id}})"><i class="mt-3 fa fa-edit"></i></a></td>
+                               <td><a class="mt-3" href="javascript:void(0)" wire:click.prevent="deleteConfirmation({{ $item->id }})"><i class="mt-3 fa fa-trash"></i></a></td>
                            </tr>
                        @endforeach
                        </tbody>
-                   </table>--}}
+                   </table>
 
             </div>
         </div>

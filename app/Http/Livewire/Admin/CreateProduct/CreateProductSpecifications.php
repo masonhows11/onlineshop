@@ -21,9 +21,10 @@ class CreateProductSpecifications extends Component
 
     public $name;
     public $type;
+    public $priority;
     public $value;
     public $values;
-    public $result=[];
+    public $result = [];
 
     public function mount($product)
     {
@@ -39,7 +40,8 @@ class CreateProductSpecifications extends Component
     protected $rules = [
         'name' => ['required'],
         'type' => ['required'],
-        'value' => ['required']
+        'value' => ['required'],
+        'priority' => ['required'],
     ];
 
     public function changeAttribute()
@@ -83,38 +85,44 @@ class CreateProductSpecifications extends Component
                     ->where('id', $this->value)->select('id', 'value')
                     ->first();
                 $this->values = json_encode(['id' => $this->values->id, 'value' => $this->values->value]);
-                dd($this->values);
-                //                AttributeProduct::create([
-                //
-                //                ]);
+                AttributeProduct::create([
+                    'product_id' => $this->product_id,
+                    'attribute_id' => $this->name,
+                    'values' => $this->values,
+                    'priority' => $this->priority,
+                    'type' => $this->type,
+                ]);
                 break;
             case 'multi_select':
                 $this->values = AttributeValue::where('attribute_id', $this->name)
                     ->whereIn('id', $this->value)->select('id', 'value')
                     ->get();
-                //  dd($this->values);
-                $result = $this->values->map(function ($item) {
-                    return   json_encode(['id' => $item['id'],'value' => $item['value']]);
+                $this->values = $this->values->map(function ($item) {
+                    return json_encode(['id' => $item['id'], 'value' => $item['value']]);
                 });
-
-                dd($result);
-
-                //                foreach ($this->values as $value) {
-                //                    array_push($this->values, json_encode(['id' => $value['id'], 'value' => $value['value']]));
-                //                }
-                //  dd($this->values);
-                //                AttributeProduct::create([
-                //
-                //                ]);
+                AttributeProduct::create([
+                    'product_id' => $this->product_id,
+                    'values' => $this->values,
+                    'attribute_id' => $this->name,
+                    'priority' => $this->priority,
+                    'type' => $this->type,
+                ]);
                 break;
             case 'text_box':
             case 'text_area':
                 $this->values = $this->value;
-                //                AttributeProduct::create([
-                //
-                //                ]);
+                AttributeProduct::create([
+                    'product_id' => $this->product_id,
+                    'values' => $this->values,
+                    'attribute_id' => $this->name,
+                    'priority' => $this->priority,
+                    'type' => $this->type,
+                ]);
                 break;
         }
+        $this->name = null;
+        $this->values = null;
+        $this->priority = null;
         // dd($this->values, $this->type);
 
     }
@@ -152,6 +160,7 @@ class CreateProductSpecifications extends Component
         return view('livewire.admin.create-product.create-product-specifications')
             ->extends('admin_end.include.master_dash')
             ->section('dash_main_content')
-            ->with(['product' => $this->product]);
+            ->with(['product' => $this->product ,
+                'attribute_product' => AttributeProduct::where('product_id',$this->product_id)->get()]);
     }
 }

@@ -25,6 +25,8 @@ return [
     'has_default_value' => 'دارای مقادیر پیش فرض',
     'no_default_value' => 'فاقد مقادیر پیش فرض',
     'has_specifications' => 'مشخصات فنی',
+    'specification_name' => 'نام مشخصه فنی',
+    'specification_value' => 'مقدار مشخصه فنی',
     'product_manage_specifications' => 'مدیریت مشخصات فنی',
     'product_specifications' => 'مشخصات فنی کالا',
     'product_specifications_values' => 'مقادیر مشخصات  فنی کالا',
