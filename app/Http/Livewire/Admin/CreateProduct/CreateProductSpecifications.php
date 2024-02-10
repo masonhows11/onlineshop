@@ -20,6 +20,7 @@ class CreateProductSpecifications extends Component
     public $name;
     public $type;
     public $value;
+    public $values;
 
     public function mount($product)
     {
@@ -40,10 +41,12 @@ class CreateProductSpecifications extends Component
 
     public function changeAttribute()
     {
-        if ($this->name == 0) {
+        if ($this->name == 0)
+        {
             $this->name = null;
-        } else
-            $this->selectedAttribute = Attribute::where('id', $this->name)->first();
+        }
+        else
+        $this->selectedAttribute = Attribute::where('id', $this->name)->first();
         $this->type = $this->selectedAttribute->type;
         switch ($this->type) {
             case 'select':
@@ -73,8 +76,23 @@ class CreateProductSpecifications extends Component
     public function save()
     {
         $this->validate();
-        $values = AttributeValue::where('attribute_id', $this->name)->where('id',$this->value)->get();
-       dd($values);
+        switch ($this->type){
+            case 'select':
+                $this->values = AttributeValue::where('attribute_id', $this->name)
+                    ->where('id',$this->value)->select('id','value')
+                    ->get()->toArray();
+                break;
+            case 'multi_select':
+                $this->values  = AttributeValue::where('attribute_id', $this->name)
+                    ->whereIn('id',$this->value)->select('id','value')
+                    ->get()->toArray();
+                break;
+            case 'text_box':
+            case 'text_area':
+                $this->values = $this->value;
+                break;
+        }
+        dd($this->values,$this->type);
 
     }
 

@@ -72,8 +72,7 @@
                                                 </select>
                                         @break
                                         @case('multi_select')
-                                            <select class="form-control" wire:model.defer="value" id="value"
-                                                    multiple>
+                                            <select class="form-control" wire:model.defer="value" id="value" multiple>
                                                 @foreach($attributeDefaultValues as $value)
                                                     <option value="{{ $value->id }}">{{ $value->value }}</option>
                                                 @endforeach
