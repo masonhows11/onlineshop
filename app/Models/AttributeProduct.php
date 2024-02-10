@@ -9,12 +9,12 @@ class AttributeProduct extends Model
 {
     use HasFactory;
     protected $table = 'attribute_products';
-    protected $fillable = ['product_id','attribute_id','type','values'];
+    protected $fillable = ['product_id','attribute_id','priority','type','values'];
 
 
 
     protected  $casts = [
-        'values' => 'array',
+        'values' => 'json',
     ];
 
     public function product()

@@ -18,7 +18,7 @@ return new class extends Migration
 
             $table->unsignedBigInteger('attribute_id')->nullable();
             $table->foreign('attribute_id')->references('id')->on('attributes')->onDelete('cascade');
-
+            $table->unsignedInteger('priority')->nullable();
             $table->string('type')->nullable();
             $table->text('values')->nullable();
 
