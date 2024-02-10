@@ -8,6 +8,7 @@ use App\Models\AttributeValue;
 use App\Models\Product;
 use Livewire\Component;
 
+
 class CreateProductSpecifications extends Component
 {
     public $product_id;
@@ -22,6 +23,7 @@ class CreateProductSpecifications extends Component
     public $type;
     public $value;
     public $values;
+    public $result=[];
 
     public function mount($product)
     {
@@ -42,12 +44,10 @@ class CreateProductSpecifications extends Component
 
     public function changeAttribute()
     {
-        if ($this->name == 0)
-        {
+        if ($this->name == 0) {
             $this->name = null;
-        }
-        else
-        $this->selectedAttribute = Attribute::where('id', $this->name)->first();
+        } else
+            $this->selectedAttribute = Attribute::where('id', $this->name)->first();
         $this->type = $this->selectedAttribute->type;
         switch ($this->type) {
             case 'select':
@@ -77,26 +77,32 @@ class CreateProductSpecifications extends Component
     public function save()
     {
         $this->validate();
-        switch ($this->type){
+        switch ($this->type) {
             case 'select':
                 $this->values = AttributeValue::where('attribute_id', $this->name)
-                    ->where('id',$this->value)->select('id','value')
+                    ->where('id', $this->value)->select('id', 'value')
                     ->first();
-                $this->values = json_encode(['id'=>$this->values->id , 'value' => $this->values->value]);
+                $this->values = json_encode(['id' => $this->values->id, 'value' => $this->values->value]);
                 dd($this->values);
                 //                AttributeProduct::create([
                 //
                 //                ]);
                 break;
             case 'multi_select':
-                $this->values  = AttributeValue::where('attribute_id', $this->name)
-                    ->whereIn('id',$this->value)->select('id','value')
-                    ->get()->toArray();
+                $this->values = AttributeValue::where('attribute_id', $this->name)
+                    ->whereIn('id', $this->value)->select('id', 'value')
+                    ->get();
+                //  dd($this->values);
+                $result = $this->values->map(function ($item) {
+                    return   json_encode(['id' => $item['id'],'value' => $item['value']]);
+                });
 
-                foreach ($this->values as $value){
-                    $this->values = json_encode(['id' => $value->id , 'value' => $value->value]);
-                }
-                dd($this->values);
+                dd($result);
+
+                //                foreach ($this->values as $value) {
+                //                    array_push($this->values, json_encode(['id' => $value['id'], 'value' => $value['value']]));
+                //                }
+                //  dd($this->values);
                 //                AttributeProduct::create([
                 //
                 //                ]);
@@ -109,7 +115,7 @@ class CreateProductSpecifications extends Component
                 //                ]);
                 break;
         }
-        dd($this->values,$this->type);
+        // dd($this->values, $this->type);
 
     }
 
