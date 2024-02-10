@@ -146,8 +146,9 @@
                                 @break
                                 @case('multi_select')
                                 @foreach($item->values as $value)
-                                    <td>{{ $value['value'] }}</td>
+                                    @php $result[] = $value['value'] @endphp
                                 @endforeach
+                                <td>{{ $result = implode(" - ",$result) }}</td>
                                 @break
                                 @case('text_box')
                                 <td>{{ $item->values }}</td>
