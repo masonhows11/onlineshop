@@ -135,7 +135,7 @@
                                <td>{{ $item->id }}</td>
                                <td>{{ $item->product->title_persian }}</td>
                                <td>{{ $item->attribute->name }}</td>
-                               <td>{{ $item->attribute->name }}</td>
+                               <td>{{ json_decode( $item->values)->id  }} {{ json_decode($item->values)->value }}</td>
                                <td><a class="mt-3" href="javascript:void(0)" wire:click.edit="edit({{$item->id}})"><i class="mt-3 fa fa-edit"></i></a></td>
                                <td><a class="mt-3" href="javascript:void(0)" wire:click.prevent="deleteConfirmation({{ $item->id }})"><i class="mt-3 fa fa-trash"></i></a></td>
                            </tr>
