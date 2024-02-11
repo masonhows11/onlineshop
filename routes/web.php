@@ -31,6 +31,7 @@ use App\Http\Controllers\Dash\Product\ProductCreateImageController;
 use App\Http\Controllers\Dash\Product\ProductCreateSpecificationsController;
 use App\Http\Controllers\Dash\Product\ProductCreateTagController;
 use App\Http\Controllers\Dash\Product\ProductEditController;
+use App\Http\Controllers\Dash\Product\ProductEditSpecificationsController;
 use App\Http\Controllers\Dash\Product\ProductMetaController;
 use App\Http\Controllers\Dash\Product\ProductWarrantyController;
 use App\Http\Controllers\Dash\Setting\SettingController;
@@ -353,12 +354,19 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin'
     Route::get('/product/edit/basic/{product}', [ProductEditController::class, 'edit'])->name('product.edit.basic');
     Route::post('/product/update/basic', [ProductEditController::class, 'update'])->name('product.update.basic');
 
-    // crud other product feathers
+    // crud attribute product feature
     Route::get('/product/create/property/{product}', [ProductMetaController::class, 'index'])->name('product.create.property');
     Route::get('/product/create/specifications/{product}', [ProductCreateSpecificationsController::class, 'index'])->name('product.create.specifications');
+
+    Route::get('/product/edit/specifications/{attribute}', [ProductEditSpecificationsController::class, 'index'])->name('product.edit.specifications');
+
+    // crud image product feature
     Route::get('/product/create/images/{product}', [ProductCreateImageController::class, 'create'])->name('product.create.images');
+    // crud color product feature
     Route::get('/product/create/colors/{product}', [ProductCreateColorController::class, 'create'])->name('product.create.colors');
+    // crud tag product feature
     Route::get('/product/create/tags/{product}',[ProductCreateTagController::class,'create'])->name('product.create.tags');
+    // crud guarantee product feature
     Route::get('/product-guarantee/index/{product}',[ProductWarrantyController::class,'create'])->name('product.guarantee.index');
 });
 
