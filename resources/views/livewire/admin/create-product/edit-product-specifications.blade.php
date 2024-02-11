@@ -75,20 +75,13 @@
                                             </select>
                                             @break
                                             @case('text_box')
-                                            <input type="text" class="form-control"
-                                                   id="value" wire:model.defer="value">
+                                            <input type="text" class="form-control" id="value" wire:model.defer="value">
                                             @break
                                             @case('text_area')
-                                            <textarea class="form-control"
-                                                      wire:model.defer="value"
-                                                      id="value" rows="5" cols="10">
-
+                                            <textarea class="form-control" wire:model.defer="value" id="value" rows="5" cols="10">
                                             </textarea>
                                             @break
                                         @endswitch
-
-{{--                                        <input type="text" class="form-control" id="value" wire:model.defer="value">--}}
-
                                     @error('value')
                                     <div class="alert alert-danger mt-3">
                                         {{ $message }}

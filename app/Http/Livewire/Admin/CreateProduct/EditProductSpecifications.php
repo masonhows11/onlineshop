@@ -13,18 +13,14 @@ class EditProductSpecifications extends Component
     ////
     public $product_id;
     public $attribute_product_id;
-
     ////
     public $product;
     public $attributes;
-    public $attribute_id;
-
-    public $attribute_values;
+    ////
     public $product_attribute;
     public $selectedAttributeType;
     public $attributeDefaultValues = null;
-
-
+    ////
     public $name;
     public $priority;
     public $values;
@@ -34,18 +30,16 @@ class EditProductSpecifications extends Component
     public function mount($product_id,$attribute_product_id)
     {
         ////
-
         $this->product_id = $product_id;
         $this->attribute_product_id  = $attribute_product_id;
-
+        ////
         $this->product = Product::where('id', $this->product_id)
             ->select('id', 'category_attribute_id', 'title_persian')
             ->first();
-
-
+        ////
         $this->attributes = Attribute::where('category_id',$this->product->category_attribute_id)
             ->get();
-
+        ////
         $this->product_attribute = AttributeProduct::where('id',$this->attribute_product_id)
             ->first();
 
@@ -87,7 +81,8 @@ class EditProductSpecifications extends Component
 
     }
 
-    public function save(){
+    public function save()
+    {
 
     }
 
