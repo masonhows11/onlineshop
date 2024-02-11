@@ -31,9 +31,9 @@
                                     <select class="form-control" wire:change="changeAttribute" wire:model.defer="name"
                                             id="name">
                                         <option value="0">انتخاب کنید</option>
-                                       {{-- @foreach($attributes as $attribute)
+                                        @foreach($attributes as $attribute)
                                             <option value="{{ $attribute->id }}">{{ $attribute->name }}</option>
-                                        @endforeach--}}
+                                        @endforeach
                                     </select>
                                     @error('name')
                                     <div class="alert alert-danger mt-3">{{ $message }}</div>
@@ -58,8 +58,8 @@
                                 <div class="mt-3 mb-3">
                                     <label for="value"
                                            class="form-label">{{ __('messages.product_property_value') }}</label>
-                                   {{-- @if( $name != null)
-                                        @switch($selectedAttributeType)
+
+                                       {{-- @switch($selectedAttributeType)
                                             @case('select')
                                             <select class="form-control" wire:model.defer="value" id="value">
                                                 <option>انتخاب کنید...</option>
@@ -84,10 +84,9 @@
                                                       placeholder="متن خود را وارد کنید..." id="value" rows="5"
                                                       cols="10"></textarea>
                                             @break
-                                        @endswitch
-                                    @else
-                                        <input type="text" class="form-control" id="value" wire:model.defer="value">
-                                    @endif--}}
+                                        @endswitch--}}
+
+{{--                                        <input type="text" class="form-control" id="value" wire:model.defer="value">--}}
 
                                     @error('value')
                                     <div class="alert alert-danger mt-3">
