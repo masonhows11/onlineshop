@@ -101,14 +101,12 @@
 
                         <div class="row my-4">
                             <div class="col-sm-6">
-                                <button type="submit" id="add_attribute"
-                                        class="btn btn-success btn-sm">{{ __('messages.save') }}</button>
-                                <a href="{{ route('admin.product.create.images',['product'=>$product->id]) }}"
-                                   class="btn btn-primary btn-sm">{{ __('messages.product_images') }}</a>
+                                <button type="submit" id="add_attribute" class="btn btn-success btn-sm">{{ __('messages.save') }}</button>
+                                <a href="{{ route('admin.product.create.images',['product'=> $product->id]) }}" class="btn btn-primary btn-sm">{{ __('messages.product_images') }}</a>
+                                <a href="{{ route('admin.product.specifications.index',['product' => $product->id]) }}" class="btn btn-primary btn-sm">{{ __('messages.return_product_specification_list') }}</a>
                             </div>
                             <div class="col-sm-6 d-flex justify-content-end">
-                                <a href="{{ route('admin.product.index') }}"
-                                   class="btn btn-secondary btn-sm">{{ __('messages.product_list') }}</a>
+                                <a href="{{ route('admin.product.index') }}" class="btn btn-secondary btn-sm">{{ __('messages.product_list') }}</a>
                             </div>
                         </div>
 

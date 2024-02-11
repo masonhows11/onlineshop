@@ -28,6 +28,7 @@ return [
     'specification_name' => 'نام مشخصه فنی',
     'specification_value' => 'مقدار مشخصه فنی',
     'product_manage_specifications' => 'مدیریت مشخصات فنی',
+    'return_product_specification_list' => 'لیست مشخصات محصول',
     'product_manage_specifications_edit' => 'مدیریت مشخصات فنی - ویرایش',
     'product_specifications' => 'مشخصات فنی کالا',
     'product_specifications_values' => 'مقادیر مشخصات  فنی کالا',
