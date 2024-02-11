@@ -28,7 +28,7 @@ class EditProductSpecifications extends Component
     public $name;
     public $priority;
     public $values;
-    public $value;
+    public $value=[];
     public $type;
 
     public function mount($product_id,$attribute_product_id)
@@ -68,20 +68,22 @@ class EditProductSpecifications extends Component
                 break;
             case 'multi_select':
                 $this->selectedAttributeType = 'multi_select';
-
+                $this->attributeDefaultValues =
+                AttributeValue::where('attribute_id', $this->name)->select('id','value')->get();
+                foreach ($this->product_attribute->values as $item){
+                    array_push($this->value,$item['id']);
+                }
                 break;
             case 'text_area':
                 $this->selectedAttributeType = 'text_area';
+                $this->value = $this->product_attribute->values;
                 break;
             case 'text_box':
                 $this->selectedAttributeType = 'text_box';
+                $this->value =$this->product_attribute->values;
                 break;
-            default:
-                $this->selectedAttributeType = 'text_box';
         }
-        // $this->values =  json_decode($this->product_attribute->values)->id;
-        //  dd($this->type);
-        //$this->values = $this->product_attribute->
+
 
     }
 
