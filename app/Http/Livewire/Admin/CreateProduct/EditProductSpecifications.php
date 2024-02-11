@@ -21,6 +21,7 @@ class EditProductSpecifications extends Component
     public $name;
     public $priority;
     public $values;
+    public $type;
 
     public function mount($product,$attribute)
     {
@@ -40,6 +41,34 @@ class EditProductSpecifications extends Component
         // fill input with old value
         $this->name = $this->product_attribute->attribute_id;
         $this->priority = $this->product_attribute->priority;
+        $this->type = $this->product_attribute->type;
+
+        // fill the value input wire model base on attribute type
+        switch ($this->type) {
+            case 'select':
+                $this->selectedAttributeType = 'select';
+                $this->attributeDefaultValues =
+                    AttributeValue::where('attribute_id', $this->selectedAttribute->id)
+                        ->get();
+                break;
+            case 'multi_select':
+                $this->selectedAttributeType = 'multi_select';
+                $this->attributeDefaultValues =
+                    AttributeValue::where('attribute_id', $this->selectedAttribute->id)
+                        ->get();
+                break;
+            case 'text_area':
+                $this->selectedAttributeType = 'text_area';
+                break;
+            case 'text_box':
+                $this->selectedAttributeType = 'text_box';
+                break;
+            default:
+                $this->selectedAttributeType = 'text_box';
+        }
+        $this->values =  json_decode($this->product_attribute->values)->id;
+        dd($this->type);
+        //$this->values = $this->product_attribute->
 
     }
 

@@ -59,7 +59,7 @@
                                     <label for="value"
                                            class="form-label">{{ __('messages.product_property_value') }}</label>
 
-                                       {{-- @switch($selectedAttributeType)
+                                        @switch($selectedAttributeType)
                                             @case('select')
                                             <select class="form-control" wire:model.defer="value" id="value">
                                                 <option>انتخاب کنید...</option>
@@ -76,15 +76,17 @@
                                             </select>
                                             @break
                                             @case('text_box')
-                                            <input type="text" class="form-control" id="value"
-                                                   placeholder="متن خود را وارد کنید..." wire:model.defer="value">
+                                            <input type="text" class="form-control"
+                                                   id="value" wire:model.defer="value">
                                             @break
                                             @case('text_area')
-                                            <textarea class="form-control" wire:model.defer="value"
-                                                      placeholder="متن خود را وارد کنید..." id="value" rows="5"
-                                                      cols="10"></textarea>
+                                            <textarea class="form-control"
+                                                      wire:model.defer="value"
+                                                      id="value" rows="5" cols="10">
+
+                                            </textarea>
                                             @break
-                                        @endswitch--}}
+                                        @endswitch
 
 {{--                                        <input type="text" class="form-control" id="value" wire:model.defer="value">--}}
 
