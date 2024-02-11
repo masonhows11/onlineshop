@@ -73,11 +73,11 @@ class EditProductSpecifications extends Component
                 break;
             case 'text_area':
                 $this->selectedAttributeType = 'text_area';
-                $this->value = json_decode($this->product_attribute->values);
+                $this->value = json_decode($this->product_attribute->values)->value;
                 break;
             case 'text_box':
                 $this->selectedAttributeType = 'text_box';
-                $this->value = json_decode($this->product_attribute->values);
+                $this->value = json_decode($this->product_attribute->values)->value;
                 break;
         }
     }
@@ -100,7 +100,8 @@ class EditProductSpecifications extends Component
                     ->where('id', $this->value)->select('id', 'value')
                     ->first();
                 $this->values = json_encode(['id' => $this->values->id, 'value' => $this->values->value]);
-                AttributeProduct::where('id',$this->attribute_product_id )->update([
+               // dd($this->values);
+                AttributeProduct::where('id',$this->attribute_product_id)->update([
                     'product_id' => $this->product_id,
                     'attribute_id' => $this->name,
                     'values' => $this->values,
@@ -132,7 +133,7 @@ class EditProductSpecifications extends Component
                 break;
             case 'text_box':
             case 'text_area':
-                $this->values = $this->value;
+            $this->values = json_encode(['value' => $this->value]);
                 AttributeProduct::where('id',$this->attribute_product_id )->update([
                     'product_id' => $this->product_id,
                     'values' => $this->values,

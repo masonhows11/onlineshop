@@ -118,7 +118,7 @@ class CreateProductSpecifications extends Component
                 break;
             case 'text_box':
             case 'text_area':
-                $this->values = json_encode($this->value);
+                $this->values = json_encode(['value' => $this->value]);
                 AttributeProduct::create([
                     'product_id' => $this->product_id,
                     'values' => $this->values,

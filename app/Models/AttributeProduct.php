@@ -13,9 +13,9 @@ class AttributeProduct extends Model
 
 
 
-    protected  $casts = [
-        'values' => 'json',
-    ];
+//    protected $casts = [
+//        'values' => 'json',
+//    ];
 
     public function product()
     {
