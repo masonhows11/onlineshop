@@ -67,7 +67,7 @@ class EditProductSpecifications extends Component
                 $this->selectedAttributeType = 'multi_select';
                 $this->attributeDefaultValues =
                 AttributeValue::where('attribute_id', $this->name)->select('id','value')->get();
-                foreach ($this->product_attribute->values as $item){
+                foreach (json_decode($this->product_attribute->values,true) as $item){
                     array_push($this->value,$item['id']);
                 }
                 break;
