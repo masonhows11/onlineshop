@@ -76,13 +76,17 @@
                                         </select>
                                         @break
                                         @case('text_box')
-                                        <input type="text" class="form-control" id="value"
-                                                wire:model.defer="value">
+                                        <input type="text" class="form-control"
+                                                  placeholder="متن خود را وارد کنید.."
+                                                  wire:model.defer="value" id="value">
                                         @break
                                         @case('text_area')
-                                        <textarea class="form-control" wire:model.defer="value"
-                                                   id="value" rows="5"
-                                                  cols="10"></textarea>
+                                        <textarea class="form-control"
+                                                  placeholder="متن خود را وارد کنید.."
+                                                   wire:model.defer="value"
+                                                    rows="5" cols="10" id="value">
+
+                                        </textarea>
                                         @break
                                     @endswitch
                                 @else

@@ -6,6 +6,7 @@ use App\Models\Attribute;
 use App\Models\AttributeProduct;
 use App\Models\AttributeValue;
 use App\Models\Product;
+use Illuminate\Validation\Rule;
 use Livewire\Component;
 
 
@@ -37,12 +38,15 @@ class CreateProductSpecifications extends Component
 
     }
 
-    protected $rules = [
-        'name' => ['required'],
-        'type' => ['required'],
-        'value' => ['required'],
-        'priority' => ['required'],
-    ];
+    public function rules(){
+        return [
+            'name' => ['required'],
+            'type' => ['required'],
+            'priority' => ['required'],
+            'value' => $this->type == 'text_box' || 'text_area' ? 'required|string|min:1|max:255' : 'required',
+        ];
+    }
+
 
     public function changeAttribute()
     {

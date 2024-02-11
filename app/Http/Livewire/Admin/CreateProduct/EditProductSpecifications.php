@@ -21,7 +21,6 @@ class EditProductSpecifications extends Component
     public $product_attribute;
     public $selectedAttributeType;
     public $attributeDefaultValues = null;
-    public $selectedAttribute;
     ////
     public $name;
     public $priority;
@@ -77,12 +76,14 @@ class EditProductSpecifications extends Component
     }
 
 
-    protected $rules = [
-        'name' => ['required'],
-        'type' => ['required'],
-        'value' => ['required'],
-        'priority' => ['required'],
-    ];
+    public function rules(){
+        return [
+            'name' => ['required'],
+            'type' => ['required'],
+            'priority' => ['required'],
+            'value' => $this->type == 'text_box' || 'text_area' ? 'required|string|min:1|max:255' : 'required',
+        ];
+    }
 
     public function save()
     {
@@ -94,7 +95,7 @@ class EditProductSpecifications extends Component
                     ->where('id', $this->value)->select('id', 'value')
                     ->first();
                 $this->values = json_encode(['id' => $this->values->id, 'value' => $this->values->value]);
-               // dd($this->values);
+
                 AttributeProduct::where('id',$this->attribute_product_id)->update([
                     'product_id' => $this->product_id,
                     'attribute_id' => $this->name,
