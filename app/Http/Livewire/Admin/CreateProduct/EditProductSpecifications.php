@@ -73,11 +73,11 @@ class EditProductSpecifications extends Component
                 break;
             case 'text_area':
                 $this->selectedAttributeType = 'text_area';
-                $this->value = $this->product_attribute->values;
+                $this->value = json_decode($this->product_attribute->values);
                 break;
             case 'text_box':
                 $this->selectedAttributeType = 'text_box';
-                $this->value =$this->product_attribute->values;
+                $this->value = json_decode($this->product_attribute->values);
                 break;
         }
     }
@@ -146,7 +146,7 @@ class EditProductSpecifications extends Component
                 break;
         }
         session()->flash('success',__('messages.The_update_was_completed_successfully'));
-        return redirect()->route('product.create.specifications',['product'=> $this->product_id]);
+        return redirect()->route('admin.product.create.specifications',['product'=> $this->product_id]);
 
 
     }

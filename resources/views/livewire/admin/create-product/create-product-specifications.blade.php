@@ -151,10 +151,10 @@
                                 <td>{{ $result = implode(" - ",$result) }}</td>
                                 @break
                                 @case('text_box')
-                                <td>{{ $item->values }}</td>
+                                <td>{{ json_decode($item->values) }}</td>
                                 @break
                                 @case('text_area')
-                                <td>{{ $item->values}}</td>
+                                <td>{{ json_decode($item->values)}}</td>
                                 @break
                             @endswitch
                             <td><a class="mt-3" href="{{ route('admin.product.edit.specifications',['attribute_product_id' => $item->id,'product_id'=>$item->product_id])}}">

@@ -79,6 +79,7 @@ class CreateProductSpecifications extends Component
     public function save()
     {
         $this->validate();
+
         switch ($this->type) {
             case 'select':
                 $this->values = AttributeValue::where('attribute_id', $this->name)
@@ -103,7 +104,7 @@ class CreateProductSpecifications extends Component
                 $this->values = $this->values->map(function ($item) {
                     return ['id' => $item['id'], 'value' => $item['value']];
                 });
-              
+
                 AttributeProduct::create([
                     'product_id' => $this->product_id,
                     'values' => $this->values,
@@ -117,7 +118,7 @@ class CreateProductSpecifications extends Component
                 break;
             case 'text_box':
             case 'text_area':
-                $this->values = $this->value;
+                $this->values = json_encode($this->value);
                 AttributeProduct::create([
                     'product_id' => $this->product_id,
                     'values' => $this->values,
