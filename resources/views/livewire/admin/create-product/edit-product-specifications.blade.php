@@ -19,7 +19,7 @@
 
             <div class="row mx-2 my-3 d-flex flex-column ">
 
-               {{-- <div class="col  bg-white">
+                <div class="col  bg-white">
 
                     <form wire:submit.prevent="save">
 
@@ -31,9 +31,9 @@
                                     <select class="form-control" wire:change="changeAttribute" wire:model.defer="name"
                                             id="name">
                                         <option value="0">انتخاب کنید</option>
-                                        @foreach($attributes as $attribute)
+                                       {{-- @foreach($attributes as $attribute)
                                             <option value="{{ $attribute->id }}">{{ $attribute->name }}</option>
-                                        @endforeach
+                                        @endforeach--}}
                                     </select>
                                     @error('name')
                                     <div class="alert alert-danger mt-3">{{ $message }}</div>
@@ -58,7 +58,7 @@
                                 <div class="mt-3 mb-3">
                                     <label for="value"
                                            class="form-label">{{ __('messages.product_property_value') }}</label>
-                                    @if( $name != null)
+                                   {{-- @if( $name != null)
                                         @switch($selectedAttributeType)
                                             @case('select')
                                             <select class="form-control" wire:model.defer="value" id="value">
@@ -87,7 +87,7 @@
                                         @endswitch
                                     @else
                                         <input type="text" class="form-control" id="value" wire:model.defer="value">
-                                    @endif
+                                    @endif--}}
 
                                     @error('value')
                                     <div class="alert alert-danger mt-3">
@@ -114,7 +114,7 @@
 
                     </form>
 
-                </div>--}}
+                </div>
 
             </div>
 
