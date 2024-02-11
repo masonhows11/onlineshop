@@ -44,16 +44,10 @@ class EditProductSpecifications extends Component
         ////
         $this->product_attribute = AttributeProduct::where('id',$this->attribute_product_id)
             ->first();
-
-
-
-
         // fill input with current value
         $this->attribute_name = Attribute::where('id',$this->product_attribute->attribute_id)->first('name');
         $this->name = $this->product_attribute->attribute_id;
         $this->priority = $this->product_attribute->priority;
-
-
         // fill the value input wire model base on attribute type
         $this->type = $this->product_attribute->type;
         switch ($this->type) {

@@ -145,7 +145,6 @@
                                 <td>{{ json_decode($item->values)->value }}</td>
                                 @break
                                 @case('multi_select')
-{{--                                @dd(gettype($item->values))--}}
                                 @foreach(json_decode($item->values,true) as $value)
                                     @php $result[] = $value['value'] @endphp
                                 @endforeach
