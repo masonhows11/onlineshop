@@ -28,6 +28,7 @@ class EditProductSpecifications extends Component
     public $name;
     public $priority;
     public $values;
+    public $value;
     public $type;
 
     public function mount($product_id,$attribute_product_id)
@@ -47,7 +48,7 @@ class EditProductSpecifications extends Component
 
         $this->product_attribute = AttributeProduct::where('id',$this->attribute_product_id)
             ->first();
-     
+
 
 
 
@@ -57,34 +58,29 @@ class EditProductSpecifications extends Component
 
 
         // fill the value input wire model base on attribute type
-//        $this->type = $this->product_attribute->type;
-//        switch ($this->type) {
-//            case 'select':
-//                $this->selectedAttributeType = 'select';
-//                $this->attribute_id = Attribute::where('category_id',$this->product->category_attribute_id)
-//                    ->select('id')
-//                    ->first();
-//                $this->attributeDefaultValues =
-//                    AttributeValue::where('attribute_id', $this->attributes->id)->get();
-//                $this->values = json_decode($this->product_attribute->values)->id;
-//                break;
-//            case 'multi_select':
-//                $this->selectedAttributeType = 'multi_select';
-//                $this->attributeDefaultValues =
-//                    AttributeValue::where('attribute_id', $this->selectedAttribute->id)
-//                        ->get();
-//                break;
-//            case 'text_area':
-//                $this->selectedAttributeType = 'text_area';
-//                break;
-//            case 'text_box':
-//                $this->selectedAttributeType = 'text_box';
-//                break;
-//            default:
-//                $this->selectedAttributeType = 'text_box';
-//        }
-       // $this->values =  json_decode($this->product_attribute->values)->id;
-      //  dd($this->type);
+        $this->type = $this->product_attribute->type;
+        switch ($this->type) {
+            case 'select':
+                $this->selectedAttributeType = 'select';
+                $this->attributeDefaultValues =
+                    AttributeValue::where('attribute_id', $this->name)->select('id','value')->get();
+                $this->value = json_decode($this->product_attribute->values)->id;
+                break;
+            case 'multi_select':
+                $this->selectedAttributeType = 'multi_select';
+
+                break;
+            case 'text_area':
+                $this->selectedAttributeType = 'text_area';
+                break;
+            case 'text_box':
+                $this->selectedAttributeType = 'text_box';
+                break;
+            default:
+                $this->selectedAttributeType = 'text_box';
+        }
+        // $this->values =  json_decode($this->product_attribute->values)->id;
+        //  dd($this->type);
         //$this->values = $this->product_attribute->
 
     }
