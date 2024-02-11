@@ -77,11 +77,11 @@
                                         @break
                                         @case('text_box')
                                         <input type="text" class="form-control" id="value"
-                                               placeholder="متن خود را وارد کنید..." wire:model.defer="value">
+                                                wire:model.defer="value">
                                         @break
                                         @case('text_area')
                                         <textarea class="form-control" wire:model.defer="value"
-                                                  placeholder="متن خود را وارد کنید..." id="value" rows="5"
+                                                   id="value" rows="5"
                                                   cols="10"></textarea>
                                         @break
                                     @endswitch

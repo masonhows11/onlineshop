@@ -15,11 +15,13 @@ class EditProductSpecifications extends Component
     public $attribute_product_id;
     ////
     public $product;
+    public $attribute_name;
     public $attributes;
     ////
     public $product_attribute;
     public $selectedAttributeType;
     public $attributeDefaultValues = null;
+    public $selectedAttribute;
     ////
     public $name;
     public $priority;
@@ -47,6 +49,7 @@ class EditProductSpecifications extends Component
 
 
         // fill input with current value
+        $this->attribute_name = Attribute::where('id',$this->product_attribute->attribute_id)->first('name');
         $this->name = $this->product_attribute->attribute_id;
         $this->priority = $this->product_attribute->priority;
 
@@ -77,12 +80,72 @@ class EditProductSpecifications extends Component
                 $this->value =$this->product_attribute->values;
                 break;
         }
-
-
     }
+
+
+    protected $rules = [
+        'name' => ['required'],
+        'type' => ['required'],
+        'value' => ['required'],
+        'priority' => ['required'],
+    ];
 
     public function save()
     {
+        $this->validate();
+
+        switch ($this->type) {
+            case 'select':
+                $this->values = AttributeValue::where('attribute_id', $this->name)
+                    ->where('id', $this->value)->select('id', 'value')
+                    ->first();
+                $this->values = json_encode(['id' => $this->values->id, 'value' => $this->values->value]);
+                AttributeProduct::create([
+                    'product_id' => $this->product_id,
+                    'attribute_id' => $this->name,
+                    'values' => $this->values,
+                    'priority' => $this->priority,
+                    'type' => $this->type,
+                ]);
+                $this->name = null;
+                $this->value = null;
+                $this->priority = null;
+                break;
+            case 'multi_select':
+                $this->values = AttributeValue::where('attribute_id', $this->name)
+                    ->whereIn('id', $this->value)->select('id', 'value')
+                    ->get();
+                $this->values = $this->values->map(function ($item) {
+                    return ['id' => $item['id'], 'value' => $item['value']];
+                });
+
+                AttributeProduct::create([
+                    'product_id' => $this->product_id,
+                    'values' => $this->values,
+                    'attribute_id' => $this->name,
+                    'priority' => $this->priority,
+                    'type' => $this->type,
+                ]);
+                $this->name = null;
+                $this->value = null;
+                $this->priority = null;
+                break;
+            case 'text_box':
+            case 'text_area':
+                $this->values = $this->value;
+                AttributeProduct::create([
+                    'product_id' => $this->product_id,
+                    'values' => $this->values,
+                    'attribute_id' => $this->name,
+                    'priority' => $this->priority,
+                    'type' => $this->type,
+                ]);
+                $this->name = null;
+                $this->value = null;
+                $this->priority = null;
+                break;
+        }
+
 
     }
 
