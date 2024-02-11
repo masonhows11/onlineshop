@@ -11,6 +11,6 @@ class ProductEditSpecificationsController extends Controller
     public function index(Request $request)
     {
         return view('admin_end.product.edit.edit_specifications')
-            ->with(['product' => $request->product ,'attribute'=>$request->attribute]);
+            ->with(['product_id' => $request->product_id ,'attribute_product_id'=>$request->attribute_product_id]);
     }
 }
