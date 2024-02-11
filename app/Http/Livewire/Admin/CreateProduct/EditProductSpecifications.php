@@ -100,7 +100,7 @@ class EditProductSpecifications extends Component
                     ->where('id', $this->value)->select('id', 'value')
                     ->first();
                 $this->values = json_encode(['id' => $this->values->id, 'value' => $this->values->value]);
-                AttributeProduct::create([
+                AttributeProduct::where('id',$this->attribute_product_id )->update([
                     'product_id' => $this->product_id,
                     'attribute_id' => $this->name,
                     'values' => $this->values,
@@ -119,7 +119,7 @@ class EditProductSpecifications extends Component
                     return ['id' => $item['id'], 'value' => $item['value']];
                 });
 
-                AttributeProduct::create([
+                AttributeProduct::where('id',$this->attribute_product_id )->update([
                     'product_id' => $this->product_id,
                     'values' => $this->values,
                     'attribute_id' => $this->name,
@@ -133,7 +133,7 @@ class EditProductSpecifications extends Component
             case 'text_box':
             case 'text_area':
                 $this->values = $this->value;
-                AttributeProduct::create([
+                AttributeProduct::where('id',$this->attribute_product_id )->update([
                     'product_id' => $this->product_id,
                     'values' => $this->values,
                     'attribute_id' => $this->name,
@@ -145,6 +145,8 @@ class EditProductSpecifications extends Component
                 $this->priority = null;
                 break;
         }
+        session()->flash('success',__('messages.The_update_was_completed_successfully'));
+        return redirect()->route('product.create.specifications',['product'=> $this->product_id]);
 
 
     }

@@ -28,7 +28,7 @@
 
                         <div class="col-sm-4">
                             <div class="alert alert-secondary mt-10">
-                               <strong> <h5>{{ $attribute_name->name }}</h5> </strong>
+                               <h5>{{ $attribute_name->name }}</h5>
                             </div>
                         </div>
 
