@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin\CreateProduct;
 
 use App\Models\Attribute;
+use App\Models\AttributeProduct;
 use App\Models\Product;
 use Livewire\Component;
 
@@ -12,6 +13,7 @@ class EditProductSpecifications extends Component
     public $product;
     public $attribute;
     public $attributes;
+    public $product_attribute;
 
     public function mount($product,$attribute)
     {
@@ -20,8 +22,10 @@ class EditProductSpecifications extends Component
         $this->product = Product::where('id', $product)
             ->select('id', 'category_attribute_id', 'title_persian')
             ->first();
+        $this->product_attribute = AttributeProduct::where('id',$this->attribute)->first();
         $this->attributes = Attribute::where('id',$this->attribute)->where('category_id', $this->product->category_attribute_id)
             ->first();
+        dd($this->product_attribute);
     }
 
     public function save(){
