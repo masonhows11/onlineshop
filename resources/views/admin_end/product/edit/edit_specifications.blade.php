@@ -5,7 +5,7 @@
 @section('dash_main_content')
     <div class="container-fluid">
 
-        <livewire:admin.create-product.edit-product-specifications :product="$product"/>
+        <livewire:admin.create-product.edit-product-specifications :product="$product" :attribute="$attribute"/>
 
     </div>
 @endsection

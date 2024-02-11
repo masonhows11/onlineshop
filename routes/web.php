@@ -357,9 +357,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin'
     // crud attribute product feature
     Route::get('/product/create/property/{product}', [ProductMetaController::class, 'index'])->name('product.create.property');
     Route::get('/product/create/specifications/{product}', [ProductCreateSpecificationsController::class, 'index'])->name('product.create.specifications');
-
-    Route::get('/product/edit/specifications/{attribute}', [ProductEditSpecificationsController::class, 'index'])->name('product.edit.specifications');
-
+    Route::get('/product/edit/specifications/{attribute}/{product}', [ProductEditSpecificationsController::class, 'index'])->name('product.edit.specifications');
     // crud image product feature
     Route::get('/product/create/images/{product}', [ProductCreateImageController::class, 'create'])->name('product.create.images');
     // crud color product feature
