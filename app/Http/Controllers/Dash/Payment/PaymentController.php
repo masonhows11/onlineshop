@@ -15,25 +15,25 @@ class PaymentController extends Controller
 
     public function index()
     {
-        return view('admin_end.payment.index')->with(['payments' => Payment::paginate(20)]);
+        return view('admin_end.payment.index')->with(['payments' => Payment::orderBy('created_at','asc')->paginate(20)]);
     }
 
     public function offline()
     {
-        $payments = Payment::where('paymentable_type', 'App\Models\OfflinePayment')->paginate(20);
+        $payments = Payment::where('paymentable_type', 'App\Models\OfflinePayment')->orderBy('created_at','asc')->paginate(20);
         return view('admin_end.payment.offline_payments', ['payments' => $payments]);
     }
 
     public function online()
     {
 
-        $payments = Payment::where('paymentable_type', 'App\Models\OnlinePayment')->paginate(20);
+        $payments = Payment::where('paymentable_type', 'App\Models\OnlinePayment')->orderBy('created_at','asc')->paginate(20);
         return view('admin_end.payment.online_payments', ['payments' => $payments]);
     }
 
     public function cash()
     {
-        $payments = Payment::where('paymentable_type', 'App\Models\CashPayment')->paginate(20);
+        $payments = Payment::where('paymentable_type', 'App\Models\CashPayment')->orderBy('created_at','asc')->paginate(20);
         return view('admin_end.payment.cash_payments', ['payments' => $payments]);
     }
 
