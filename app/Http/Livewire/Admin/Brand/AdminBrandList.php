@@ -76,6 +76,6 @@ class AdminBrandList extends Component
             ->extends('admin_end.include.master_dash')
             ->section('dash_main_content')
             ->with(['brands' => Brand::where('title_persian','like','%'.$this->search.'%')
-                ->OrWhere('title_english','like','%'.$this->search.'%')->paginate(9)]);
+                ->OrWhere('title_english','like','%'.$this->search.'%')->orderBy('id','asc')->paginate(9)]);
     }
 }

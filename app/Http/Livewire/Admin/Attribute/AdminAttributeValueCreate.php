@@ -138,6 +138,6 @@ class AdminAttributeValueCreate extends Component
             ->extends('admin_end.include.master_dash')
             ->section('dash_main_content')
             ->with(['attributes' =>
-                Attribute::where('category_id', $this->category_id)->where('has_default_value',1)->get()]);
+                Attribute::where('category_id', $this->category_id)->where('has_default_value',1)->orderBy('priority','asc')->get()]);
     }
 }

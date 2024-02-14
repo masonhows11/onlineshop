@@ -101,7 +101,7 @@ class AdminCategoryList extends Component
             ->extends('admin_end.include.master_dash')
             ->section('dash_main_content')
             ->with(['categories' => Category::where('title_persian','like','%'.$this->search.'%')
-                ->Orwhere('title_english','like','%'.$this->search.'%')->paginate(10)]);
+                ->Orwhere('title_english','like','%'.$this->search.'%')->orderBy('id','asc')->paginate(10)]);
         // ->with(['category_tree'=>Category::tree()->get()->toTree()]);
     }
 }

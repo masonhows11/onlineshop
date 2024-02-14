@@ -44,6 +44,6 @@ class AdminAdmins extends Component
             ->extends('admin_end.include.master_dash')
             ->section('dash_main_content')
             ->with(['admins'=> Admin::where('name','like','%'.$this->search.'%')
-                ->Orwhere('first_name','like','%'.$this->search.'%')->paginate(5)]);
+                ->Orwhere('first_name','like','%'.$this->search.'%')->orderBy('id','asc')->paginate(5)]);
     }
 }

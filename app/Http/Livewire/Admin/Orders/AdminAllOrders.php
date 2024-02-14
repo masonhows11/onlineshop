@@ -83,6 +83,6 @@ class AdminAllOrders extends Component
         return view('livewire.admin.orders.admin-all-orders')
             ->extends('admin_end.include.master_dash')
             ->section('dash_main_content')
-            ->with(['orders' => Order::paginate(10)]);
+            ->with(['orders' => Order::orderBy('created_at','asc')->paginate(10)]);
     }
 }

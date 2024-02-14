@@ -149,7 +149,7 @@ class CreateProductColor extends Component
     {
         return view('livewire.admin.create-product.create-product-color')
             ->with(['product' => $this->product,
-                'product_colors' => ProductColor::where('product_id', $this->product_id)->where('default', 0)->get(),
+                'product_colors' => ProductColor::where('product_id', $this->product_id)->where('default', 0)->orderBy('color_name','asc')->get(),
                 'colors' => Color::all()]);
     }
 }
