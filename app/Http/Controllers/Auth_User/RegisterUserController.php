@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth_User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Models\User;
-use App\Notifications\UserAuthNotification;
+use App\Notifications\UserAuthNotificationManual;
 use App\Services\ConvertPerToEn;
 use App\Services\GenerateToken;
 use Illuminate\Support\Facades\Notification;
@@ -46,7 +46,7 @@ class RegisterUserController extends Controller
                 ]);
 
 
-                Notification::send($newUser,new UserAuthNotification($newUser));
+                Notification::send($newUser,new UserAuthNotificationManual($newUser));
                 session(['auth_email' => $newUser->email ,
                     'token_guid' => $newUser->token_guid,
                     'token_time'=>$newUser->updated_at]);

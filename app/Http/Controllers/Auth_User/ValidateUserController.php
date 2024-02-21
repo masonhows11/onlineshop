@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth_User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\ValidateMobileRequest;
 use App\Models\User;
-use App\Notifications\UserAuthNotification;
+use App\Notifications\UserAuthNotificationManual;
 use App\Services\ValidateUserAdminService\ValidateUserService;
 use App\Services\GenerateToken;
 use Carbon\Carbon;
@@ -100,7 +100,7 @@ class ValidateUserController extends Controller
                     $user->save();
 
 
-                    Notification::send($user, new UserAuthNotification($user));
+                    Notification::send($user, new UserAuthNotificationManual($user));
 
                     session(['auth_email' => $user->email ,
                         'token_guid' => $user->token_guid,

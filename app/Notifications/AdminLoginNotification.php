@@ -10,53 +10,46 @@ use Illuminate\Notifications\Notification;
 class AdminLoginNotification extends Notification
 {
     use Queueable;
-    public $admin;
-    public $code;
 
+    public $admin;
+    public $token;
     /**
      * Create a new notification instance.
-     *
-     * @param $admin
-     * @param $code
      */
-    public function __construct($admin, $code)
+    public function __construct($admin,$token)
     {
-        //
         $this->admin = $admin;
-        $this->code = $code;
+        $this->token = $token;
     }
 
     /**
      * Get the notification's delivery channels.
      *
-     * @param mixed $notifiable
-     * @return void
+     * @return array<int, string>
      */
-    public function via($notifiable)
+    public function via(object $notifiable): array
     {
-        // return ['mail'];
-
+        return ['mail'];
     }
 
     /**
      * Get the mail representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return MailMessage
      */
-    public function toMail($notifiable)
+    public function toMail(object $notifiable): MailMessage
     {
-
         return (new MailMessage)
-            ->subject('گوود شاپ تاییدیه ورود پنل مدیریت')
+            ->subject('گرافیک شاپ تاییدیه ورود پنل مدیریت')
             ->from(env('MAIL_FROM_ADDRESS'))
-            ->greeting('فروشگاه خرید خوب')
+            ->greeting('graphicshop.ir')
             ->line('Dear User')
-            ->line('admin panel active code for admin user :')
+            ->line('admin panel active token for admin user :')
             ->line("admin: $this->admin")
-            ->line("active code : $this->code");
+            ->line("active token : $this->token");
+    //        return (new MailMessage)
+    //                    ->line('The introduction to the notification.')
+    //                    ->action('Notification Action', url('/'))
+    //                    ->line('Thank you for using our application!');
     }
-
 
     /**
      * Get the array representation of the notification.

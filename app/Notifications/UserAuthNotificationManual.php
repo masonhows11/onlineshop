@@ -2,15 +2,15 @@
 
 namespace App\Notifications;
 
-use Illuminate\Bus\Queueable;
+// use Illuminate\Bus\Queueable;
 // use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
 
-class UserAuthNotification extends Notification
+class UserAuthNotificationManual extends Notification // implements ShouldQueue
 {
-    use Queueable;
+    // use Queueable;
     protected  $user;
 
     /**
@@ -44,8 +44,8 @@ class UserAuthNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject('خرید خوب')
-            ->from('goodshop@gmail.com')
+            ->subject('گرافیک شاپ')
+            ->from(env('MAIL_FROM_ADDRESS'))
             ->greeting('کد فعال سازی')
             ->line('کاربر عزیز')
             ->line($this->user->email)
