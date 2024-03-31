@@ -46,9 +46,8 @@
                         </div>
 
                         <div class="col-sm-4">
-                            <div class="mt-3 mb-3">
-                                <label for="value"
-                                       class="form-label">{{ __('messages.product_property_value') }}</label>
+                            <div class="mt-3 mb-3" wire:ignore>
+                                <label for="value" class="form-label">{{ __('messages.product_property_value') }}</label>
                                 @switch($selectedAttributeType)
                                     @case('select')
                                     <select class="form-control" wire:model.defer="value" id="value">
@@ -59,7 +58,7 @@
                                     </select>
                                     @break
                                     @case('multi_select')
-                                    <select class="form-control" id="form-select" wire:model.defer="value" id="value" multiple>
+                                    <select class="form-control form-select" id="attrIds" wire:model.defer="value" multiple>
                                         @foreach($attributeDefaultValues as $value)
                                             <option value="{{ $value->id }}">{{ $value->value }}</option>
                                         @endforeach
@@ -110,11 +109,16 @@
 @push('dash_custom_script')
     <script>
         $(document).ready(() => {
-            $('#form-select').select2()
-            $('#form-select').on('change', function (e) {
-                var data = $('#form-select').select2("val");
-            @this.set('selectAttribute', data);
+            $('.form-select').select2({
+                dir: "rtl"
+            })
+            $('.form-select').on('change', function (e) {
+                //// store id in data with
+                let data = $(this).val();
+                //// set data int to attr_ids public property
+                @this.set('value', data);
+                console.log(data);
             });
-        })
+        });
     </script>
 @endpush

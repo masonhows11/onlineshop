@@ -10,7 +10,7 @@ use Livewire\Component;
 
 class EditProductSpecifications extends Component
 {
-    public $selectAttribute = '';
+     // public $attr_ids = [];
     ////
     public $product_id;
     public $attribute_product_id;
@@ -26,26 +26,26 @@ class EditProductSpecifications extends Component
     public $name;
     public $priority;
     public $values;
-    public $value=[];
+    public $value = [];
     public $type;
 
-    public function mount($product_id,$attribute_product_id)
+    public function mount($product_id, $attribute_product_id)
     {
         ////
         $this->product_id = $product_id;
-        $this->attribute_product_id  = $attribute_product_id;
+        $this->attribute_product_id = $attribute_product_id;
         ////
         $this->product = Product::where('id', $this->product_id)
             ->select('id', 'category_attribute_id', 'title_persian')
             ->first();
         ////
-        $this->attributes = Attribute::where('category_id',$this->product->category_attribute_id)
+        $this->attributes = Attribute::where('category_id', $this->product->category_attribute_id)
             ->get();
         ////
-        $this->product_attribute = AttributeProduct::where('id',$this->attribute_product_id)
+        $this->product_attribute = AttributeProduct::where('id', $this->attribute_product_id)
             ->first();
         // fill input with current value
-        $this->attribute_name = Attribute::where('id',$this->product_attribute->attribute_id)->first('name');
+        $this->attribute_name = Attribute::where('id', $this->product_attribute->attribute_id)->first('name');
         $this->name = $this->product_attribute->attribute_id;
         $this->priority = $this->product_attribute->priority;
         // fill the value input wire model base on attribute type
@@ -54,15 +54,15 @@ class EditProductSpecifications extends Component
             case 'select':
                 $this->selectedAttributeType = 'select';
                 $this->attributeDefaultValues =
-                    AttributeValue::where('attribute_id', $this->name)->select('id','value')->get();
+                    AttributeValue::where('attribute_id', $this->name)->select('id', 'value')->get();
                 $this->value = json_decode($this->product_attribute->values)->id;
                 break;
             case 'multi_select':
                 $this->selectedAttributeType = 'multi_select';
                 $this->attributeDefaultValues =
-                AttributeValue::where('attribute_id', $this->name)->select('id','value')->get();
-                foreach (json_decode($this->product_attribute->values,true) as $item){
-                    array_push($this->value,$item['id']);
+                    AttributeValue::where('attribute_id', $this->name)->select('id', 'value')->get();
+                foreach (json_decode($this->product_attribute->values, true) as $item) {
+                    array_push($this->value, $item['id']);
                 }
                 break;
             case 'text_area':
@@ -77,7 +77,8 @@ class EditProductSpecifications extends Component
     }
 
 
-    public function rules(){
+    public function rules()
+    {
         return [
             'name' => ['required'],
             'type' => ['required'],
@@ -97,7 +98,7 @@ class EditProductSpecifications extends Component
                     ->first();
                 $this->values = json_encode(['id' => $this->values->id, 'value' => $this->values->value]);
 
-                AttributeProduct::where('id',$this->attribute_product_id)->update([
+                AttributeProduct::where('id', $this->attribute_product_id)->update([
                     'product_id' => $this->product_id,
                     'attribute_id' => $this->name,
                     'values' => $this->values,
@@ -116,7 +117,7 @@ class EditProductSpecifications extends Component
                     return ['id' => $item['id'], 'value' => $item['value']];
                 });
 
-                AttributeProduct::where('id',$this->attribute_product_id )->update([
+                AttributeProduct::where('id', $this->attribute_product_id)->update([
                     'product_id' => $this->product_id,
                     'values' => $this->values,
                     'attribute_id' => $this->name,
@@ -129,8 +130,8 @@ class EditProductSpecifications extends Component
                 break;
             case 'text_box':
             case 'text_area':
-            $this->values = json_encode(['value' => $this->value]);
-                AttributeProduct::where('id',$this->attribute_product_id )->update([
+                $this->values = json_encode(['value' => $this->value]);
+                AttributeProduct::where('id', $this->attribute_product_id)->update([
                     'product_id' => $this->product_id,
                     'values' => $this->values,
                     'attribute_id' => $this->name,
@@ -142,14 +143,25 @@ class EditProductSpecifications extends Component
                 $this->priority = null;
                 break;
         }
-        session()->flash('success',__('messages.The_update_was_completed_successfully'));
-        return redirect()->route('admin.product.create.specifications',['product'=> $this->product_id]);
+        session()->flash('success', __('messages.The_update_was_completed_successfully'));
+        return redirect()->route('admin.product.create.specifications', ['product' => $this->product_id]);
 
+    }
 
+    //// for set again style after component refresh
+    // $this->emit('valueSelect');
+    protected $listeners = ['valueSelect' => 'setStyle'];
+
+    public function setStyle()
+    {
+
+       // dd($this->attr_ids);
+       $this->emit('resetSelect');
     }
 
     public function render()
     {
+
         return view('livewire.admin.create-product.edit-product-specifications')
             ->extends('admin_end.include.master_dash')
             ->section('dash_main_content');
