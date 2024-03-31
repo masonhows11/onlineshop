@@ -10,6 +10,7 @@ use Livewire\Component;
 
 class EditProductSpecifications extends Component
 {
+    public $selectAttribute = '';
     ////
     public $product_id;
     public $attribute_product_id;

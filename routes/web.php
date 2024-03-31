@@ -48,6 +48,7 @@ use App\Http\Livewire\Admin\AdminAdmins;
 use App\Http\Livewire\Admin\AdminCategoryAttribute;
 use App\Http\Livewire\Admin\AdminCategoryAttributeValue;
 use App\Http\Livewire\Admin\AdminColors;
+
 // colors
 use App\Http\Livewire\Admin\Attribute\AdminAttribute;
 use App\Http\Livewire\Admin\Attribute\AdminAttributeCreate;
@@ -56,10 +57,12 @@ use App\Http\Livewire\Admin\Attribute\AdminAttributeValueCreate;
 use App\Http\Livewire\Admin\Category\AdminCategoryCreate;
 use App\Http\Livewire\Admin\Category\AdminCategoryEdit;
 use App\Http\Livewire\Admin\Category\AdminCategoryList;
+
 //  brands
 use App\Http\Livewire\Admin\Brand\AdminBrandList;
 use App\Http\Livewire\Admin\Brand\AdminCreateBrand;
 use App\Http\Livewire\Admin\Brand\AdminEditBrand;
+
 // others
 use App\Http\Livewire\Admin\AdminPerms;
 use App\Http\Livewire\Admin\AdminRoles;
@@ -97,16 +100,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
 
-Route::get('/sitemap.xml',[\App\Http\Controllers\SiteMapController::class,'index'])->name('sitemap.xml');
-Route::get('/sitemap.xml/products',[\App\Http\Controllers\SiteMapController::class,'products'])->name('sitemap.xml.products');
-Route::get('/sitemap.xml/categories',[\App\Http\Controllers\SiteMapController::class,'categories'])->name('sitemap.xml.categories');
-Route::get('/sitemap.xml/tags',[\App\Http\Controllers\SiteMapController::class,'tags'])->name('sitemap.xml.tags');
-Route::get('/sitemap.xml/static',[\App\Http\Controllers\SiteMapController::class,'static'])->name('sitemap.xml.static');
+Route::get('/sitemap.xml', [\App\Http\Controllers\SiteMapController::class, 'index'])->name('sitemap.xml');
+Route::get('/sitemap.xml/products', [\App\Http\Controllers\SiteMapController::class, 'products'])->name('sitemap.xml.products');
+Route::get('/sitemap.xml/categories', [\App\Http\Controllers\SiteMapController::class, 'categories'])->name('sitemap.xml.categories');
+Route::get('/sitemap.xml/tags', [\App\Http\Controllers\SiteMapController::class, 'tags'])->name('sitemap.xml.tags');
+Route::get('/sitemap.xml/static', [\App\Http\Controllers\SiteMapController::class, 'static'])->name('sitemap.xml.static');
 
 //Route::get('/storage-link', function () {
 //    symlink(storage_path('app/public'), $_SERVER['DOCUMENT_ROOT'] . '/storage');
 //});
-
 
 
 /**--------------------------auth routes---------------------**/
@@ -180,11 +182,8 @@ Route::get('/sitemap.xml/static',[\App\Http\Controllers\SiteMapController::class
 //
 //});
 
-Route::get('/about_us',[\App\Http\Controllers\Front\AboutUs\AboutUsController::class,'aboutUs'])->name('about_us');
-Route::get('/contact_us',[\App\Http\Controllers\Front\ContactUs\ContactUsController::class,'contactUs'])->name('contact_us');
-
-
-
+Route::get('/about_us', [\App\Http\Controllers\Front\AboutUs\AboutUsController::class, 'aboutUs'])->name('about_us');
+Route::get('/contact_us', [\App\Http\Controllers\Front\ContactUs\ContactUsController::class, 'contactUs'])->name('contact_us');
 
 
 /* ------------------- Products Front Routes -----------------**/
@@ -233,7 +232,6 @@ Route::get('/contact_us',[\App\Http\Controllers\Front\ContactUs\ContactUsControl
 //});
 
 
-
 /* ------------------- admin Routes ------------------------**/
 
 // Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin', 'role:admin|admin'])->group(function () {
@@ -258,8 +256,8 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin'
     Route::get('/profile', [AdminProfileController::class, 'profile'])->name('profile');
     Route::post('/update/profile', [AdminProfileController::class, 'update'])->name('update.profile');
 
-    Route::get('/edit/mobile',[AdminProfileController::class,'editMobile'])->name('edit.mobile');
-    Route::post('/update/mobile',[AdminProfileController::class,'updateMobile'])->name('update.mobile');
+    Route::get('/edit/mobile', [AdminProfileController::class, 'editMobile'])->name('edit.mobile');
+    Route::post('/update/mobile', [AdminProfileController::class, 'updateMobile'])->name('update.mobile');
 
     Route::get('/logout', [AdminLoginController::class, 'logOut'])->name('logout');
 
@@ -334,11 +332,11 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin'
 // crud product attribute & attribute value
 Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin', 'role:admin|super_admin'])->group(function () {
 
-    Route::get('/attribute/index',AdminAttribute::class )->name('attribute.index');
-    Route::get('/attribute/create/{id}',AdminAttributeCreate::class )->name('attribute.create');
+    Route::get('/attribute/index', AdminAttribute::class)->name('attribute.index');
+    Route::get('/attribute/create/{id}', AdminAttributeCreate::class)->name('attribute.create');
 
-    Route::get('/attribute/value/index',AdminAttributeValue::class )->name('attribute.value.index');
-    Route::get('/attribute/value/create/{id}',AdminAttributeValueCreate::class )->name('attribute.value.create');
+    Route::get('/attribute/value/index', AdminAttributeValue::class)->name('attribute.value.index');
+    Route::get('/attribute/value/create/{id}', AdminAttributeValueCreate::class)->name('attribute.value.create');
 
 });
 
@@ -356,18 +354,21 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin'
 
     // crud attribute product feature
     Route::get('/product/create/property/{product}', [ProductMetaController::class, 'index'])->name('product.create.property');
+    ////
+    Route::get('/product/specifications/index/{product}', [ProductCreateSpecificationsController::class, 'index'])->name('product.specifications.index');
+    ////
     Route::get('/product/create/specifications/{product}', [ProductCreateSpecificationsController::class, 'index'])->name('product.create.specifications');
     Route::get('/product/edit/specifications/{attribute_product_id}/{product_id}', [ProductEditSpecificationsController::class, 'index'])->name('product.edit.specifications');
-    Route::get('/product/specifications/index/{product}', [ProductCreateSpecificationsController::class, 'index'])->name('product.specifications.index');
+
 
     // crud image product feature
     Route::get('/product/create/images/{product}', [ProductCreateImageController::class, 'create'])->name('product.create.images');
     // crud color product feature
     Route::get('/product/create/colors/{product}', [ProductCreateColorController::class, 'create'])->name('product.create.colors');
     // crud tag product feature
-    Route::get('/product/create/tags/{product}',[ProductCreateTagController::class,'create'])->name('product.create.tags');
+    Route::get('/product/create/tags/{product}', [ProductCreateTagController::class, 'create'])->name('product.create.tags');
     // crud guarantee product feature
-    Route::get('/product-guarantee/index/{product}',[ProductWarrantyController::class,'create'])->name('product.guarantee.index');
+    Route::get('/product-guarantee/index/{product}', [ProductWarrantyController::class, 'create'])->name('product.guarantee.index');
 });
 
 // stock product routes
@@ -475,42 +476,42 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin'
 // province routes
 Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin', 'role:admin|super_admin'])->group(function () {
 
-    Route::get('/province/index',[AdminProvinceController::class,'index'])->name('province.index');
-    Route::post('/province/store',[AdminProvinceController::class,'store'])->name('province.store');
+    Route::get('/province/index', [AdminProvinceController::class, 'index'])->name('province.index');
+    Route::post('/province/store', [AdminProvinceController::class, 'store'])->name('province.store');
 
-    Route::get('/province/edit/{province}',[AdminProvinceController::class,'edit'])->name('province.edit');
-    Route::post('/province/update',[AdminProvinceController::class,'update'])->name('province.update');
+    Route::get('/province/edit/{province}', [AdminProvinceController::class, 'edit'])->name('province.edit');
+    Route::post('/province/update', [AdminProvinceController::class, 'update'])->name('province.update');
 
-    Route::get('/province/delete/{province}',[AdminProvinceController::class,'delete'])->name('province.delete');
+    Route::get('/province/delete/{province}', [AdminProvinceController::class, 'delete'])->name('province.delete');
 
 });
 
 // cities routes
 Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin', 'role:admin|super_admin'])->group(function () {
 
-    Route::get('/city/create',[AdminCityController::class,'create'])->name('city.create');
-    Route::post('/city/store',[AdminCityController::class,'store'])->name('city.store');
+    Route::get('/city/create', [AdminCityController::class, 'create'])->name('city.create');
+    Route::post('/city/store', [AdminCityController::class, 'store'])->name('city.store');
 
-    Route::get('/city/edit/{city}',[AdminCityController::class,'edit'])->name('city.edit');
-    Route::post('/city/update',[AdminCityController::class,'update'])->name('city.update');
+    Route::get('/city/edit/{city}', [AdminCityController::class, 'edit'])->name('city.edit');
+    Route::post('/city/update', [AdminCityController::class, 'update'])->name('city.update');
 
-    Route::post('/city/delete/{city}',[AdminCityController::class,'delete'])->name('city.delete');
+    Route::post('/city/delete/{city}', [AdminCityController::class, 'delete'])->name('city.delete');
 
 });
 // ticket routes
 Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin', 'role:admin|super_admin'])->group(function () {
 
-    Route::get('/category-tickets',[AdminCategoryTicketController::class,'categoryTickets'])->name('category.tickets');
-    Route::get('/category-ticket/create',[AdminCategoryTicketController::class,'create'])->name('category.ticket.create');
-    Route::post('/category-ticket/store',[AdminCategoryTicketController::class,'store'])->name('category.ticket.store');
-    Route::get('/category-ticket/edit/{ticketCategory}',[AdminCategoryTicketController::class,'edit'])->name('category.ticket.edit');
-    Route::post('/category-ticket/update',[AdminCategoryTicketController::class,'update'])->name('category.ticket.update');
+    Route::get('/category-tickets', [AdminCategoryTicketController::class, 'categoryTickets'])->name('category.tickets');
+    Route::get('/category-ticket/create', [AdminCategoryTicketController::class, 'create'])->name('category.ticket.create');
+    Route::post('/category-ticket/store', [AdminCategoryTicketController::class, 'store'])->name('category.ticket.store');
+    Route::get('/category-ticket/edit/{ticketCategory}', [AdminCategoryTicketController::class, 'edit'])->name('category.ticket.edit');
+    Route::post('/category-ticket/update', [AdminCategoryTicketController::class, 'update'])->name('category.ticket.update');
 
-    Route::get('/priority-tickets',[AdminPriorityTicketController::class,'priorityTickets'])->name('priority.tickets');
-    Route::get('/priority-ticket/create',[AdminPriorityTicketController::class,'create'])->name('priority.ticket.create');
-    Route::post('/priority-ticket/store',[AdminPriorityTicketController::class,'store'])->name('priority.ticket.store');
-    Route::get('/priority-ticket/edit/{ticketPriority}',[AdminPriorityTicketController::class,'edit'])->name('priority.ticket.edit');
-    Route::post('/priority-ticket/update',[AdminPriorityTicketController::class,'update'])->name('priority.ticket.update');
+    Route::get('/priority-tickets', [AdminPriorityTicketController::class, 'priorityTickets'])->name('priority.tickets');
+    Route::get('/priority-ticket/create', [AdminPriorityTicketController::class, 'create'])->name('priority.ticket.create');
+    Route::post('/priority-ticket/store', [AdminPriorityTicketController::class, 'store'])->name('priority.ticket.store');
+    Route::get('/priority-ticket/edit/{ticketPriority}', [AdminPriorityTicketController::class, 'edit'])->name('priority.ticket.edit');
+    Route::post('/priority-ticket/update', [AdminPriorityTicketController::class, 'update'])->name('priority.ticket.update');
 
 });
 
@@ -521,8 +522,8 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin'
     Route::get('/open-tickets', [AdminTicketController::class, 'openTickets'])->name('open.tickets');
     Route::get('/close-tickets', [AdminTicketController::class, 'closeTickets'])->name('close.tickets');
     Route::get('/show-ticket/{ticket}', [AdminTicketController::class, 'showTicket'])->name('show.ticket');
-    Route::post('/answer-ticket/{ticket}', [AdminTicketController::class,'answer'])->name('answer.ticket');
-    Route::get('/change-status/ticket/{ticket}', [AdminTicketController::class,'changeStatus'])->name('change.status.ticket');
+    Route::post('/answer-ticket/{ticket}', [AdminTicketController::class, 'answer'])->name('answer.ticket');
+    Route::get('/change-status/ticket/{ticket}', [AdminTicketController::class, 'changeStatus'])->name('change.status.ticket');
 
 });
 
@@ -547,7 +548,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'role:admin|su
 Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'role:admin|super_admin'])->group(function () {
 
     Route::get('/setting/index', AdminSetting::class)->name('setting.index');
-    Route::get('/setting/edit/{setting}',[SettingController::class,'edit'])->name('setting.edit');
+    Route::get('/setting/edit/{setting}', [SettingController::class, 'edit'])->name('setting.edit');
     Route::post('/setting/update', [SettingController::class, 'update'])->name('setting.update');
 
 });
@@ -558,8 +559,8 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'role:admin|su
     // top banner
     Route::get('/top-banner/index', AdminTopBanner::class)->name('top.banner.index');
 
-    Route::get('/top-banner/create',[TopBannerController::class,'create'])->name('top.banner.create');
-    Route::post('/top-banner/store', [TopBannerController::class,'store'])->name('top.banner.store');
+    Route::get('/top-banner/create', [TopBannerController::class, 'create'])->name('top.banner.create');
+    Route::post('/top-banner/store', [TopBannerController::class, 'store'])->name('top.banner.store');
 
     Route::get('/top-banner/edit/{banner}', [TopBannerController::class, 'edit'])->name('top.banner.edit');
     Route::post('/top-banner/update', [TopBannerController::class, 'update'])->name('top.banner.update');
@@ -568,8 +569,8 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'role:admin|su
 
     Route::get('/main-slider/index', AdminMainSlider::class)->name('main.slider.index');
 
-    Route::get('/main-slider/create',[MainSliderController::class,'create'])->name('main.slider.create');
-    Route::post('/main-slider/store', [MainSliderController::class,'store'])->name('main.slider.store');
+    Route::get('/main-slider/create', [MainSliderController::class, 'create'])->name('main.slider.create');
+    Route::post('/main-slider/store', [MainSliderController::class, 'store'])->name('main.slider.store');
 
     Route::get('/main-slider/edit/{banner}', [MainSliderController::class, 'edit'])->name('main.slider.edit');
     Route::post('/main-slider/update', [MainSliderController::class, 'update'])->name('main.slider.update');
@@ -578,8 +579,8 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'role:admin|su
 
     Route::get('/amazing-banner/index', AdminAmazingOfferBanner::class)->name('amazing.banner.index');
 
-    Route::get('/amazing-banner/create',[AmazingOfferBannerController::class,'create'])->name('amazing.banner.create');
-    Route::post('/amazing-banner/store', [AmazingOfferBannerController::class,'store'])->name('amazing.banner.store');
+    Route::get('/amazing-banner/create', [AmazingOfferBannerController::class, 'create'])->name('amazing.banner.create');
+    Route::post('/amazing-banner/store', [AmazingOfferBannerController::class, 'store'])->name('amazing.banner.store');
 
     Route::get('/amazing-banner/edit/{banner}', [AmazingOfferBannerController::class, 'edit'])->name('amazing.banner.edit');
     Route::post('/amazing-banner/update', [AmazingOfferBannerController::class, 'update'])->name('amazing.banner.update');
@@ -588,8 +589,8 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'role:admin|su
 
     Route::get('/bottom-banner/index', AdminBottomTwoBanner::class)->name('bottom.banner.index');
 
-    Route::get('/bottom-banner/create',[BottomBannerController::class,'create'])->name('bottom.banner.create');
-    Route::post('/bottom-banner/store', [BottomBannerController::class,'store'])->name('bottom.banner.store');
+    Route::get('/bottom-banner/create', [BottomBannerController::class, 'create'])->name('bottom.banner.create');
+    Route::post('/bottom-banner/store', [BottomBannerController::class, 'store'])->name('bottom.banner.store');
 
     Route::get('/bottom-banner/edit/{banner}', [BottomBannerController::class, 'edit'])->name('bottom.banner.edit');
     Route::post('/bottom-banner/update', [BottomBannerController::class, 'update'])->name('bottom.banner.update');
@@ -615,26 +616,26 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'role:admin|su
 
 
     //// email notices routes
-    Route::get('/email-notices/index',[AdminEmailNoticesController::class,'index'])->name('email.notices.index');
+    Route::get('/email-notices/index', [AdminEmailNoticesController::class, 'index'])->name('email.notices.index');
     // create
-    Route::get('/email-notices/create',[AdminEmailNoticesController::class,'create'])->name('email.notices.create');
-    Route::post('/email-notices/store',[AdminEmailNoticesController::class,'store'])->name('email.notices.store');
+    Route::get('/email-notices/create', [AdminEmailNoticesController::class, 'create'])->name('email.notices.create');
+    Route::post('/email-notices/store', [AdminEmailNoticesController::class, 'store'])->name('email.notices.store');
     // edit
-    Route::get('/email-notices/edit/{publicMail}',[AdminEmailNoticesController::class,'edit'])->name('email.notices.edit');
-    Route::post('/email-notices/update',[AdminEmailNoticesController::class,'update'])->name('email.notices.update');
+    Route::get('/email-notices/edit/{publicMail}', [AdminEmailNoticesController::class, 'edit'])->name('email.notices.edit');
+    Route::post('/email-notices/update', [AdminEmailNoticesController::class, 'update'])->name('email.notices.update');
     // send mail
-    Route::get('/send-mail/{mail}',[AdminEmailNoticesController::class,'sendMail'])->name('notices.send.mail');
+    Route::get('/send-mail/{mail}', [AdminEmailNoticesController::class, 'sendMail'])->name('notices.send.mail');
 
     //// sms notices routes
-    Route::get('/sms-notices/index',[AdminSMSNoticeController::class,'index'])->name('sms.notices.index');
+    Route::get('/sms-notices/index', [AdminSMSNoticeController::class, 'index'])->name('sms.notices.index');
     // create
-    Route::get('/sms-notices/create',[AdminSMSNoticeController::class,'create'])->name('sms.notices.create');
-    Route::post('/sms-notices/store',[AdminSMSNoticeController::class,'store'])->name('sms.notices.store');
+    Route::get('/sms-notices/create', [AdminSMSNoticeController::class, 'create'])->name('sms.notices.create');
+    Route::post('/sms-notices/store', [AdminSMSNoticeController::class, 'store'])->name('sms.notices.store');
     // edit
-    Route::get('/sms-notices/edit/{publicSms}',[AdminSMSNoticeController::class,'edit'])->name('sms.notices.edit');
-    Route::post('/sms-notices/update',[AdminSMSNoticeController::class,'update'])->name('sms.notices.update');
+    Route::get('/sms-notices/edit/{publicSms}', [AdminSMSNoticeController::class, 'edit'])->name('sms.notices.edit');
+    Route::post('/sms-notices/update', [AdminSMSNoticeController::class, 'update'])->name('sms.notices.update');
     // send sms
-    Route::get('/send-sms/{publicSms}',[AdminSMSNoticeController::class,'sendSms'])->name('notices.send.sms');
+    Route::get('/send-sms/{publicSms}', [AdminSMSNoticeController::class, 'sendSms'])->name('notices.send.sms');
 
 });
 
@@ -642,8 +643,8 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'role:admin|su
 // email notices  file routes
 Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'role:admin|super_admin'])->group(function () {
 
-    Route::get('/email-notice-file/index',[AdminEmailNoticeFileController::class,'emailFileIndex'])->name('email.notice.file.index');
-    Route::get('/email-notice-file/create',[AdminEmailNoticeFileController::class,'create'])->name('email.notice.file.create');
-    Route::post('/email-notice-file/store',[AdminEmailNoticeFileController::class,'store'])->name('email.notice.file.store');
+    Route::get('/email-notice-file/index', [AdminEmailNoticeFileController::class, 'emailFileIndex'])->name('email.notice.file.index');
+    Route::get('/email-notice-file/create', [AdminEmailNoticeFileController::class, 'create'])->name('email.notice.file.create');
+    Route::post('/email-notice-file/store', [AdminEmailNoticeFileController::class, 'store'])->name('email.notice.file.store');
 
 });
