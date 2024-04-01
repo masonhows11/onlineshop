@@ -79,12 +79,22 @@ class EditProductSpecifications extends Component
         }
     }
 
+    protected function validateInput() : array
+    {
+
+        if ($this->type == 'text_box' || $this->type == 'text_area') {
+            return ['required', 'string', 'min:5', 'max:250'];
+        } else if ($this->type == 'select' || $this->type == 'multi_select')
+            return ['required'];
+
+    }
+
 
     protected function rules()
     {
         return [
             'priority' => ['required', 'gt:0'],
-            'value' => [ $this->type == 'text_box' || 'text_area' ? 'required|string|min:1|max:255' : 'required' ]
+            'value' => $this->validateInput()
         ];
     }
 
