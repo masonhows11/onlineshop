@@ -16,15 +16,16 @@ class ProductEditSpecificationsController extends Controller
         $product = Product::where('id', $request->product_id)
             ->select('id', 'category_attribute_id', 'title_persian')
             ->first();
-        ////
         $product_attribute = AttributeProduct::where('id', $request->attribute_product_id)
             ->first();
-        // fill input with current value
         $attribute_name = Attribute::where('id', $product_attribute->attribute_id)
             ->select('name')
             ->first();
 
         return view('admin_end.product.edit.edit_specifications')
-            ->with(['product'=> $product,'attribute_name'=>$attribute_name,'product_id' => $request->product_id ,'attribute_product_id'=> $request->attribute_product_id]);
+            ->with(['product' => $product,
+                    'attribute_name' => $attribute_name,
+                    'product_id' => $request->product_id,
+                    'attribute_product_id' => $request->attribute_product_id]);
     }
 }
