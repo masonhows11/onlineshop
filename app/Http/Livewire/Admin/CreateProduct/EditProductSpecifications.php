@@ -164,6 +164,6 @@ class EditProductSpecifications extends Component
 
         return view('livewire.admin.create-product.edit-product-specifications')
             ->extends('admin_end.include.master_dash')
-            ->section('dash_main_content');
+            ->section('dash_main_content')->with(['attr_name' => $this->attribute_name]);
     }
 }

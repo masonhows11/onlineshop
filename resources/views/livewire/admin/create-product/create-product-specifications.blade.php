@@ -4,20 +4,20 @@
     @endsection
     <div class="container-fluid product-meta-section">
 
-        <div class="row ms-2 my-3">
-            <div class="col-sm-3  title-product">
+        <div class="row  my-3">
+            <div class="col  title-product">
                 <div class="alert bg-white text-center">
                     {{ __('messages.product_manage_specifications') }}
                 </div>
             </div>
-            <div class="col-sm-3  title-product">
+            <div class="col  title-product">
                 <div class="alert bg-white text-center">
                     {{ $product->title_persian }}
                 </div>
             </div>
         </div>
 
-        <div class="row mx-2 my-3 d-flex flex-column ">
+        <div class="row  my-3 d-flex ">
 
             <div class="col  bg-white">
 
@@ -117,12 +117,12 @@
                     </div>
 
                 </form>
-
             </div>
+
         </div>
 
 
-        <div class="row mx-2 my-3 product-meta-list bg-white">
+        <div class="row  my-3 product-meta-list bg-white">
             <div class="col">
 
                 <table class="table">
