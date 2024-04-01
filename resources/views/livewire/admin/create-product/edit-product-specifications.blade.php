@@ -1,4 +1,5 @@
 <div>
+
     <div class="row  my-3 d-flex">
 
         <div class="col  bg-white">
@@ -81,9 +82,6 @@
 
 </div>
 @push('dash_custom_script')
-    <script>
-
-    </script>
     <script>
         $(document).ready(() => {
             $('.form-select').select2({dir: "ltr"})
