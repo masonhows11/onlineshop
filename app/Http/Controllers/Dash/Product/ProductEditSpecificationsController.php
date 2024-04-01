@@ -31,7 +31,7 @@ class ProductEditSpecificationsController extends Controller
             ->select('name')
             ->first();
 
-        $product_attribute = AttributeProduct::where('id',$request->attribute_product_id)->first();
+        $product_attribute = AttributeProduct::where('id', $request->attribute_product_id)->first();
 
         ////
         $name = $product_attribute->attribute_id;
@@ -62,8 +62,12 @@ class ProductEditSpecificationsController extends Controller
                 $value = json_decode($product_attribute->values)->value;
                 break;
         }
+
+        //dd($attributeDefaultValues);
         return view('admin_end.product.edit.edit_specifications')
             ->with(['product' => $product,
+                    'value' => $value,
+                    'priority' => $priority,
                     'attribute_name' => $attribute_name,
                     'product_id' => $request->product_id,
                     'attribute_product_id' => $request->attribute_product_id,

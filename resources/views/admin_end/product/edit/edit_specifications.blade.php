@@ -38,7 +38,7 @@
                         <div class="col-sm-4">
                             <div class="mt-3 mb-3">
                                 <label for="priority" class="form-label">{{ __('messages.priority') }}</label>
-                                <input type="number" min="1" max="999" class="form-control" id="priority" name="priority">
+                                <input type="number" value="{{ $priority }}" min="1" max="999" class="form-control" id="priority" name="priority">
                                 @error('priority')
                                 <div class="alert alert-danger mt-3">
                                     {{ $message }}
@@ -52,25 +52,26 @@
                                 <label for="value" class="form-label">{{ __('messages.product_property_value') }}</label>
                                 @switch($selectedAttributeType)
                                     @case('select')
-                                    <select class="form-control" name="value" id="value">
+                                    <select class="form-control" name="value[]" id="value">
                                         <option value="">انتخاب کنید...</option>
-                                        @foreach($attributeDefaultValues as $value)
-                                            <option value="{{ $value->id }}">{{ $value->value }}</option>
+                                        @foreach($attributeDefaultValues as $item)
+                                            <option {{ in_array($item->id,array($value)) ? 'selected' :'' }} value="{{ $item->id }}">{{ $item->value }}</option>
                                         @endforeach
                                     </select>
                                     @break
                                     @case('multi_select')
                                     <select class="form-control form-select" id="attrIds" name="value[]" multiple>
-                                        @foreach($attributeDefaultValues as $value)
-                                            <option value="{{ $value->id }}">{{ $value->value }}</option>
+                                        @foreach($attributeDefaultValues as $item)
+                                            <option {{ in_array($item->id,array($value)) ? 'selected' :'' }} value="{{ $item->id }}">{{ $item->value }}</option>
                                         @endforeach
                                     </select>
                                     @break
                                     @case('text_box')
-                                    <input type="text" class="form-control" id="value" name="value">
+                                    <input type="text" class="form-control" id="value[]" name="value" value="{{ $value }}">
                                     @break
                                     @case('text_area')
-                                    <textarea class="form-control" name="value" id="value" rows="5" cols="10">
+                                    <textarea class="form-control" name="value" id="value[]" rows="5" cols="10">
+                                        {{ $value }}
                                     </textarea>
                                     @break
                                 @endswitch
@@ -113,7 +114,10 @@
 @push('dash_custom_script')
     <script>
         $(document).ready(() => {
-            $('.form-select').select2({dir: "ltr"})
+            $('.form-select').select2({
+                dir: 'ltr',
+                tags: 'true',
+            })
         });
     </script>
 @endpush
