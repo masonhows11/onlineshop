@@ -10,10 +10,6 @@ use Livewire\Component;
 
 class EditProductSpecifications extends Component
 {
-    // public $attr_ids = [];
-    // public $attributes;
-
-
     public $product_id;
     public $attribute_product_id;
     ////
@@ -32,11 +28,9 @@ class EditProductSpecifications extends Component
 
     public function mount($product_id, $attribute_product_id)
     {
-
         // $this->attributes = Attribute::where('category_id', $this->product->category_attribute_id)->get();
         $this->product_id = $product_id;
         $this->attribute_product_id = $attribute_product_id;
-
         ////
         $this->product = Product::where('id', $this->product_id)
             ->select('id', 'category_attribute_id', 'title_persian')
@@ -81,15 +75,11 @@ class EditProductSpecifications extends Component
 
     private function validateInput(): array
     {
-
         if ($this->type == 'text_box' || $this->type == 'text_area') {
             return ['required', 'string', 'min:5', 'max:250'];
         } else if ($this->type == 'select' || $this->type == 'multi_select')
             return ['required'];
-
     }
-
-
 
     protected function rules()
     {
@@ -157,7 +147,6 @@ class EditProductSpecifications extends Component
         }
         session()->flash('success', __('messages.The_update_was_completed_successfully'));
         return redirect()->route('admin.product.create.specifications', ['product' => $this->product_id]);
-
     }
 
     //// for set again style after component refresh
@@ -169,7 +158,6 @@ class EditProductSpecifications extends Component
 
     public function render()
     {
-
         return view('livewire.admin.create-product.edit-product-specifications')
             ->extends('admin_end.include.master_dash')
             ->section('dash_main_content');

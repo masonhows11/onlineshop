@@ -103,6 +103,13 @@
 </div>
 @push('dash_custom_script')
     <script>
+        $(document).ready(() =>{
+            $('form').submit(function () {
+            @this.set('value',$('#attrIds').val());
+            })
+        })
+    </script>
+    <script>
         $(document).ready(() => {
             $('.form-select').select2({dir:"ltr"})
             $('.form-select').on('change', function (e) {
