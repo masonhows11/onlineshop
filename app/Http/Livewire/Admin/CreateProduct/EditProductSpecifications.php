@@ -34,7 +34,7 @@ class EditProductSpecifications extends Component
     {
 
         // $this->attributes = Attribute::where('category_id', $this->product->category_attribute_id)->get();
-        
+
 
         ////
         $this->product_id = $product_id;

@@ -161,10 +161,16 @@
                                 <td>{{ json_decode($item->values)->value}}</td>
                                 @break
                             @endswitch
-                            <td><a class="mt-3" href="{{ route('admin.product.edit.specifications',['attribute_product_id' => $item->id,'product_id'=>$item->product_id])}}">
-                                    <i class="mt-3 fa fa-edit"></i></a></td>
-                            <td><a class="mt-3" href="javascript:void(0)" wire:click.prevent="deleteConfirmation({{ $item->id }})">
-                                    <i class="mt-3 fa fa-trash"></i></a></td>
+                            <td>
+                                <a class="mt-3" href="{{ route('admin.product.edit.specifications',['attribute_product_id' => $item->id,'product_id'=>$item->product_id])}}">
+                                    <i class="mt-3 fa fa-edit"></i>
+                                </a>
+                            </td>
+                            <td>
+                                <a class="mt-3" href="javascript:void(0)" wire:click.prevent="deleteConfirmation({{ $item->id }})">
+                                    <i class="mt-3 fa fa-trash"></i>
+                                </a>
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>
