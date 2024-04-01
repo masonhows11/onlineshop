@@ -10,14 +10,15 @@ use Livewire\Component;
 
 class EditProductSpecifications extends Component
 {
-     // public $attr_ids = [];
+    // public $attr_ids = [];
+    // public $attributes;
+
     ////
     public $product_id;
     public $attribute_product_id;
     ////
     public $product;
     public $attribute_name;
-    public $attributes;
     ////
     public $product_attribute;
     public $selectedAttributeType;
@@ -31,6 +32,10 @@ class EditProductSpecifications extends Component
 
     public function mount($product_id, $attribute_product_id)
     {
+
+        // $this->attributes = Attribute::where('category_id', $this->product->category_attribute_id)->get();
+        
+
         ////
         $this->product_id = $product_id;
         $this->attribute_product_id = $attribute_product_id;
@@ -39,13 +44,11 @@ class EditProductSpecifications extends Component
             ->select('id', 'category_attribute_id', 'title_persian')
             ->first();
         ////
-        $this->attributes = Attribute::where('category_id', $this->product->category_attribute_id)
-            ->get();
-        ////
         $this->product_attribute = AttributeProduct::where('id', $this->attribute_product_id)
             ->first();
         // fill input with current value
         $this->attribute_name = Attribute::where('id', $this->product_attribute->attribute_id)->first('name');
+        ////
         $this->name = $this->product_attribute->attribute_id;
         $this->priority = $this->product_attribute->priority;
         // fill the value input wire model base on attribute type
@@ -155,8 +158,8 @@ class EditProductSpecifications extends Component
     public function setStyle()
     {
 
-       // dd($this->attr_ids);
-       $this->emit('resetSelect');
+        // dd($this->attr_ids);
+        $this->emit('resetSelect');
     }
 
     public function render()

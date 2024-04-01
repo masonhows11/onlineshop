@@ -22,7 +22,7 @@
             </div>
         </div>
 
-        <div class="row  my-3 d-flex flex-column ">
+        <div class="row  my-3 d-flex">
 
             <div class="col  bg-white">
 
