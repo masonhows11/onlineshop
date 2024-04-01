@@ -80,7 +80,7 @@ class EditProductSpecifications extends Component
     }
 
 
-    public function rules()
+    protected function rules()
     {
         return [
             'priority' => ['required', 'gt:0'],
