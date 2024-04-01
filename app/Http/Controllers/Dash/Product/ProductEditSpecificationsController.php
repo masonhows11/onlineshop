@@ -13,18 +13,18 @@ class ProductEditSpecificationsController extends Controller
     //
     public function index(Request $request)
     {
-        $this->product = Product::where('id', $request->product_id)
+        $product = Product::where('id', $request->product_id)
             ->select('id', 'category_attribute_id', 'title_persian')
             ->first();
         ////
-        $this->product_attribute = AttributeProduct::where('id', $request->attribute_product_id)
+        $product_attribute = AttributeProduct::where('id', $request->attribute_product_id)
             ->first();
         // fill input with current value
-        $this->attribute_name = Attribute::where('id', $this->product_attribute->attribute_id)
+        $attribute_name = Attribute::where('id', $product_attribute->attribute_id)
             ->select('name')
             ->first();
 
         return view('admin_end.product.edit.edit_specifications')
-            ->with(['product_id' => $request->product_id ,'attribute_product_id'=> $request->attribute_product_id]);
+            ->with(['product'=> $product,'attribute_name'=>$attribute_name,'product_id' => $request->product_id ,'attribute_product_id'=> $request->attribute_product_id]);
     }
 }

@@ -5,12 +5,12 @@
     <div class="container-fluid product-meta-section">
 
         <div class="row  my-3">
-            <div class="col  title-product">
+            <div class="col-sm-6  title-product">
                 <div class="alert bg-white text-center">
                     {{ __('messages.product_manage_specifications') }}
                 </div>
             </div>
-            <div class="col  title-product">
+            <div class="col-sm-6  title-product">
                 <div class="alert bg-white text-center">
                     {{ $product->title_persian }}
                 </div>
@@ -122,7 +122,7 @@
         </div>
 
 
-        <div class="row  my-3 product-meta-list bg-white">
+        <div class="row  my-3 product-meta-list bg-white overflow-auto">
             <div class="col">
 
                 <table class="table">

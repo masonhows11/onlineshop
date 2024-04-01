@@ -9,17 +9,17 @@
     <div class="container-fluid">
 
         <div class="row  my-3">
-            <div class="col  title-product">
+            <div class="col-sm-4  title-product">
                 <div class="alert bg-white text-center">
                     {{ __('messages.product_manage_specifications_edit') }}
                 </div>
             </div>
-            <div class="col title-product">
+            <div class="col-sm-4 title-product">
                 <div class="alert bg-white text-center">
                     {{ $product->title_persian }}
                 </div>
             </div>
-            <div class="col  title-product">
+            <div class="col-sm-4  title-product">
                 <div class="alert bg-white text-center">
                     {{ $attribute_name->name }}
                 </div>
