@@ -104,16 +104,18 @@
 @push('dash_custom_script')
     <script>
         $(document).ready(() => {
-            $('.form-select').select2({
-                dir: "rtl"
-            })
+            $('.form-select').select2({dir:"ltr"})
             $('.form-select').on('change', function (e) {
                 //// store id in data with
                 let data = $(this).val();
                 //// set data int to attr_ids public property
                 @this.set('value', data);
                 console.log(data);
+                Livewire.emit('valueSelect')
             });
+            Livewire.on('resetSelect',() => {
+                $('.form-select').select2({dir:"ltr"})
+            })
         });
     </script>
 @endpush

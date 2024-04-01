@@ -79,7 +79,7 @@ class EditProductSpecifications extends Component
         }
     }
 
-    protected function validateInput() : array
+    private function validateInput(): array
     {
 
         if ($this->type == 'text_box' || $this->type == 'text_area') {
@@ -88,6 +88,7 @@ class EditProductSpecifications extends Component
             return ['required'];
 
     }
+
 
 
     protected function rules()
@@ -160,14 +161,10 @@ class EditProductSpecifications extends Component
     }
 
     //// for set again style after component refresh
-    // $this->emit('valueSelect');
     protected $listeners = ['valueSelect' => 'setStyle'];
-
     public function setStyle()
     {
-
-        // dd($this->attr_ids);
-        $this->emit('resetSelect');
+         $this->emit('resetSelect');
     }
 
     public function render()
