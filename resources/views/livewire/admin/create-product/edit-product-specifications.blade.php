@@ -1,10 +1,7 @@
 <div>
-    @section('breadcrumb')
-        {{--        {{ Breadcrumbs::render('admin.create.specifications.product',$product->title_persian) }}--}}
-    @endsection
-    <div class="container-fluid product-meta-section">
+    {{--<div class="container-fluid product-meta-section">--}}
 
-        <div class="row  my-3">
+       {{-- <div class="row  my-3">
             <div class="col  title-product">
                 <div class="alert bg-white text-center">
                     {{ __('messages.product_manage_specifications_edit') }}
@@ -20,7 +17,7 @@
                     {{ $attribute_name->name }}
                 </div>
             </div>
-        </div>
+        </div>--}}
 
         <div class="row  my-3 d-flex">
 
@@ -99,15 +96,11 @@
 
         </div>
 
-    </div>
+    {{--</div>--}}
 </div>
 @push('dash_custom_script')
     <script>
-        $(document).ready(() =>{
-            $('form').submit(function () {
-            @this.set('value',$('#attrIds').val());
-            })
-        })
+
     </script>
     <script>
         $(document).ready(() => {
@@ -117,7 +110,6 @@
                 let data = $(this).val();
                 //// set data int to attr_ids public property
                 @this.set('value', data);
-                console.log(data);
                 Livewire.emit('valueSelect')
             });
             Livewire.on('resetSelect',() => {
