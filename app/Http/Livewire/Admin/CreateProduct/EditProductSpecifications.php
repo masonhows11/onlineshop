@@ -12,10 +12,10 @@ class EditProductSpecifications extends Component
 {
     // public $attr_ids = [];
     // public $attributes;
-    // public $product_id;
-    // public $attribute_product_id;
 
 
+    public $product_id;
+    public $attribute_product_id;
     ////
     public $product;
     public $attribute_name;
@@ -34,15 +34,15 @@ class EditProductSpecifications extends Component
     {
 
         // $this->attributes = Attribute::where('category_id', $this->product->category_attribute_id)->get();
-        //  $this->product_id = $product_id;
-        // $this->attribute_product_id = $attribute_product_id;
+        $this->product_id = $product_id;
+        $this->attribute_product_id = $attribute_product_id;
 
         ////
-        $this->product = Product::where('id', $product_id)
+        $this->product = Product::where('id', $this->product_id)
             ->select('id', 'category_attribute_id', 'title_persian')
             ->first();
         ////
-        $this->product_attribute = AttributeProduct::where('id', $attribute_product_id)
+        $this->product_attribute = AttributeProduct::where('id', $this->attribute_product_id)
             ->first();
         // fill input with current value
         $this->attribute_name = Attribute::where('id', $this->product_attribute->attribute_id)
@@ -83,17 +83,14 @@ class EditProductSpecifications extends Component
     public function rules()
     {
         return [
-            'name' => ['required'],
-            'type' => ['required'],
-            'priority' => ['required'],
-            'value' => $this->type == 'text_box' || 'text_area' ? 'required|string|min:1|max:255' : 'required',
+            'priority' => ['required', 'gt:0'],
+            'value' => [ $this->type == 'text_box' || 'text_area' ? 'required|string|min:1|max:255' : 'required' ]
         ];
     }
 
     public function save()
     {
         $this->validate();
-
         switch ($this->type) {
             case 'select':
                 $this->values = AttributeValue::where('attribute_id', $this->name)
@@ -113,6 +110,7 @@ class EditProductSpecifications extends Component
                 $this->priority = null;
                 break;
             case 'multi_select':
+
                 $this->values = AttributeValue::where('attribute_id', $this->name)
                     ->whereIn('id', $this->value)->select('id', 'value')
                     ->get();
@@ -167,6 +165,6 @@ class EditProductSpecifications extends Component
 
         return view('livewire.admin.create-product.edit-product-specifications')
             ->extends('admin_end.include.master_dash')
-            ->section('dash_main_content')->with(['attr_name' => $this->attribute_name]);
+            ->section('dash_main_content');
     }
 }

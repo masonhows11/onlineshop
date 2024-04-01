@@ -17,7 +17,7 @@
             </div>
             <div class="col  title-product">
                 <div class="alert bg-white text-center">
-                    {{ $attr_name->name }}
+                    {{ $attribute_name->name }}
                 </div>
             </div>
         </div>
@@ -34,8 +34,7 @@
                         <div class="col-sm-4">
                             <div class="mt-3 mb-3">
                                 <label for="priority" class="form-label">{{ __('messages.priority') }}</label>
-                                <input type="number" min="1" max="999" class="form-control" id="priority"
-                                       wire:model.defer="priority">
+                                <input type="number" min="1" max="999" class="form-control" id="priority" wire:model.defer="priority">
                                 @error('priority')
                                 <div class="alert alert-danger mt-3">
                                     {{ $message }}
@@ -49,7 +48,7 @@
                                 <label for="value" class="form-label">{{ __('messages.product_property_value') }}</label>
                                 @switch($selectedAttributeType)
                                     @case('select')
-                                    <select class="form-control" wire:model.defer="value" id="value">
+                                    <select class="form-control"  wire:model.defer="value" id="value">
                                         <option>انتخاب کنید...</option>
                                         @foreach($attributeDefaultValues as $value)
                                             <option value="{{ $value->id }}">{{ $value->value }}</option>
@@ -67,9 +66,8 @@
                                     <input type="text" class="form-control" id="value" wire:model.defer="value">
                                     @break
                                     @case('text_area')
-                                    <textarea class="form-control" wire:model.defer="value" id="value" rows="5"
-                                              cols="10">
-                                        </textarea>
+                                    <textarea class="form-control" wire:model.defer="value" id="value" rows="5" cols="10">
+                                    </textarea>
                                     @break
                                 @endswitch
                                 @error('value')
