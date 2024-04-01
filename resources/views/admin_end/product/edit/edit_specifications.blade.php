@@ -62,7 +62,7 @@
                                     @case('multi_select')
                                     <select class="form-control form-select" id="attrIds" name="value[]" multiple>
                                         @foreach($attributeDefaultValues as $item)
-                                            <option {{ in_array($item->id,array($value)) ? 'selected' :'' }} value="{{ $item->id }}">{{ $item->value }}</option>
+                                            <option {{ in_array($item->id,array_values($value)) ? 'selected' :'' }} value="{{ $item->id }}">{{ $item->value }}</option>
                                         @endforeach
                                     </select>
                                     @break

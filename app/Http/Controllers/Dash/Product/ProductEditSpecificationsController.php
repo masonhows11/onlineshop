@@ -62,16 +62,15 @@ class ProductEditSpecificationsController extends Controller
                 $value = json_decode($product_attribute->values)->value;
                 break;
         }
-
-        //dd($attributeDefaultValues);
+        // dd($value);
         return view('admin_end.product.edit.edit_specifications')
             ->with(['product' => $product,
                     'value' => $value,
                     'priority' => $priority,
                     'attribute_name' => $attribute_name,
-                    'product_id' => $request->product_id,
-                    'attribute_product_id' => $request->attribute_product_id,
                     'selectedAttributeType' => $selectedAttributeType,
-                    'attributeDefaultValues' => $attributeDefaultValues]);
+                    'attributeDefaultValues' => $attributeDefaultValues,
+                    'product_id' => $request->product_id,
+                    'attribute_product_id' => $request->attribute_product_id,]);
     }
 }
