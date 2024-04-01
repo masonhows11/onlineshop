@@ -12,10 +12,10 @@ class EditProductSpecifications extends Component
 {
     // public $attr_ids = [];
     // public $attributes;
+    // public $product_id;
+    // public $attribute_product_id;
 
-    ////
-    public $product_id;
-    public $attribute_product_id;
+
     ////
     public $product;
     public $attribute_name;
@@ -34,20 +34,20 @@ class EditProductSpecifications extends Component
     {
 
         // $this->attributes = Attribute::where('category_id', $this->product->category_attribute_id)->get();
-
+        //  $this->product_id = $product_id;
+        // $this->attribute_product_id = $attribute_product_id;
 
         ////
-        $this->product_id = $product_id;
-        $this->attribute_product_id = $attribute_product_id;
-        ////
-        $this->product = Product::where('id', $this->product_id)
+        $this->product = Product::where('id', $product_id)
             ->select('id', 'category_attribute_id', 'title_persian')
             ->first();
         ////
-        $this->product_attribute = AttributeProduct::where('id', $this->attribute_product_id)
+        $this->product_attribute = AttributeProduct::where('id', $attribute_product_id)
             ->first();
         // fill input with current value
-        $this->attribute_name = Attribute::where('id', $this->product_attribute->attribute_id)->first('name');
+        $this->attribute_name = Attribute::where('id', $this->product_attribute->attribute_id)
+            ->select('name')
+            ->first();
         ////
         $this->name = $this->product_attribute->attribute_id;
         $this->priority = $this->product_attribute->priority;
