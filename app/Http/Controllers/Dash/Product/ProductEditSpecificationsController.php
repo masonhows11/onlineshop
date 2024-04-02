@@ -33,10 +33,9 @@ class ProductEditSpecificationsController extends Controller
             ->select('name')
             ->first();
 
-        $product_attribute = AttributeProduct::where('id', $request->attribute_product_id)->first();
 
         ////
-        $name = $product_attribute->attribute_id;
+        $attribute_id = $product_attribute->attribute_id;
         $priority = $product_attribute->priority;
         // fill the value input wire model base on attribute type
         $type = $product_attribute->type;
@@ -44,13 +43,13 @@ class ProductEditSpecificationsController extends Controller
             case 'select':
                 $selectedAttributeType = 'select';
                 $attributeDefaultValues =
-                    AttributeValue::where('attribute_id', $name)->select('id', 'value')->get();
+                    AttributeValue::where('attribute_id', $attribute_id)->select('id', 'value')->get();
                 $value = json_decode($product_attribute->values)->id;
                 break;
             case 'multi_select':
                 $selectedAttributeType = 'multi_select';
                 $attributeDefaultValues =
-                    AttributeValue::where('attribute_id', $name)->select('id', 'value')->get();
+                    AttributeValue::where('attribute_id', $attribute_id)->select('id', 'value')->get();
                 foreach (json_decode($product_attribute->values, true) as $item) {
                     array_push($value, $item['id']);
                 }
@@ -98,7 +97,7 @@ class ProductEditSpecificationsController extends Controller
         switch ($request->type) {
             case 'select':
                 $values = AttributeValue::where('attribute_id', $name)
-                    ->where('id', $value)->select('id', 'value')
+                    ->where('id', $request->value)->select('id', 'value')
                     ->first();
                 $values = json_encode(['id' => $values->id, 'value' => $values->value]);
 
