@@ -30,7 +30,7 @@
 
             <div class="col  bg-white">
 
-                <form action="{{ route('product.update.specifications',['product_id' => $product_id,'attribute_product_id' => $attribute_product_id]) }}" method="post">
+                <form action="{{ route('admin.product.update.specifications',['product_id' => $product_id,'attribute_product_id' => $attribute_product_id]) }}" method="post">
                     @csrf
                     <div class="row mb-2 product-attribute-product-form">
 

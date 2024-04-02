@@ -12,13 +12,20 @@ use Illuminate\Http\Request;
 class ProductEditSpecificationsController extends Controller
 {
     //
+
+    private $type;
+    private $name;
+    public $value = [];
+    public $values;
+
     public function index(Request $request)
     {
+        //        $values = '';
+        //        $name = '';
+        //        $priority = '';
+        //        $type = '';
+
         $value = [];
-        $values = '';
-        $name = '';
-        $priority = '';
-        $type = '';
         $selectedAttributeType = '';
         $attributeDefaultValues = '';
 
@@ -37,8 +44,8 @@ class ProductEditSpecificationsController extends Controller
         $name = $product_attribute->attribute_id;
         $priority = $product_attribute->priority;
         // fill the value input wire model base on attribute type
-        $type = $product_attribute->type;
-        switch ($type) {
+        $this->type = $product_attribute->type;
+        switch ($this->type) {
             case 'select':
                 $selectedAttributeType = 'select';
                 $attributeDefaultValues =
@@ -63,6 +70,8 @@ class ProductEditSpecificationsController extends Controller
                 break;
         }
 
+
+
         return view('admin_end.product.edit.edit_specifications')
             ->with(['product' => $product,
                 'value' => $value,
@@ -76,14 +85,16 @@ class ProductEditSpecificationsController extends Controller
 
     private  function validateInput(): array
     {
-        if ($this->type == 'text_box' || $this->type == 'text_area') {
+
+        if ( $this->type == 'text_box' || $this->type == 'text_area') {
             return ['required', 'string', 'min:5', 'max:250'];
-        } else if ($this->type == 'select' || $this->type == 'multi_select')
+        } else if ( $this->type == 'select' || $this->type == 'multi_select')
             return ['required'];
     }
 
     public function update(Request $request)
     {
+       
 
         $request->validate([
             'priority' => ['required', 'gt:0'],
