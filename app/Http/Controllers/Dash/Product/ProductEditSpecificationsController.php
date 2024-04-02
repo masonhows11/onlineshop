@@ -13,18 +13,13 @@ class ProductEditSpecificationsController extends Controller
 {
     //
 
-    private $type;
-    private $name;
-    public $value = [];
-    public $values;
 
     public function index(Request $request)
     {
-        //        $values = '';
-        //        $name = '';
-        //        $priority = '';
-        //        $type = '';
-
+        $values = '';
+        $name = '';
+        $priority = '';
+        $type = '';
         $value = [];
         $selectedAttributeType = '';
         $attributeDefaultValues = '';
@@ -44,8 +39,8 @@ class ProductEditSpecificationsController extends Controller
         $name = $product_attribute->attribute_id;
         $priority = $product_attribute->priority;
         // fill the value input wire model base on attribute type
-        $this->type = $product_attribute->type;
-        switch ($this->type) {
+        $type = $product_attribute->type;
+        switch ($type) {
             case 'select':
                 $selectedAttributeType = 'select';
                 $attributeDefaultValues =
@@ -71,7 +66,6 @@ class ProductEditSpecificationsController extends Controller
         }
 
 
-
         return view('admin_end.product.edit.edit_specifications')
             ->with(['product' => $product,
                 'value' => $value,
@@ -83,80 +77,71 @@ class ProductEditSpecificationsController extends Controller
                 'attribute_product_id' => $request->attribute_product_id,]);
     }
 
-    private  function validateInput(): array
+    private function validateInput($type): array
     {
 
-        if ( $this->type == 'text_box' || $this->type == 'text_area') {
+        if ($type == 'text_box' || $type == 'text_area') {
             return ['required', 'string', 'min:5', 'max:250'];
-        } else if ( $this->type == 'select' || $this->type == 'multi_select')
+        } else if ($type == 'select' || $type == 'multi_select')
             return ['required'];
     }
 
     public function update(Request $request)
     {
-       
+
 
         $request->validate([
             'priority' => ['required', 'gt:0'],
-            'value' => $this->validateInput()
+            'value' => $this->validateInput($request->type)
         ]);
 
-        switch ($this->type) {
+        switch ($request->type) {
             case 'select':
-                $this->values = AttributeValue::where('attribute_id', $this->name)
-                    ->where('id', $this->value)->select('id', 'value')
+                $values = AttributeValue::where('attribute_id', $name)
+                    ->where('id', $value)->select('id', 'value')
                     ->first();
-                $this->values = json_encode(['id' => $this->values->id, 'value' => $this->values->value]);
+                $values = json_encode(['id' => $values->id, 'value' => $values->value]);
 
-                AttributeProduct::where('id', $this->attribute_product_id)->update([
-                    'product_id' => $this->product_id,
-                    'attribute_id' => $this->name,
-                    'values' => $this->values,
-                    'priority' => $this->priority,
-                    'type' => $this->type,
+                AttributeProduct::where('id', $attribute_product_id)->update([
+                    'product_id' => $product_id,
+                    'attribute_id' => $name,
+                    'values' => $values,
+                    'priority' => $request->priority,
+                    'type' => $request->type,
                 ]);
-                $this->name = null;
-                $this->value = null;
-                $this->priority = null;
                 break;
             case 'multi_select':
 
-                $this->values = AttributeValue::where('attribute_id', $this->name)
-                    ->whereIn('id', $this->value)->select('id', 'value')
+                $values = AttributeValue::where('attribute_id', $name)
+                    ->whereIn('id', $value)->select('id', 'value')
                     ->get();
-                $this->values = $this->values->map(function ($item) {
+                $values = $values->map(function ($item) {
                     return ['id' => $item['id'], 'value' => $item['value']];
                 });
 
-                AttributeProduct::where('id', $this->attribute_product_id)->update([
-                    'product_id' => $this->product_id,
-                    'values' => $this->values,
+                AttributeProduct::where('id', $attribute_product_id)->update([
+                    'product_id' => $request->product_id,
+                    'values' => $values,
                     'attribute_id' => $this->name,
-                    'priority' => $this->priority,
-                    'type' => $this->type,
+                    'priority' => $request->priority,
+                    'type' => $request->type,
                 ]);
-                $this->name = null;
-                $this->value = null;
-                $this->priority = null;
                 break;
             case 'text_box':
             case 'text_area':
-                $this->values = json_encode(['value' => $this->value]);
-                AttributeProduct::where('id', $this->attribute_product_id)->update([
-                    'product_id' => $this->product_id,
-                    'values' => $this->values,
-                    'attribute_id' => $this->name,
-                    'priority' => $this->priority,
-                    'type' => $this->type,
+                $values = json_encode(['value' => $value]);
+                AttributeProduct::where('id', $attribute_product_id)->update([
+                    'product_id' => $product_id,
+                    'values' => $values,
+                    'attribute_id' => $name,
+                    'priority' => $request->priority,
+                    'type' => $request->type,
                 ]);
-                $this->name = null;
-                $this->value = null;
-                $this->priority = null;
                 break;
         }
 
         session()->flash('success', __('messages.The_update_was_completed_successfully'));
-        return redirect()->route('admin.product.create.specifications', ['product' => $this->product_id]);
+        return redirect()->route('admin.product.create.specifications', ['product' => $request->product_id]);
 
     }
 }

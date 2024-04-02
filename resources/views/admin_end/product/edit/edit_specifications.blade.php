@@ -52,7 +52,8 @@
                                 <label for="value" class="form-label">{{ __('messages.product_property_value') }}</label>
                                 @switch($selectedAttributeType)
                                     @case('select')
-                                    <select class="form-control" name="value[]" id="value">
+                                    <input type="hidden" class="form-control" id="value" name="type" value="select">
+                                    <select class="form-control" name="value" id="value">
                                         <option value="">انتخاب کنید...</option>
                                         @foreach($attributeDefaultValues as $item)
                                             <option {{ in_array($item->id,array($value)) ? 'selected' :'' }} value="{{ $item->id }}">{{ $item->value }}</option>
@@ -60,17 +61,20 @@
                                     </select>
                                     @break
                                     @case('multi_select')
-                                    <select class="form-control form-select" id="attrIds" name="value[]" multiple>
+                                    <input type="hidden" class="form-control" id="value" name="type" value="multi_select">
+                                    <select class="form-control form-select" id="attrIds" name="value" multiple>
                                         @foreach($attributeDefaultValues as $item)
                                             <option {{ in_array($item->id,array_values($value)) ? 'selected' :'' }} value="{{ $item->id }}">{{ $item->value }}</option>
                                         @endforeach
                                     </select>
                                     @break
                                     @case('text_box')
-                                    <input type="text" class="form-control" id="value[]" name="value" value="{{ $value }}">
+                                    <input type="hidden" class="form-control" id="value" name="type" value="text_box">
+                                    <input type="text" class="form-control" id="value" name="value" value="{{ $value }}">
                                     @break
                                     @case('text_area')
-                                    <textarea class="form-control" name="value" id="value[]" rows="5" cols="10">
+                                    <input type="hidden" class="form-control" id="value" name="type" value="text_area">
+                                    <textarea class="form-control" name="value" id="value" rows="5" cols="10">
                                         {{ $value }}
                                     </textarea>
                                     @break
