@@ -359,6 +359,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin'
     ////
     Route::get('/product/create/specifications/{product}', [ProductCreateSpecificationsController::class, 'index'])->name('product.create.specifications');
     Route::get('/product/edit/specifications/{attribute_product_id}/{product_id}', [ProductEditSpecificationsController::class, 'index'])->name('product.edit.specifications');
+    Route::post('/product/update/specifications/{attribute_product_id}/{product_id}', [ProductEditSpecificationsController::class, 'update'])->name('product.update.specifications');
 
 
     // crud image product feature

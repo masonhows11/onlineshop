@@ -62,15 +62,90 @@ class ProductEditSpecificationsController extends Controller
                 $value = json_decode($product_attribute->values)->value;
                 break;
         }
-        // dd($value);
+
         return view('admin_end.product.edit.edit_specifications')
             ->with(['product' => $product,
-                    'value' => $value,
-                    'priority' => $priority,
-                    'attribute_name' => $attribute_name,
-                    'selectedAttributeType' => $selectedAttributeType,
-                    'attributeDefaultValues' => $attributeDefaultValues,
-                    'product_id' => $request->product_id,
-                    'attribute_product_id' => $request->attribute_product_id,]);
+                'value' => $value,
+                'priority' => $priority,
+                'attribute_name' => $attribute_name,
+                'selectedAttributeType' => $selectedAttributeType,
+                'attributeDefaultValues' => $attributeDefaultValues,
+                'product_id' => $request->product_id,
+                'attribute_product_id' => $request->attribute_product_id,]);
+    }
+
+    private  function validateInput(): array
+    {
+        if ($this->type == 'text_box' || $this->type == 'text_area') {
+            return ['required', 'string', 'min:5', 'max:250'];
+        } else if ($this->type == 'select' || $this->type == 'multi_select')
+            return ['required'];
+    }
+
+    public function update(Request $request)
+    {
+
+        $request->validate([
+            'priority' => ['required', 'gt:0'],
+            'value' => $this->validateInput()
+        ]);
+
+        switch ($this->type) {
+            case 'select':
+                $this->values = AttributeValue::where('attribute_id', $this->name)
+                    ->where('id', $this->value)->select('id', 'value')
+                    ->first();
+                $this->values = json_encode(['id' => $this->values->id, 'value' => $this->values->value]);
+
+                AttributeProduct::where('id', $this->attribute_product_id)->update([
+                    'product_id' => $this->product_id,
+                    'attribute_id' => $this->name,
+                    'values' => $this->values,
+                    'priority' => $this->priority,
+                    'type' => $this->type,
+                ]);
+                $this->name = null;
+                $this->value = null;
+                $this->priority = null;
+                break;
+            case 'multi_select':
+
+                $this->values = AttributeValue::where('attribute_id', $this->name)
+                    ->whereIn('id', $this->value)->select('id', 'value')
+                    ->get();
+                $this->values = $this->values->map(function ($item) {
+                    return ['id' => $item['id'], 'value' => $item['value']];
+                });
+
+                AttributeProduct::where('id', $this->attribute_product_id)->update([
+                    'product_id' => $this->product_id,
+                    'values' => $this->values,
+                    'attribute_id' => $this->name,
+                    'priority' => $this->priority,
+                    'type' => $this->type,
+                ]);
+                $this->name = null;
+                $this->value = null;
+                $this->priority = null;
+                break;
+            case 'text_box':
+            case 'text_area':
+                $this->values = json_encode(['value' => $this->value]);
+                AttributeProduct::where('id', $this->attribute_product_id)->update([
+                    'product_id' => $this->product_id,
+                    'values' => $this->values,
+                    'attribute_id' => $this->name,
+                    'priority' => $this->priority,
+                    'type' => $this->type,
+                ]);
+                $this->name = null;
+                $this->value = null;
+                $this->priority = null;
+                break;
+        }
+
+        session()->flash('success', __('messages.The_update_was_completed_successfully'));
+        return redirect()->route('admin.product.create.specifications', ['product' => $this->product_id]);
+
     }
 }
