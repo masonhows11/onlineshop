@@ -293,6 +293,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin'
 });
 
 Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin', 'role:admin|super_admin'])->group(function () {
+
     Route::get('/category/index', AdminCategoryList::class)->name('category.index');
     Route::get('/category/create', AdminCategoryCreate::class)->name('category.create');
     Route::get('/category/edit/{id}', AdminCategoryEdit::class)->name('category.edit');
@@ -331,10 +332,10 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin'
 
 // crud product attribute & attribute value
 Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin', 'role:admin|super_admin'])->group(function () {
-
+    ////
     Route::get('/attribute/index', AdminAttribute::class)->name('attribute.index');
     Route::get('/attribute/create/{id}', AdminAttributeCreate::class)->name('attribute.create');
-
+    ////
     Route::get('/attribute/value/index', AdminAttributeValue::class)->name('attribute.value.index');
     Route::get('/attribute/value/create/{id}', AdminAttributeValueCreate::class)->name('attribute.value.create');
 
@@ -373,10 +374,10 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin'
 Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin', 'role:admin|super_admin'])->group(function () {
 
     Route::get('/stock-product/index', StockProduct::class)->name('stock.product.index');
-
+    ////
     Route::get('/add_to_stock/{product}', [StockController::class, 'addToStockForm'])->name('add_to_stock.form');
     Route::post('/add_to_stock', [StockController::class, 'addToStock'])->name('add_to_stock');
-
+    ////
     Route::get('/modify_stock/{product}', [StockController::class, 'modifyStockForm'])->name('modify_stock.form');
     Route::post('/modify_stock', [StockController::class, 'modifyStock'])->name('modify_stock');
 
@@ -386,14 +387,14 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin'
 Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin', 'role:admin|super_admin'])->group(function () {
 
     Route::get('/payments-all/index', [PaymentController::class, 'index'])->name('payments.all.index');
-
+    ////
     Route::get('/payments-offline/index', [PaymentController::class, 'offline'])->name('payments.offline.index');
     Route::get('/payments-online/index', [PaymentController::class, 'online'])->name('payments.online.index');
     Route::get('/payments-cash/index', [PaymentController::class, 'cash'])->name('payments.cash.index');
-
+    ////
     Route::get('/payment-canceled/{payment}', [PaymentController::class, 'canceled'])->name('payment.canceled');
     Route::get('/payment-returned/{payment}', [PaymentController::class, 'retuned'])->name('payment.returned');
-
+    ////
     Route::get('/payment-show/{payment}', [PaymentController::class, 'show'])->name('payment.show');
 
 });
@@ -402,10 +403,10 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin'
 Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin', 'role:admin|super_admin'])->group(function () {
 
     Route::get('/common-discount/index', [CommonDiscountController::class, 'index'])->name('common.discount.index');
-
+    ////
     Route::get('/common-discount/create', [CommonDiscountController::class, 'create'])->name('common.discount.create');
     Route::post('/common-discount/store', [CommonDiscountController::class, 'store'])->name('common.discount.store');
-
+    ////
     Route::get('/common-discount/edit/{discount}', [CommonDiscountController::class, 'edit'])->name('common.discount.edit');
     Route::post('/common-discount/update', [CommonDiscountController::class, 'update'])->name('common.discount.update');
 
@@ -415,10 +416,10 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin'
 Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin', 'role:admin|super_admin'])->group(function () {
 
     Route::get('/amazing-sale/index', [AmazingSalesController::class, 'index'])->name('amazing.sale.index');
-
+    ////
     Route::get('/amazing-sale/create', [AmazingSalesController::class, 'create'])->name('amazing.sale.create');
     Route::post('/amazing-sale/store', [AmazingSalesController::class, 'store'])->name('amazing.sale.store');
-
+    ////
     Route::get('/amazing-sale/edit/{amazingSale}', [AmazingSalesController::class, 'edit'])->name('amazing.sale.edit');
     Route::post('/amazing-sale/update', [AmazingSalesController::class, 'update'])->name('amazing.sale.update');
 
@@ -428,10 +429,10 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin'
 Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin', 'role:admin|super_admin'])->group(function () {
 
     Route::get('/coupons/index', [CouponDiscountController::class, 'index'])->name('coupons.index');
-
+    ////
     Route::get('/coupons/create', [CouponDiscountController::class, 'create'])->name('coupons.create');
     Route::post('/coupons/store', [CouponDiscountController::class, 'store'])->name('coupons.store');
-
+    ////
     Route::get('/coupons/edit/{coupon}', [CouponDiscountController::class, 'edit'])->name('coupons.edit');
     Route::post('/coupons/update', [CouponDiscountController::class, 'update'])->name('coupons.update');
 
@@ -476,10 +477,10 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin'
 
     Route::get('/province/index', [AdminProvinceController::class, 'index'])->name('province.index');
     Route::post('/province/store', [AdminProvinceController::class, 'store'])->name('province.store');
-
+    ////
     Route::get('/province/edit/{province}', [AdminProvinceController::class, 'edit'])->name('province.edit');
     Route::post('/province/update', [AdminProvinceController::class, 'update'])->name('province.update');
-
+    ////
     Route::get('/province/delete/{province}', [AdminProvinceController::class, 'delete'])->name('province.delete');
 
 });
@@ -489,10 +490,10 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin'
 
     Route::get('/city/create', [AdminCityController::class, 'create'])->name('city.create');
     Route::post('/city/store', [AdminCityController::class, 'store'])->name('city.store');
-
+    ////
     Route::get('/city/edit/{city}', [AdminCityController::class, 'edit'])->name('city.edit');
     Route::post('/city/update', [AdminCityController::class, 'update'])->name('city.update');
-
+    /////
     Route::post('/city/delete/{city}', [AdminCityController::class, 'delete'])->name('city.delete');
 
 });
@@ -504,7 +505,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'verify_admin'
     Route::post('/category-ticket/store', [AdminCategoryTicketController::class, 'store'])->name('category.ticket.store');
     Route::get('/category-ticket/edit/{ticketCategory}', [AdminCategoryTicketController::class, 'edit'])->name('category.ticket.edit');
     Route::post('/category-ticket/update', [AdminCategoryTicketController::class, 'update'])->name('category.ticket.update');
-
+    ////
     Route::get('/priority-tickets', [AdminPriorityTicketController::class, 'priorityTickets'])->name('priority.tickets');
     Route::get('/priority-ticket/create', [AdminPriorityTicketController::class, 'create'])->name('priority.ticket.create');
     Route::post('/priority-ticket/store', [AdminPriorityTicketController::class, 'store'])->name('priority.ticket.store');
@@ -556,40 +557,40 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'role:admin|su
 
     // top banner
     Route::get('/top-banner/index', AdminTopBanner::class)->name('top.banner.index');
-
+    ////
     Route::get('/top-banner/create', [TopBannerController::class, 'create'])->name('top.banner.create');
     Route::post('/top-banner/store', [TopBannerController::class, 'store'])->name('top.banner.store');
-
+    ////
     Route::get('/top-banner/edit/{banner}', [TopBannerController::class, 'edit'])->name('top.banner.edit');
     Route::post('/top-banner/update', [TopBannerController::class, 'update'])->name('top.banner.update');
 
     // main slider banner
 
     Route::get('/main-slider/index', AdminMainSlider::class)->name('main.slider.index');
-
+    ////
     Route::get('/main-slider/create', [MainSliderController::class, 'create'])->name('main.slider.create');
     Route::post('/main-slider/store', [MainSliderController::class, 'store'])->name('main.slider.store');
-
+    ////
     Route::get('/main-slider/edit/{banner}', [MainSliderController::class, 'edit'])->name('main.slider.edit');
     Route::post('/main-slider/update', [MainSliderController::class, 'update'])->name('main.slider.update');
 
     // amazing_offer_banner
 
     Route::get('/amazing-banner/index', AdminAmazingOfferBanner::class)->name('amazing.banner.index');
-
+    ////
     Route::get('/amazing-banner/create', [AmazingOfferBannerController::class, 'create'])->name('amazing.banner.create');
     Route::post('/amazing-banner/store', [AmazingOfferBannerController::class, 'store'])->name('amazing.banner.store');
-
+    ////
     Route::get('/amazing-banner/edit/{banner}', [AmazingOfferBannerController::class, 'edit'])->name('amazing.banner.edit');
     Route::post('/amazing-banner/update', [AmazingOfferBannerController::class, 'update'])->name('amazing.banner.update');
 
     // bottom two banner
 
     Route::get('/bottom-banner/index', AdminBottomTwoBanner::class)->name('bottom.banner.index');
-
+    ////
     Route::get('/bottom-banner/create', [BottomBannerController::class, 'create'])->name('bottom.banner.create');
     Route::post('/bottom-banner/store', [BottomBannerController::class, 'store'])->name('bottom.banner.store');
-
+    ////
     Route::get('/bottom-banner/edit/{banner}', [BottomBannerController::class, 'edit'])->name('bottom.banner.edit');
     Route::post('/bottom-banner/update', [BottomBannerController::class, 'update'])->name('bottom.banner.update');
 
@@ -623,7 +624,6 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin', 'role:admin|su
     Route::post('/email-notices/update', [AdminEmailNoticesController::class, 'update'])->name('email.notices.update');
     // send mail
     Route::get('/send-mail/{mail}', [AdminEmailNoticesController::class, 'sendMail'])->name('notices.send.mail');
-
     //// sms notices routes
     Route::get('/sms-notices/index', [AdminSMSNoticeController::class, 'index'])->name('sms.notices.index');
     // create
