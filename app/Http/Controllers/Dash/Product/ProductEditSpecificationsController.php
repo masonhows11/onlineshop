@@ -79,7 +79,6 @@ class ProductEditSpecificationsController extends Controller
 
     private function validateInput($type): array
     {
-
         if ($type == 'text_box' || $type == 'text_area') {
             return ['required', 'string', 'min:5', 'max:250'];
         } else if ($type == 'select' || $type == 'multi_select')
