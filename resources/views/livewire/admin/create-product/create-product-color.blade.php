@@ -4,12 +4,14 @@
     @endsection
     <div class="container-fluid my-3 product-color-section">
 
-        <div class="row  mx-2">
-            <div class="col-lg-3 col-md-3 col title-product">
+        <div class="row mx-2">
+
+            <div class="col-sm-6 title-product">
                 <div class="alert bg-white text-center">
                     <h6>{{ __('messages.product_other_color') }}</h6>
                 </div>
             </div>
+
         </div>
 
         <div class="row mx-2  d-flex flex-column ">

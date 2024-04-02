@@ -5,12 +5,12 @@
     <div class="container-fluid">
 
         <div class="row  my-3">
-            <div class="col-lg-3 col-md-3 col title-product">
+            <div class="col-sm-6  title-product">
                 <div class="alert bg-white text-center">
                     {{ __('messages.warranty') }}
                 </div>
             </div>
-            <div class="col-lg-3 col-md-3 col title-product">
+            <div class="col-sm-6 title-product">
                 <div class="alert bg-white text-center">
                     {{ $product->title_persian }}
                 </div>

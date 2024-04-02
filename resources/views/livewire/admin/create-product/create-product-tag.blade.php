@@ -4,13 +4,13 @@
     @endsection
     <div class="container-fluid product-color-section">
 
-        <div class="row ms-2 my-3">
-            <div class="col-lg-3 col-md-3 col title-product">
+        <div class="row mx-2  my-3">
+            <div class="col-sm-6 title-product">
                 <div class="alert bg-white text-center">
                     {{ __('messages.tags_management') }}
                 </div>
             </div>
-            <div class="col-lg-3 col-md-3 col title-product">
+            <div class="col-sm-6 title-product">
                 <div class="alert bg-white text-center">
                     {{ $product->title_persian }}
                 </div>
@@ -50,7 +50,7 @@
 
         <div class="row mx-2 my-3 product-meta-list bg-white rounded rounded-1 overflow-auto">
             <div class="col">
-                <table class="table ">
+                <table class="table">
                     <thead>
                     <tr class="text-center">
                         <th>{{ __('messages.id') }}</th>
