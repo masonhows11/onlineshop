@@ -67,6 +67,7 @@ class ProductEditSpecificationsController extends Controller
 
         return view('admin_end.product.edit.edit_specifications')
             ->with(['product' => $product,
+                'attribute_id' => $attribute_id,
                 'value' => $value,
                 'priority' => $priority,
                 'attribute_name' => $attribute_name,
@@ -96,43 +97,42 @@ class ProductEditSpecificationsController extends Controller
 
         switch ($request->type) {
             case 'select':
-                $values = AttributeValue::where('attribute_id', $name)
+                $values = AttributeValue::where('attribute_id', $request->attribute_id)
                     ->where('id', $request->value)->select('id', 'value')
                     ->first();
                 $values = json_encode(['id' => $values->id, 'value' => $values->value]);
 
-                AttributeProduct::where('id', $attribute_product_id)->update([
-                    'product_id' => $product_id,
-                    'attribute_id' => $name,
+                AttributeProduct::where('id', $request->attribute_product_id)->update([
+                    'product_id' => $request->product_id,
+                    'attribute_id' => $request->attribute_id,
                     'values' => $values,
                     'priority' => $request->priority,
                     'type' => $request->type,
                 ]);
                 break;
             case 'multi_select':
-
-                $values = AttributeValue::where('attribute_id', $name)
-                    ->whereIn('id', $value)->select('id', 'value')
+                $values = AttributeValue::where('attribute_id', $request->attribute_id)
+                    ->whereIn('id', $request->value)->select('id', 'value')
                     ->get();
                 $values = $values->map(function ($item) {
                     return ['id' => $item['id'], 'value' => $item['value']];
                 });
 
-                AttributeProduct::where('id', $attribute_product_id)->update([
+                AttributeProduct::where('id', $request->attribute_product_id)->update([
                     'product_id' => $request->product_id,
                     'values' => $values,
-                    'attribute_id' => $this->name,
+                    'attribute_id' => $request->attribute_id,
                     'priority' => $request->priority,
                     'type' => $request->type,
                 ]);
                 break;
             case 'text_box':
             case 'text_area':
-                $values = json_encode(['value' => $value]);
-                AttributeProduct::where('id', $attribute_product_id)->update([
-                    'product_id' => $product_id,
+                $values = json_encode(['value' => $request->value]);
+                AttributeProduct::where('id', $request->attribute_product_id)->update([
+                    'product_id' => $request->product_id,
                     'values' => $values,
-                    'attribute_id' => $name,
+                    'attribute_id' => $request->attribute_id,
                     'priority' => $request->priority,
                     'type' => $request->type,
                 ]);

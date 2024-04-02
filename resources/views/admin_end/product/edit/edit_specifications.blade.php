@@ -34,6 +34,7 @@
                     @csrf
                     <div class="row mb-2 product-attribute-product-form">
 
+                        <input type="hidden" name="attribute_id" value="{{ $attribute_id }}">
 
                         <div class="col-sm-4">
                             <div class="mt-3 mb-3">
@@ -61,7 +62,7 @@
                                     </select>
                                     @break
                                     @case('multi_select')
-                                    <input type="hidden" class="form-control" id="value" name="type" value="multi_select">
+                                    <input type="hidden" class="form-control" id="value" name="type[]" value="multi_select">
                                     <select class="form-control form-select" id="attrIds" name="value" multiple>
                                         @foreach($attributeDefaultValues as $item)
                                             <option {{ in_array($item->id,array_values($value)) ? 'selected' :'' }} value="{{ $item->id }}">{{ $item->value }}</option>
